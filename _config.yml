@@ -33,10 +33,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: Leonids
+  name: HYUNJIN
   avatar: profile.png
-  job: "A jekyll theme"
-  bio: "A simple and awesome blog theme powered by jekyll."
+  job: "KT corp. SW Developer"
+  bio: "적게 일하고 많이 벌자"
   email:
   disqus-shortname:
   twitter: #username
