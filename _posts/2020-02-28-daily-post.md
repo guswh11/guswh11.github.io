@@ -2,7 +2,7 @@
 layout: post
 title: "오늘의 회사 생활"
 excerpt: "오늘의 밥과 한 일에 대해"
-categories: [paragraph, feature photo]
+categories: [daily]
 comments: true
 image:
   feature: /picture1.jpeg
