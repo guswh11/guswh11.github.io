@@ -6,8 +6,38 @@
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
     <pubDate>2020-02-28</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 09:34:16 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 17:09:05 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>오늘의 회사 생활</title>
+        <description>&lt;p&gt;오늘은 회사에서 국수가 나왔다. 김치가 너무 셔서 난 김치를 넣어 먹었다. 
+지금 시각은 4시 39분인데 밥을 많이 안먹어서 그런지 벌써부터 배가 고프다. 얼른 집에 가고싶다.&lt;/p&gt;
+
+&lt;h2 id=&quot;회사에서-한-일&quot;&gt;회사에서 한 일&lt;/h2&gt;
+
+&lt;p&gt;회사에서 이러이러한 일들을 했다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;스프링, 자바스크립트, 파이썬 개발환경 구축&lt;/li&gt;
+  &lt;li&gt;오케스트라 사용법 강의&lt;/li&gt;
+  &lt;li&gt;성격유형 검사&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;파이썬 개발환경 구축 마지막에는 거의 졸았다. 
+오케스트라 사용법 강의는 존나 지루했다. ㄱㅖ속 메이플 검색했다.&lt;/p&gt;
+
+</description>
+        <pubDate>2020-02-28</pubDate>
+        <link>http://localhost:4000/articles/2020-02/daily-post</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-02/daily-post</guid>
+        
+        
+        <category>paragraph</category>
+        
+        <category>feature photo</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
