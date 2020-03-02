@@ -1,4 +1,4 @@
-- name: leonids
-  descr: "Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-  image: pong.png
-  github: https://github.com/renyuanz/leonids
+- name: 한강몽땅
+  descr: 서울시 공공 앱 공모전 출품작이다. 
+  image: 
+  github: https://github.com/young-joy/Seoul-app-project
