@@ -161,7 +161,38 @@
     
     <div class="post-description">
       <p>
-        
+        <p>Spring boot에서는 서블릿을 사용하기 위해 설정을 등록해야 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServletRegistrationConfig</span> <span class="o">{</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">ServletRegistrationBean</span><span class="o">&lt;</span><span class="nc">NewServlet</span><span class="o">&gt;</span> <span class="nf">getServletRegistrationBean</span><span class="o">(){</span>
+        <span class="nc">ServletRegistrationBean</span><span class="o">&lt;</span><span class="nc">NewServlet</span><span class="o">&gt;</span> <span class="n">registrationBean</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ServletRegistrationBean</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">NewServlet</span><span class="o">());</span>
+
+        <span class="n">registrationBean</span><span class="o">.</span><span class="na">addUrlMappings</span><span class="o">(</span><span class="s">"/new"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">registrationBean</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>NewServlet에는 등록하려는 서블릿이 들어가고,</p>
+
+<p><code class="language-plaintext highlighter-rouge">registrationBean.addUrlMappings("/new")</code> 에는 서블릿의 urlPattern을 넣어주면 된다.</p>
+
+<p><br />
+<br /></p>
+
+<p>결과 코드는 위에 캡쳐해뒀다 ! 
+<br />
+<br /></p>
+
+<hr />
+
+<p><br />
+이걸 몰라서 처음에 뭘 잘못 설정했나 하고 프로젝트를 몇번이나 다시 만들었다.</p>
+
+<p>책에 왜 안 써 두셨을까!?!?!?!?!?!?!??!?!?!</p>
 
       </p>
     </div>
