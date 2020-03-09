@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Spring Boot Servlet 등록하기"
+excerpt: "Servlet 사용을 위한 설정 등록 방법"
 categories: [spring]
 comments: true
 image:
