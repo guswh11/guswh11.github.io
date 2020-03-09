@@ -5,9 +5,22 @@
     <description>A simple and awesome blog theme powered by jekyll.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>2020-03-02</pubDate>
-    <lastBuildDate>Mon, 02 Mar 2020 11:25:09 +0900</lastBuildDate>
+    <pubDate>2020-03-09</pubDate>
+    <lastBuildDate>Mon, 09 Mar 2020 10:53:02 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Spring Boot Servlet 등록하기</title>
+        <description>
+</description>
+        <pubDate>2020-03-09</pubDate>
+        <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
+        
+        
+        <category>spring</category>
+        
+      </item>
     
       <item>
         <title>Jekyll에 emoji 추가하기</title>
@@ -46,7 +59,7 @@
 &lt;h1 id=&quot;참조&quot;&gt;참조&lt;/h1&gt;
 &lt;p&gt;jemoji repo: &lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;https://github.com/jekyll/jemoji&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-03-02</pubDate>
+        <pubDate>2020-03-09</pubDate>
         <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
         
@@ -71,7 +84,7 @@
 &lt;/ul&gt;
 
 </description>
-        <pubDate>2020-03-02</pubDate>
+        <pubDate>2020-03-09</pubDate>
         <link>http://localhost:4000/articles/2020-02/daily-post</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-02/daily-post</guid>
         
