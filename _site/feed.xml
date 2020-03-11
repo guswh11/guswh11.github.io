@@ -5,9 +5,242 @@
     <description>A simple and awesome blog theme powered by jekyll.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>2020-03-09</pubDate>
-    <lastBuildDate>Mon, 09 Mar 2020 14:27:54 +0900</lastBuildDate>
+    <pubDate>2020-03-12</pubDate>
+    <lastBuildDate>Thu, 12 Mar 2020 01:21:09 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Kibana</title>
+        <description>&lt;h1 id=&quot;kibana&quot;&gt;Kibana&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;회사 일로 kibana에 대해 조사해봤다.&lt;/em&gt;
+&lt;em&gt;내가 쓴거니까 올려도 될것같다!!&lt;/em&gt;
+&lt;br /&gt;
+&lt;em&gt;아직 예제는 못돌려봤다….&lt;/em&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;개요&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#license&quot;&gt;라이선스&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#datatype&quot;&gt;데이터타입&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#function&quot;&gt;기능&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#feature&quot;&gt;특징&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot;&gt;레퍼런스 현황&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#example&quot;&gt;예제&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 개요&lt;/strong&gt;&lt;a name=&quot;introduction&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;kibana-intro.jpg&quot; alt=&quot;kibana-intro&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Elasticsearch가 logstash를 통해 수집한 데이터를 시각화하는 역할을 함
+elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
+  &lt;li&gt;다음과 같은 주요 기능을 지님
+    &lt;ul&gt;
+      &lt;li&gt;&lt;u&gt;Discover&lt;/u&gt;: 데이터를 한 눈에 확인&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Visualize&lt;/u&gt;: 수집된 결과를 시각화&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Dashboard&lt;/u&gt;: 시각화한 개체 모아보기&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Setting&lt;/u&gt;: index 등록 및 환경설정&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;hr /&gt;
+
+    &lt;p&gt;공식 소개: &lt;a href=&quot;https://www.elastic.co/kr/kibana&quot;&gt;https://www.elastic.co/kr/kibana&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;Github repo: &lt;a href=&quot;https://github.com/elastic/kibana&quot;&gt;https://github.com/elastic/kibana&lt;/a&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 라이선스&lt;/strong&gt;&lt;a name=&quot;license&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;오픈소스, 무료로 제공&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;제약 존재&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;You agree not to:&lt;br /&gt;
+  (iv) use Elastic Software
+  Object Code for providing time-sharing services, any software-as-a-service,
+  service bureau services or as part of an application services provider or
+  other service offering (collectively, “SaaS Offering”) where obtaining access
+  to the Elastic Software or the features and functions of the Elastic Software
+  is a primary reason or substantial motivation for users of the SaaS Offering
+  to access and/or use the SaaS Offering (“Prohibited SaaS Offering”)
+  &lt;br /&gt;…&lt;br /&gt;
+  (vi)
+  alter or remove any Marks and Notices in the Elastic Software.&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;saas 금지&lt;/li&gt;
+      &lt;li&gt;marks, notices 못 없앰&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;hr /&gt;
+
+    &lt;p&gt;Elastic-license 문서: &lt;a href=&quot;https://github.com/elastic/kibana/blob/7.6/licenses/ELASTIC-LICENSE.txt&quot;&gt;https://github.com/elastic/kibana/blob/7.6/licenses/ELASTIC-LICENSE.txt&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. 데이터타입&lt;/strong&gt;&lt;a name=&quot;datatype&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Json&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. 기능&lt;/strong&gt;&lt;a name=&quot;function&quot;&gt;&lt;/a&gt;
+&lt;br /&gt;Kibana의 시각화 관련 기능들이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;차트&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;메트릭&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;데이터 표&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Vega(사용자 정의)&lt;/strong&gt;
+&lt;br /&gt;사용자 정의 시각화를 가능케 한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;vega-example.jpg&quot; alt=&quot;vega example&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Time Series Visual Builder(TSVB)&lt;/strong&gt;
+&lt;br /&gt;데이터 집계와 파이프라인 집계를 결합해 복잡한 데이터를 표시하는 시계열 데이터 시각화 도구이다.
+&lt;br /&gt;TSVB는 다음과 같은 종류의 시각화를 제공한다.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;u&gt;Time Series&lt;/u&gt;
+  &lt;img src=&quot;tsvb-timeseries.png&quot; alt=&quot;TSVB-Time Series&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Metric&lt;/u&gt;
+  &lt;img src=&quot;tsvb-metric.png&quot; alt=&quot;TSVB-Metric&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Top N&lt;/u&gt;
+  &lt;img src=&quot;tsvb-top-n.png&quot; alt=&quot;TSVB-Top N&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;Gauge&lt;/li&gt;
+      &lt;li&gt;Markdown&lt;/li&gt;
+      &lt;li&gt;Table&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt;
+&lt;br /&gt;CSS요소 추가, 디자인 요소 활용 등을 통해 시각화 결과를 커스터마이징 가능케 한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;canvas-log-analysis.png&quot; alt=&quot;canvas example-log analysis&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;canvas-infrastructure.png&quot; alt=&quot;canvas example-infrastructure&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Dashboard&lt;/strong&gt;
+&lt;br /&gt;Kibana에서 생성한 시각화와 검색 결과를 모아볼 수 있으며, 저장/공유 기능을 제공한다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;dashboard_example.png&quot; alt=&quot;dashboard example&quot; /&gt;&lt;/p&gt;
+
+    &lt;hr /&gt;
+
+    &lt;p&gt;전체 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/kibana/features&quot;&gt;https://www.elastic.co/kr/kibana/features&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;구독 형태에 따른 제공 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/subscriptions&quot;&gt;https://www.elastic.co/kr/subscriptions&lt;/a&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;5. 특징&lt;/strong&gt;&lt;a name=&quot;feature&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;REST API 제공&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Kiabana spaces APIs&lt;/li&gt;
+      &lt;li&gt;Kibana role management APIs&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Saved objects APIs&lt;/u&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;Import and export dashboard APIs&lt;/u&gt;&lt;/li&gt;
+      &lt;li&gt;Logstash configuration management APIs&lt;/li&gt;
+      &lt;li&gt;Upgrade assistant APIs&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Kibana의 일부 기능들은 REST API를 통해 제공되며, 이를 통해 생성된 object(대시보드, 시각화 결과, 인덱스 패턴 등)를 다루는 것이 가능하다.&lt;/p&gt;
+
+    &lt;p&gt;API 사용 가이드: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/api.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/api.html&lt;/a&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;다양한 Plugin 제공&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;plugins 목록: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/known-plugins.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/known-plugins.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;데이터 소스&lt;/strong&gt;
+&lt;br /&gt;Kibana는 다음과 같은 데이터 소스를 가진다
+    &lt;ul&gt;
+      &lt;li&gt;운영체제&lt;/li&gt;
+      &lt;li&gt;웹 서버 및 프록시&lt;/li&gt;
+      &lt;li&gt;데이터스토어 및 큐&lt;/li&gt;
+      &lt;li&gt;클라우드 서비스&lt;/li&gt;
+      &lt;li&gt;컨테이너 및 오케스트레이션&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;수집 제품 및 기능&lt;/strong&gt;
+&lt;br /&gt;Kibana는 다음과 같은 데이터 수집 툴들과 연동 가능하다.
+    &lt;ul&gt;
+      &lt;li&gt;Filebeat, Metricbeat, Winlogbeat, Packetbeat, Heartbeat, Auditbeat&lt;/li&gt;
+      &lt;li&gt;Functionbeat&lt;/li&gt;
+      &lt;li&gt;Logstash&lt;/li&gt;
+      &lt;li&gt;ES-Hadoop&lt;/li&gt;
+      &lt;li&gt;파일 가져오기 마법사&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;공유 및 협업&lt;/strong&gt;
+&lt;br /&gt;Kibana에서 생성한 객체 또는 대시보드는 다음과 같은 방법으로 공유 가능하다.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;u&gt;임베디드 대시보드&lt;/u&gt;
+  &lt;br /&gt;Kibana 대시보드로의 링크를 공유하거나, 웹 페이지에서 iframe으로 대시보드를 포함시킬 수 있다. 라이브/정적 대시보드 모두 가능하다.&lt;/li&gt;
+      &lt;li&gt;&lt;u&gt;객체 내보내기 UI 및 API&lt;/u&gt;&lt;/li&gt;
+      &lt;li&gt;저장된 쿼리&lt;/li&gt;
+      &lt;li&gt;CSV 파일 내보내기&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;hr /&gt;
+
+    &lt;p&gt;전체 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/kibana/features&quot;&gt;https://www.elastic.co/kr/kibana/features&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. 호환 프레임워크&lt;/strong&gt;&lt;a name=&quot;framework&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. 레퍼런스 현황&lt;/strong&gt;&lt;a name=&quot;reference&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;정돈되고 자세한 가이드 존재&lt;/p&gt;
+
+    &lt;p&gt;공식 가이드: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/7.6/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/7.6/index.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;구글 ‘kibana’ 검색 결과 &lt;u&gt;약 2,360,000개&lt;/u&gt;, ‘kibana example’ 검색 결과 &lt;u&gt;약 576,000개&lt;/u&gt;, ‘kibana 예제’ 검색 결과 &lt;u&gt;약 6,900개&lt;/u&gt;로 많은 수의 예제와 관련 글이 존재
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;7. 예시&lt;/strong&gt;&lt;a name=&quot;example&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>2020-03-12</pubDate>
+        <link>http://localhost:4000/articles/2020-03/kibana</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/kibana</guid>
+        
+        
+        <category>etc</category>
+        
+      </item>
     
       <item>
         <title>Spring Boot Servlet 등록하기</title>
@@ -44,7 +277,7 @@
 
 &lt;p&gt;책에 왜 안 써 두셨을까!?!?!?!?!?!?!??!?!?!&lt;/p&gt;
 </description>
-        <pubDate>2020-03-09</pubDate>
+        <pubDate>2020-03-12</pubDate>
         <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
         
@@ -90,7 +323,7 @@
 &lt;h1 id=&quot;참조&quot;&gt;참조&lt;/h1&gt;
 &lt;p&gt;jemoji repo: &lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;https://github.com/jekyll/jemoji&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-03-09</pubDate>
+        <pubDate>2020-03-12</pubDate>
         <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
         
@@ -115,7 +348,7 @@
 &lt;/ul&gt;
 
 </description>
-        <pubDate>2020-03-09</pubDate>
+        <pubDate>2020-03-12</pubDate>
         <link>http://localhost:4000/articles/2020-02/daily-post</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-02/daily-post</guid>
         
