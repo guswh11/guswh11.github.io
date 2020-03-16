@@ -5,9 +5,108 @@
     <description>A simple and awesome blog theme powered by jekyll.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>2020-03-12</pubDate>
-    <lastBuildDate>Thu, 12 Mar 2020 01:21:09 +0900</lastBuildDate>
+    <pubDate>2020-03-16</pubDate>
+    <lastBuildDate>Mon, 16 Mar 2020 17:14:54 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Elasticsearch와 Kibana설치 방법</title>
+        <description>&lt;h1 id=&quot;how-to-install-elasticsearch-and-kibana&quot;&gt;How to install elasticsearch and kibana&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Elasticsearch 설치&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Kibana를 사용하기 위해서는 Elasticsearch가 필수이며, 같은 버전을 사용해야 한다.&lt;/p&gt;
+
+    &lt;p&gt;Elasticsearch는 Java 8 이상이 필요하다. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Java 설정이 확인되었다면, 아래 링크를 통해 elasticsearch 압축 파일을 다운받을 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;파일 다운로드: &lt;a href=&quot;https://www.elastic.co/kr/downloads/elasticsearch&quot;&gt;https://www.elastic.co/kr/downloads/elasticsearch&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;파일 다운이 완료되면, 다음과 같은 명령어를 통해 압축을 푼다. 예시에서는 elasticsearch 7.6.1 버전을 사용했다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  tar -xvf elasticsearch-7.6.1.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;다음과 같이 bin 디렉토리로 이동한다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cd elasticsearch-7.6.1/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;클러스터 시작을 위해, 다음과 같은 명령어를 입력한다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ./elasticsearch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;정상적으로 설치가 완료되었다면 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:9200&lt;/code&gt; 접속 시 아래와 같은 화면을 확인할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;elasticsearch-install-result.png&quot; alt=&quot;elasticsearch install result&quot; /&gt;&lt;/p&gt;
+
+    &lt;hr /&gt;
+    &lt;p&gt;Elasticsearch 설치 방법: &lt;a href=&quot;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&quot;&gt;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&lt;/a&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kibana 설치 &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+    &lt;p&gt;아래 링크에서 Kibana 압축 파일을 다운받을 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;파일 다운로드: &lt;a href=&quot;https://www.elastic.co/kr/downloads/kibana&quot;&gt;https://www.elastic.co/kr/downloads/kibana&lt;/a&gt;
+  혹은, 다음과 같은 명령어를 이용해 파일을 다운받는다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-linux-x86_64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;예시에서는 Kibana 7.6.1 버전을 사용했다. &lt;br /&gt;(설치된 Elasticsearch와 같은 버전을 사용해야 한다)&lt;/p&gt;
+
+    &lt;p&gt;파일 다운이 완료되면, 아래 명령어를 이용해 sha1sum 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shasum&lt;/code&gt;으로 생성된 SHA를 published SHA와 비교하고, 압축을 푼다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sha1sum kibana-7.6.1-linux-x86_64.tar.gz 
+  tar -xzf kibana-7.6.1-linux-x86_64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;다음과 같은 명령어를 실행해 Kibana를 시작한다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cd kibana-7.6.1-linux-x86_64
+  ./bin/kibana
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;정상적으로 설치가 완료되었다면 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:5601&lt;/code&gt; 접속 시 아래와 같이 Kibana 시작 화면을 확인할 수 있다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;kibana-install-result.png&quot; alt=&quot;kibana install result&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;아래와 같은 화면이 뜰 경우, elasticsearch와의 버전이 맞지 않거나 elasticsearch가 설치되지 않은 것이다.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;kibana-install-wrong-result.png&quot; alt=&quot;kibana install wrong result&quot; /&gt;&lt;/p&gt;
+
+    &lt;hr /&gt;
+    &lt;p&gt;Kibana 설치 방법: &lt;a href=&quot;https://www.elastic.co/guide/kr/kibana/current/targz.html&quot;&gt;https://www.elastic.co/guide/kr/kibana/current/targz.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>2020-03-16</pubDate>
+        <link>http://localhost:4000/articles/2020-03/kibana-install</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/kibana-install</guid>
+        
+        
+        <category>etc</category>
+        
+      </item>
+    
+      <item>
+        <title>Elasticsearch Kibana Install</title>
+        <description>
+</description>
+        <pubDate>2020-03-16</pubDate>
+        <link>http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</guid>
+        
+        
+      </item>
     
       <item>
         <title>Kibana</title>
@@ -233,7 +332,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 
 &lt;p&gt;&lt;strong&gt;7. 예시&lt;/strong&gt;&lt;a name=&quot;example&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-03-12</pubDate>
+        <pubDate>2020-03-16</pubDate>
         <link>http://localhost:4000/articles/2020-03/kibana</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/kibana</guid>
         
@@ -277,7 +376,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 
 &lt;p&gt;책에 왜 안 써 두셨을까!?!?!?!?!?!?!??!?!?!&lt;/p&gt;
 </description>
-        <pubDate>2020-03-12</pubDate>
+        <pubDate>2020-03-16</pubDate>
         <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
         
@@ -323,7 +422,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 &lt;h1 id=&quot;참조&quot;&gt;참조&lt;/h1&gt;
 &lt;p&gt;jemoji repo: &lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;https://github.com/jekyll/jemoji&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-03-12</pubDate>
+        <pubDate>2020-03-16</pubDate>
         <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
         
@@ -348,7 +447,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
-        <pubDate>2020-03-12</pubDate>
+        <pubDate>2020-03-16</pubDate>
         <link>http://localhost:4000/articles/2020-02/daily-post</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-02/daily-post</guid>
         
