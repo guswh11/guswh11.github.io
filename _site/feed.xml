@@ -6,7 +6,7 @@
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
     <pubDate>2020-03-16</pubDate>
-    <lastBuildDate>Mon, 16 Mar 2020 17:16:31 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 17:18:31 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -15,7 +15,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Elasticsearch 설치&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Elasticsearch 설치&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
     &lt;p&gt;Kibana를 사용하기 위해서는 Elasticsearch가 필수이며, 같은 버전을 사용해야 한다.&lt;/p&gt;
 
@@ -47,10 +47,11 @@
 
     &lt;hr /&gt;
     &lt;p&gt;Elasticsearch 설치 방법: &lt;a href=&quot;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&quot;&gt;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&lt;/a&gt;
+&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Kibana 설치 &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Kibana 설치&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
     &lt;p&gt;아래 링크에서 Kibana 압축 파일을 다운받을 수 있다.&lt;/p&gt;
 

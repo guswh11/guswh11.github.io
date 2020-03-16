@@ -8,7 +8,7 @@ comments: true
 
 # How to install elasticsearch and kibana 
 
-- Elasticsearch 설치<br><br>
+- **Elasticsearch 설치**<br><br>
 
 
     Kibana를 사용하기 위해서는 Elasticsearch가 필수이며, 같은 버전을 사용해야 한다. 
@@ -52,8 +52,9 @@ comments: true
     ---
     Elasticsearch 설치 방법: <https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html>
 <br>
+<br>
 
-- Kibana 설치 <br><br>
+- **Kibana 설치**<br><br>
 
 
     아래 링크에서 Kibana 압축 파일을 다운받을 수 있다. 
