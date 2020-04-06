@@ -7,7 +7,7 @@ comments: true
 ---
 
 # About REST
-![REST](rest).png)
+![REST](rest.png)
 >HTTP의 주요 저자 중 한 명인 로이 필딩이 웹 설계의 우수성에 비해 제대로 사용되어지지 못하는 모습에 안타까워하며<br>`웹의 장점을 최대한 활용할 수 있는 아키텍쳐`로써 발표함 
 
 ## 정의
