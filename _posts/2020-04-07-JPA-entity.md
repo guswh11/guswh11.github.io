@@ -2,7 +2,7 @@
 layout: post
 title: "JPA - Entity에 대해"
 excerpt: "JPA의 데이터베이스-객체 매핑 방법인 Entity 클래스에 대해 알아보자"
-categories: [spring]]
+categories: [spring]
 comments: true
 ---
 
