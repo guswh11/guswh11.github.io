@@ -8,9 +8,12 @@ comments: true
 
 ## Repository 
 Repository는 Entity 조작에 필요한 쿼리를 메서드화해서 사용할 수 있는 역할을 한다. 
+
 ![JpaRepository class diagram](JpaRepository.png)
+
 Repository 인터페이스는 Spring Data JPA에서 제공하는 미리 만들어진 Repository 인터페이스들을 상속받는다.
-상속을 통해 다음과 같은 기능을 제공한다. 
+상속을 통해 다음과 같은 기능을 제공한다.
+
 | method | 기능 | 
 |--------|------|
 | save() | 레코드 저장 (insert, update) |
@@ -47,7 +50,8 @@ public class ProjectInfoController {
 }
 ```
 상속을 통해 제공되는 기본 기능을 제외한 다른 기능을 추가하고 싶으면, 규칙에 맞는 사용자 정의 메서드를 추가해야 한다.
-규칙은 다음과 같다. 
+규칙은 다음과 같다.
+
 | method | 설명 |
 |--------|------|
 | findBy로 시작 | 쿼리를 요청하는 메서드 |
@@ -83,7 +87,8 @@ public class ProjectInfoController {
     }
     ```
 
-메소드에 포함할 수 있는 키워드는 다음과 같다. 
+메소드에 포함할 수 있는 키워드는 다음과 같다.
+
 | 키워드 | 예시 | 설명 |
 | ----- | ------| ----|
 | And | findByEmailAndUser(String email, String userId) | 여러 필드를 and로 검색 |
@@ -133,6 +138,8 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
     ```
 
 >>Repository의 쿼리 메소드나 어노테이션에 대한 전체 가이드는 [여기](https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies)에서 확인할 수 있다. 
+
+
 
 
 
