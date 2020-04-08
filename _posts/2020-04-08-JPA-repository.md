@@ -22,6 +22,8 @@ Repository 인터페이스는 Spring Data JPA에서 제공하는 미리 만들�
 | count() | 레코드 갯수 반환 | 
 | delete() | 레코드 삭제 | 
 
+_findOne()은 fineById()로 교체된 것 같다_
+
 ### 사용 방법 
 아래는 JpaRepository를 상속하고 ProjectEntity를 조작하는 Repository이다. 
 ```java
@@ -113,8 +115,11 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
     ```
 - **Pageable**
     Query 메소드의 입력변수로 아래와 같이 Pageable 변수를 추가하면 Page타입을 반환형으로 사용할 수 있다.
+
     Pageable 객체를 통해 페이징과 정렬을 위한 파라미터를 전달한다.
-    >>Pageable 인스턴스와 page, size, sort 파라미터를 사용해 페이징을 구현할 수 있다. 
+
+    >Pageable 인스턴스와 page, size, sort 파라미터를 사용해 페이징을 구현할 수 있다. 
+
     ```java
     @Repository
     public interface UserRepository extends JpaRepository<UserEntity, Long>{
@@ -123,6 +128,7 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
     }
     ```
     Pageable 입력 변수는 Controller에서부터 전달받아야 한다.
+    
     ```java
     @RestController
     @RequestMapping("/member")
@@ -137,7 +143,7 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
     }
     ```
 
->>Repository의 쿼리 메소드나 어노테이션에 대한 전체 가이드는 [여기](https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies)에서 확인할 수 있다. 
+>Repository의 쿼리 메소드나 어노테이션에 대한 전체 가이드는 [여기](https://docs.spring.io/spring-data/jpa/docs/1.10.1.RELEASE/reference/html/#jpa.sample-app.finders.strategies)에서 확인할 수 있다. 
 
 
 
