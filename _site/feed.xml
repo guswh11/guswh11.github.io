@@ -6,8 +6,218 @@
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
     <pubDate>2020-05-08</pubDate>
-    <lastBuildDate>Fri, 08 May 2020 11:18:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2020 11:35:45 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>npm에 대해</title>
+        <description>&lt;h2 id=&quot;npmnode-package-manager이란&quot;&gt;npm(Node Package Manager)이란&lt;/h2&gt;
+&lt;h3 id=&quot;개념&quot;&gt;개념&lt;/h3&gt;
+&lt;p&gt;node.js 패키지 관리자 
+-&amp;gt; node.js에서 사용하는 모듈들을 패키지로 만들어 npm을 통해 관리, 배포
+(node.js 설치 시 자동으로 설치된다)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;다른 언어에서 비슷한 개념
+python의 pip
+ruby의 Gem
+java의 jpm 등&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;기능&quot;&gt;기능&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;node.js에서 사용할 수 있는 모듈들을 패키지화하여 모아둔 저장소 역할&lt;/li&gt;
+  &lt;li&gt;패키지 설치 및 관리를 위한 CLI(Command line interface) 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;packagejson과-의존성-관리&quot;&gt;package.json과 의존성 관리&lt;/h2&gt;
+&lt;p&gt;Node.js 프로젝트에서는 많은 패키지를 사용하게 되고 패키지의 버전도 빈번하게 업데이트되므로 프로젝트가 의존하고 있는 패키지를 일괄 관리할 필요가 있다.&lt;br /&gt;npm은 package.json 파일을 통해서 프로젝트 정보와 패키지의 의존성(dependency)을 관리한다.&lt;/p&gt;
+
+&lt;p&gt;이미 작성된 package.json이 있다면 팀 내에 배포하여 동일한 개발 환경을 빠르게 구축할 수 있는 장점이 있다.&lt;br /&gt;package.json은 Java의 maven에서 pom.xml과 비슷한 역할을 한다.&lt;/p&gt;
+
+&lt;p&gt;package.json을 생성하려면 프로젝트 루트에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init&lt;/code&gt; 명령어를 실행한다.
+&lt;img src=&quot;npm-init.png&quot; alt=&quot;npm-init&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;spring boot의 경우, 주로 프런트엔드 라이브러리 관리를 위해 npm을 사용한다.&lt;br /&gt;따라서 정적 자원을 제공하는 디렉토리(src/resources/static)에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init&lt;/code&gt;을 입력했다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;여러 옵션을 추가하는 질문을 넘어가면 완료된다. 
+(질문 없이 바로 생성하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-y&lt;/code&gt; 중 하나의 플래그를 추가하면 된다.)&lt;/p&gt;
+
+&lt;p&gt;프로젝트 루트에 package.json 파일이 생성되었다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 통해 패키지를 설치할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어 뒤에 설치할 패키지 이름을 지정한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;package명&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;npm-package-install.png&quot; alt=&quot;npm-package-install&quot; /&gt; 
+npm install 명령어로 jquery를 설치한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^4.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;jquery&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^3.5.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;설치가 완료된 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; 파일의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;에 jquery가 추가된 것을 확인할 수 있다. 
+&lt;img src=&quot;npm-package-folder.png&quot; alt=&quot;npm-package-folder&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;node_modules 폴더가 생성되고 내부에 패키지가 설치된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;지역-설치와-전역-설치&quot;&gt;지역 설치와 전역 설치&lt;/h2&gt;
+&lt;p&gt;npm install 명령어에는 지역(local) 설치와 전역(global) 설치 옵션이 있다. 옵션을 별도로 지정하지 않으면 지역으로 설치되며, 프로젝트 루트 디렉터리에 node_modules 디렉터리가 자동 생성되고 그 안에 패키지가 설치된다. 
+지역으로 설치된 패키지는 해당 프로젝트 내에서만 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;전역에 패키지를 설치하려면 npm install 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; 옵션을 지정한다. 
+전역으로 설치된 패키지는 전역에서 참조할 수 있다. 모든 프로젝트가 공통 사용하는 패키지는 지역으로 설치하지 않고 전역에 설치한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 전역 설치 방법 &lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; &amp;lt;package명&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;전역에 설치된 패키지는 OS에 따라 설치 장소가 다르다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;macOS의 경우
+/usr/local/lib/node_modules&lt;/li&gt;
+  &lt;li&gt;윈도우의 경우
+c:\Users\%USERNAME%\AppData\Roaming\npm\node_modules&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;스크립트-사용&quot;&gt;스크립트 사용&lt;/h2&gt;
+&lt;p&gt;package.json의 scripts 부분에 복잡한 명령어들을 npm script로 만들어 간단하게 사용할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;start&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;node app.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;build&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;webpack ./src/app.js ./out/bundle.js&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;start, build는 각각 스크립트의 key이고, key를 통해 우측 명령어를 실행시킬 수 있다.&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run &amp;lt;스크립트 key&amp;gt;&lt;/code&gt; 명령어를 통해 각 key에 해당하는 명령어를 실행시킨다.&lt;/p&gt;
+
+&lt;p&gt;즉, package.json 이 존재하는 디렉토리에서 npm run build 라는 명령어를 입력하면 webpack ./src/app.js ./out/bundle.js 라는 명령어가 실행된다.&lt;br /&gt; 
+여기서 start 라는 스크립트는 특별히 npm run start 대신 npm start 만 입력해도 무방하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;활용&quot;&gt;활용&lt;/h3&gt;
+&lt;p&gt;다른 명령어는 아래 링크에서 확인&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.zerocho.com/category/NodeJS/post/58285e4840a6d700184ebd87&quot;&gt;https://www.zerocho.com/category/NodeJS/post/58285e4840a6d700184ebd87&lt;/a&gt;
+&lt;a href=&quot;https://hudi.kr/npm-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%ED%99%9C%EC%9A%A9/&quot;&gt;https://hudi.kr/npm-%EC%86%8C%EA%B0%9C-%EB%B0%8F-%ED%99%9C%EC%9A%A9/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;빌드&quot;&gt;빌드&lt;/h3&gt;
+&lt;p&gt;프런트엔드 서버와 백엔드 서버를 모두 빌드 해줘야한다.
+아래 링크를 통해 빌드 방법을 참고하면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://velog.io/@max9106/SpringBoot-NPM&quot;&gt;https://velog.io/@max9106/SpringBoot-NPM&lt;/a&gt;&lt;br /&gt;
+ &lt;a href=&quot;https://velog.io/@essri/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%95%A8%EA%BB%98-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0-a1k2l5olr2&quot;&gt;https://velog.io/@essri/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%95%A8%EA%BB%98-%EB%B9%8C%EB%93%9C%ED%95%98%EA%B8%B0-a1k2l5olr2&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;packagejson&quot;&gt;package.json&lt;/h2&gt;
+&lt;p&gt;package.json은 프로젝트 정보와 의존성을 관리하는 문서이다.&lt;br /&gt;
+node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 있기 때문에 모듈의 버전에 따라 문제가 생길 여지가 있다. 
+이미 작성된 package.json 문서는 어느 곳에서도 동일한 개발 환경을 구축할 수 있게 해준다.&lt;/p&gt;
+
+&lt;p&gt;express나 npm init 등의 명령어를 통해 package.json을 자동생성하지 않는 경우에는 모듈의 버전관리를 위해 직접 package.json을 만들어줘야 한다.&lt;/p&gt;
+
+&lt;p&gt;아래는 package.json 파일의 예시이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;index.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;echo &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Error: no test specified&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;amp;&amp;amp; exit 1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;license&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ISC&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^4.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//라이브러리&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;버전&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;명시&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;jquery&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^3.5.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;package.json 파일의 옵션과 구성(작성법)은 아래 링크에서 참고하면 된다.
+&lt;a href=&quot;https://programmingsummaries.tistory.com/385&quot;&gt;https://programmingsummaries.tistory.com/385&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;일반적으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install &amp;lt;package명&amp;gt;&lt;/code&gt;을 입력해 모듈을 설치하지만, package.json에 모듈 목록을 작성 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 입력하면 npm이 package.json 파일의 dependencies 부분에 명시된 모듈들을 모두 설치해준다.&lt;/p&gt;
+
+&lt;p&gt;모듈의 버전 표기는 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;version : 완전히 일치하는 버전&lt;/li&gt;
+  &lt;li&gt;=version : 완전히 일치하는 버전&lt;/li&gt;
+  &lt;li&gt;&amp;gt;version : 큰 버전&lt;/li&gt;
+  &lt;li&gt;&amp;gt;=version : 크거나 같은 버전&lt;/li&gt;
+  &lt;li&gt;&amp;lt;version : 작은 버전&lt;/li&gt;
+  &lt;li&gt;&amp;lt;=version : 작거나 같은 버전&lt;/li&gt;
+  &lt;li&gt;~version : 버전범위. ~0.2이면 0.2부터 0.3보다 작은 범위&lt;/li&gt;
+  &lt;li&gt;1.2.x : x 표기도 가능&lt;/li&gt;
+  &lt;li&gt;^version : 다음 링크 참고 &lt;a href=&quot;https://blog.outsider.ne.kr/1041&quot;&gt;https://blog.outsider.ne.kr/1041&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;npm update로 모듈들을 최신 버전으로 업데이트 하려고 할때도 package.json에 명시된 버전에 따라서만 업데이트가 되기 때문에 특정버전을 명시한 모듈의 경우는 최신버전이 있다고 하더라도 업데이트 되지 않는다.&lt;/p&gt;
+
+&lt;h3 id=&quot;package-lockjson-이란&quot;&gt;package-lock.json 이란?&lt;/h3&gt;
+&lt;p&gt;npm을 사용해서 node_modules 트리나 package.json 파일을 수정하게 되면 자동으로 생성되는 파일로, 
+파일이 생성되는 시점의 의존성 트리에 대한 정보를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;package-lock.json의 개념에 대한 자세한 설명은 아래 링크를 참고&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://trustyoo86.github.io/npm/2018/01/10/package-lock-introduction.html&quot;&gt;https://trustyoo86.github.io/npm/2018/01/10/package-lock-introduction.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;package-lock.json 파일 확인 시 다음과 같은 내용을 확인할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;lockfileVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;requires&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;4.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;resolved&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://registry.npmjs.org/bootstrap/-/bootstrap-4.4.1.tgz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;integrity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sha512-tbx5cHubwE6e2ZG7nqM3g/FZ5PQEDMWmMGNrCUBVRPHXTJaH7CBDdsLeu3eCh3B1tzAxTnAbtmrzvWEvT2NNEA==&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;jquery&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3.5.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;resolved&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://registry.npmjs.org/jquery/-/jquery-3.5.0.tgz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;integrity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;sha512-Xb7SVYMvygPxbFMpTFQiHh1J7HClEaThguL15N/Gg37Lri/qKyhRGZYzHRyLH8Stq3Aow0LsHO2O2ci86fCrNQ==&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;package-lockjson이-필요한-이유&quot;&gt;package-lock.json이 필요한 이유&lt;/h3&gt;
+&lt;p&gt;아래 링크 참고&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://hyunjun19.github.io/2018/03/23/package-lock-why-need/&quot;&gt;https://hyunjun19.github.io/2018/03/23/package-lock-why-need/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://velog.io/@max9106/SpringBoot-NPM&quot;&gt;https://velog.io/@max9106/SpringBoot-NPM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.outsider.ne.kr/665&quot;&gt;https://blog.outsider.ne.kr/665&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>2020-05-08</pubDate>
+        <link>http://localhost:4000/articles/2020-05/about-npm</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-npm</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
     
       <item>
         <title>SOP와 CORS</title>
@@ -1408,31 +1618,6 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>오늘의 회사 생활</title>
-        <description>&lt;p&gt;오늘은 회사에서 국수가 나왔다. 김치가 너무 셔서 난 김치를 넣어 먹었다. 
-지금 시각은 4시 39분인데 밥을 많이 안먹어서 그런지 벌써부터 배가 고프다. 얼른 집에 가고싶다.&lt;/p&gt;
-
-&lt;h2 id=&quot;회사에서-한-일&quot;&gt;회사에서 한 일&lt;/h2&gt;
-
-&lt;p&gt;회사에서 이러이러한 일들을 했다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;스프링, 자바스크립트, 파이썬 개발환경 구축&lt;/li&gt;
-  &lt;li&gt;오케스트라 사용법 강의&lt;/li&gt;
-  &lt;li&gt;성격유형 검사&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>2020-05-08</pubDate>
-        <link>http://localhost:4000/articles/2020-02/daily-post</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2020-02/daily-post</guid>
-        
-        
-        <category>daily</category>
         
       </item>
     
