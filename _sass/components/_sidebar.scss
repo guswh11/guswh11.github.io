@@ -1,6 +1,8 @@
 /* ==========================================================================
    Sidebar
    ========================================================================== */
+@import "vendor/breakpoint/breakpoint";
+@import "functions/fluid-type";
 
 .sidebar {
   position: fixed;
