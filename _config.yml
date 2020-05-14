@@ -1,71 +1,96 @@
-#
-###################################
-# Site wide configuration
-####################################
-#
-title: Leonids
-email:
-description: A simple and awesome blog theme powered by jekyll.
-url: # the base hostname & protocol for your site
-keywords: ["blog", "jekyll"]
+# Site settings
+title: Hux Blog
+SEOTitle: 黄玄的博客 | Hux Blog
+header-img: img/bg-1.png
+email: guswh11@naver.com
+description: "자기소개 칸"
+keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
+url:             # your host, for absolute URL
+baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
-#
-###################################
-# Jekyll configuration
-####################################
-#
-timezone:          Asia/Seoul
-markdown:          kramdown
-highlighter:       rouge
+# Publish posts or collection documents with a future date.
+future: true
+
+# SNS settings
+RSS: false
+github_username: guswh11
+#facebook_username:  huxpro
+#linkedin_username:  firstname-lastname-idxxxx
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+permalink: 
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+timezone: Asia/Seoul
 excerpt_separator: <!--more-->
-permalink:         /articles/:year-:month/:title
 
+
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+# make sure you have this gem installed
+# `$ gem install jekyll-paginate`
+plugins: [jekyll-paginate]
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
 kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  enable_coderay: false
+  input: GFM                            # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
-#
-###################################
-# Site Owner configuration
-####################################
-#
-owner:
-  name: HYUNJIN
-  avatar: profile.png
-  job: "KT corp. SW Developer"
-  bio: "적게 일하고 많이 벌자"
-  email:
-  disqus-shortname:
-  twitter: #username
-  facebook: #username
-  google:
-    plus: #username
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
-  github: guswh11
-  gitlab: #username
-  stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
-  skype: #username
-  xing: #username
-  instagram: hyunjin_219
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-  weibo: #username
-  flickr: #username
-  500px: #username
-  codepen: #username
-  reddit: #username
-  telegram: #username
+
+
+# Disqus settings
+disqus_username: hyunjin
+
+# Netease settings
+netease_comment: false
+
+
+
+# Analytics settings
+# Baidu Analytics 
+# ba_track_id: [your track id]
+
+# Google Analytics
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: huangxuan.me
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
+sidebar-avatar: /img/avatar-round.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: false

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Leonids</title>
-    <description>A simple and awesome blog theme powered by jekyll.</description>
+    <title>Hux Blog</title>
+    <description>자기소개 칸</description>
     <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>2020-05-11</pubDate>
-    <lastBuildDate>Mon, 11 May 2020 10:39:37 +0900</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 14 May 2020 15:48:27 +0900</pubDate>
+    <lastBuildDate>Thu, 14 May 2020 15:48:27 +0900</lastBuildDate>
+    <generator>Jekyll v4.0.1</generator>
     
       <item>
         <title>npm에 대해</title>
@@ -34,36 +34,44 @@ java의 jpm 등&lt;/p&gt;
 
 &lt;p&gt;이미 작성된 package.json이 있다면 팀 내에 배포하여 동일한 개발 환경을 빠르게 구축할 수 있는 장점이 있다.&lt;br /&gt;package.json은 Java의 maven에서 pom.xml과 비슷한 역할을 한다.&lt;/p&gt;
 
-&lt;p&gt;package.json을 생성하려면 프로젝트 루트에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init&lt;/code&gt; 명령어를 실행한다.
+&lt;p&gt;package.json을 생성하려면 프로젝트 루트에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm init&lt;/code&gt; 명령어를 실행한다.
 &lt;img src=&quot;npm-init.png&quot; alt=&quot;npm-init&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;spring boot의 경우, 주로 프런트엔드 라이브러리 관리를 위해 npm을 사용한다.&lt;br /&gt;따라서 정적 자원을 제공하는 디렉토리(src/resources/static)에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init&lt;/code&gt;을 입력했다.&lt;/p&gt;
+  &lt;p&gt;spring boot의 경우, 주로 프런트엔드 라이브러리 관리를 위해 npm을 사용한다.&lt;br /&gt;따라서 정적 자원을 제공하는 디렉토리(src/resources/static)에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm init&lt;/code&gt;을 입력했다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;여러 옵션을 추가하는 질문을 넘어가면 완료된다. 
-(질문 없이 바로 생성하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-y&lt;/code&gt; 중 하나의 플래그를 추가하면 된다.)&lt;/p&gt;
+(질문 없이 바로 생성하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;-y&lt;/code&gt; 중 하나의 플래그를 추가하면 된다.)&lt;/p&gt;
 
-&lt;p&gt;프로젝트 루트에 package.json 파일이 생성되었다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 통해 패키지를 설치할 수 있다.&lt;/p&gt;
+&lt;p&gt;프로젝트 루트에 package.json 파일이 생성되었다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 통해 패키지를 설치할 수 있다.&lt;/p&gt;
 
 &lt;h2 id=&quot;패키지-설치&quot;&gt;패키지 설치&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어 뒤에 설치할 패키지 이름을 지정한다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어 뒤에 설치할 패키지 이름을 지정한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;package명&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;package명&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;npm-package-install.png&quot; alt=&quot;npm-package-install&quot; /&gt; 
 npm install 명령어로 jquery를 설치한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^4.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;jquery&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;^3.5.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;설치가 완료된 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; 파일의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;에 jquery가 추가된 것을 확인할 수 있다. 
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;설치가 완료된 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; 파일의 &lt;code class=&quot;highlighter-rouge&quot;&gt;dependencies&lt;/code&gt;에 jquery가 추가된 것을 확인할 수 있다. 
 &lt;img src=&quot;npm-package-folder.png&quot; alt=&quot;npm-package-folder&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;node_modules 폴더가 생성되고 내부에 패키지가 설치된다.&lt;/p&gt;
@@ -72,12 +80,14 @@ npm install 명령어로 jquery를 설치한다.&lt;/p&gt;
 &lt;p&gt;npm install 명령어에는 지역(local) 설치와 전역(global) 설치 옵션이 있다. 옵션을 별도로 지정하지 않으면 지역으로 설치되며, 프로젝트 루트 디렉터리에 node_modules 디렉터리가 자동 생성되고 그 안에 패키지가 설치된다. 
 지역으로 설치된 패키지는 해당 프로젝트 내에서만 사용할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;전역에 패키지를 설치하려면 npm install 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; 옵션을 지정한다. 
+&lt;p&gt;전역에 패키지를 설치하려면 npm install 명령어에 &lt;code class=&quot;highlighter-rouge&quot;&gt;-g&lt;/code&gt; 옵션을 지정한다. 
 전역으로 설치된 패키지는 전역에서 참조할 수 있다. 모든 프로젝트가 공통 사용하는 패키지는 지역으로 설치하지 않고 전역에 설치한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 전역 설치 방법 &lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;# 전역 설치 방법 &lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; &amp;lt;package명&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;전역에 설치된 패키지는 OS에 따라 설치 장소가 다르다.&lt;/p&gt;
 
@@ -91,7 +101,18 @@ c:\Users\%USERNAME%\AppData\Roaming\npm\node_modules&lt;/li&gt;
 &lt;h2 id=&quot;스크립트-사용&quot;&gt;스크립트 사용&lt;/h2&gt;
 &lt;p&gt;package.json의 scripts 부분에 복잡한 명령어들을 npm script로 만들어 간단하게 사용할 수 있다.&lt;/p&gt;
 
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
@@ -102,10 +123,10 @@ c:\Users\%USERNAME%\AppData\Roaming\npm\node_modules&lt;/li&gt;
 
   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;start, build는 각각 스크립트의 key이고, key를 통해 우측 명령어를 실행시킬 수 있다.&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm run &amp;lt;스크립트 key&amp;gt;&lt;/code&gt; 명령어를 통해 각 key에 해당하는 명령어를 실행시킨다.&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;npm run &amp;lt;스크립트 key&amp;gt;&lt;/code&gt; 명령어를 통해 각 key에 해당하는 명령어를 실행시킨다.&lt;/p&gt;
 
 &lt;p&gt;즉, package.json 이 존재하는 디렉토리에서 npm run build 라는 명령어를 입력하면 webpack ./src/app.js ./out/bundle.js 라는 명령어가 실행된다.&lt;br /&gt; 
 여기서 start 라는 스크립트는 특별히 npm run start 대신 npm start 만 입력해도 무방하다.&lt;/p&gt;
@@ -132,7 +153,23 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 
 &lt;p&gt;아래는 package.json 파일의 예시이다.&lt;/p&gt;
 
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -148,12 +185,12 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;package.json 파일의 옵션과 구성(작성법)은 아래 링크에서 참고하면 된다.
 &lt;a href=&quot;https://programmingsummaries.tistory.com/385&quot;&gt;https://programmingsummaries.tistory.com/385&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;일반적으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install &amp;lt;package명&amp;gt;&lt;/code&gt;을 입력해 모듈을 설치하지만, package.json에 모듈 목록을 작성 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 입력하면 npm이 package.json 파일의 dependencies 부분에 명시된 모듈들을 모두 설치해준다.&lt;/p&gt;
+&lt;p&gt;일반적으로는 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install &amp;lt;package명&amp;gt;&lt;/code&gt;을 입력해 모듈을 설치하지만, package.json에 모듈 목록을 작성 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt; 명령어를 입력하면 npm이 package.json 파일의 dependencies 부분에 명시된 모듈들을 모두 설치해준다.&lt;/p&gt;
 
 &lt;p&gt;모듈의 버전 표기는 다음과 같다.&lt;/p&gt;
 &lt;ul&gt;
@@ -180,7 +217,25 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 
 &lt;p&gt;package-lock.json 파일 확인 시 다음과 같은 내용을 확인할 수 있다.&lt;/p&gt;
 
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;lockfileVersion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -198,7 +253,7 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;package-lockjson이-필요한-이유&quot;&gt;package-lock.json이 필요한 이유&lt;/h3&gt;
 &lt;p&gt;아래 링크 참고&lt;/p&gt;
@@ -210,12 +265,10 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 
 &lt;p&gt;&lt;a href=&quot;https://blog.outsider.ne.kr/665&quot;&gt;https://blog.outsider.ne.kr/665&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-05/about-npm</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-npm</guid>
         
-        
-        <category>javascript</category>
         
       </item>
     
@@ -225,10 +278,10 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
   &lt;p&gt;No ‘Access-Control-Allow-Origin’ header is present on the requested resource.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;웹 개발시 자바스크립트로 외부 서버의 경로로 ajax 요청을 날리면 위와 같은 에러 메세지를 볼 수 있다. 이는 자바스크립트 엔진 표준 스펙에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;same-origin policy(동일 출처 정책)&lt;/code&gt;라는 보안 규칙이 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;웹 개발시 자바스크립트로 외부 서버의 경로로 ajax 요청을 날리면 위와 같은 에러 메세지를 볼 수 있다. 이는 자바스크립트 엔진 표준 스펙에 &lt;code class=&quot;highlighter-rouge&quot;&gt;same-origin policy(동일 출처 정책)&lt;/code&gt;라는 보안 규칙이 있기 때문이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;sop-same-origin-policy&quot;&gt;SOP (Same-Origin Policy)&lt;/h2&gt;
-&lt;p&gt;protocol, port, domain이 같다면 두 페이지는 같은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;origin&lt;/code&gt;을 가진다. 
+&lt;p&gt;protocol, port, domain이 같다면 두 페이지는 같은 &lt;code class=&quot;highlighter-rouge&quot;&gt;origin&lt;/code&gt;을 가진다. 
 (보통 URL을 통해 페이지의 origin을 확인할 수 있다)&lt;/p&gt;
 
 &lt;p&gt;각 origin의 리소스(cookies, DOM, script 등)는 같은 origin을 가지는 페이지에서만 읽기/쓰기가 가능하다.&lt;/p&gt;
@@ -273,21 +326,35 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 &lt;p&gt;아래 방법은 Spring boot로 개발 시 서버 측에서 CORS 요청을 핸들링하는 방법이다.&lt;/p&gt;
 
 &lt;h4 id=&quot;controller-지정&quot;&gt;Controller 지정&lt;/h4&gt;
-&lt;p&gt;API에  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@CrossOrigin&lt;/code&gt;을 사용해 개별적으로 허용해준다.&lt;/p&gt;
+&lt;p&gt;API에  &lt;code class=&quot;highlighter-rouge&quot;&gt;@CrossOrigin&lt;/code&gt;을 사용해 개별적으로 허용해준다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@CrossOrigin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@CrossOrigin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nd&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{value}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@PathVariable&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;global하게-지정&quot;&gt;Global하게 지정&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebMvcConfigurer&lt;/code&gt;를 구현하거나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Bean&lt;/code&gt;으로 등록해준다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WebMvcConfigurer&lt;/code&gt;를 구현하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;@Bean&lt;/code&gt;으로 등록해준다.&lt;/p&gt;
 
 &lt;p&gt;WebConfig.java&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebConfig&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebMvcConfigurer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;addCorsMappings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;CorsRegistry&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registry&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -296,9 +363,20 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
                 &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;allowedOrigins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebMvcConfigurer&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;webMvcConfigurer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WebMvcConfigurer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
@@ -309,7 +387,7 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h4 id=&quot;reference&quot;&gt;Reference&lt;/h4&gt;
 
@@ -319,7 +397,7 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 
 &lt;p&gt;&lt;a href=&quot;https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/&quot;&gt;https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-05/SOP-CORS</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-05/SOP-CORS</guid>
         
@@ -373,15 +451,33 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 
 &lt;h3 id=&quot;사용-방법&quot;&gt;사용 방법&lt;/h3&gt;
 &lt;p&gt;아래는 JpaRepository를 상속하고 ProjectEntity를 조작하는 Repository이다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProjectRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;첫 번째 인자로는 해당 Entity 클래스명을, 두 번째 인자로는 ID 타입이 될 수 있는 Long(Int)을 입력한다.&lt;/p&gt;
 
 &lt;p&gt;만들어진 Repository는 다음과 같은 방식으로 이용할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProjectInfoController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
     &lt;span class=&quot;nc&quot;&gt;ProjectInfoRepository&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectInfoRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -395,7 +491,7 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectInfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;상속을 통해 제공되는 기본 기능을 제외한 다른 기능을 추가하고 싶으면, 규칙에 맞는 사용자 정의 메서드를 추가해야 한다.
 규칙은 다음과 같다.&lt;/p&gt;
 
@@ -421,13 +517,26 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;findBy&lt;/strong&gt; method 예제
 아래와 같은 방식으로 findBy로 시작되는 메서드를 정의하고 사용할 수 있다.
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;{&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findByName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findByName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pageable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JPAMain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
           &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
                   &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
@@ -435,16 +544,20 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
                   &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
           &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;메서드의 반환형이 객체면 하나의 결과만을 전달하고,&lt;br /&gt;반환형이 List라면 쿼리 조건에 맞는 모든 객체를 전달한다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;countBy&lt;/strong&gt; method 예제
 아래 메서드는 사용 시 targetId에 해당하는 row 수를 반환한다.
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;{&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;countByTargetId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@Param&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;targetId&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -510,12 +623,17 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;@Query&lt;/strong&gt;
 Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
   &lt;span class=&quot;nd&quot;&gt;@Query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;select u from User u where u.emailAddress = ?1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findByEmailAddress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emailAddress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;Pageable&lt;/strong&gt;
@@ -527,15 +645,31 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
       &lt;p&gt;Pageable 인스턴스와 page, size, sort 파라미터를 사용해 페이징을 구현할 수 있다.&lt;/p&gt;
     &lt;/blockquote&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Repository&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JpaRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;{&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findByName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UserEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findByName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pageable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pageable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; 
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;Pageable 입력 변수는 Controller에서부터 전달받아야 한다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@RestController&lt;/span&gt;
   &lt;span class=&quot;nd&quot;&gt;@RequestMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/member&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
@@ -546,7 +680,7 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
           &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;userService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pageable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
       &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -555,7 +689,7 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
 &lt;/blockquote&gt;
 
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Wed, 08 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/JPA-repository</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-repository</guid>
         
@@ -611,16 +745,16 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;JPA (Java Persistence API)
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기술 명세&lt;/code&gt;&lt;br /&gt;자바 어플리케이션에서 관계형 데이터베이스를 사용하는 방식을 정의한 인터페이스 (구현체 없음)
+&lt;code class=&quot;highlighter-rouge&quot;&gt;기술 명세&lt;/code&gt;&lt;br /&gt;자바 어플리케이션에서 관계형 데이터베이스를 사용하는 방식을 정의한 인터페이스 (구현체 없음)
 &lt;img src=&quot;implementation-of-jpa.png&quot; alt=&quot;jpa-implementation&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Hibernate 
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JPA의 구현체&lt;/code&gt;로, JPA의 인터페이스를 직접 구현한 라이브러리&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA의 구현체&lt;/code&gt;로, JPA의 인터페이스를 직접 구현한 라이브러리&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Spring Data JPA
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JPA를 쓰기 편하게 만들어놓은 모듈&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;JPA를 쓰기 편하게 만들어놓은 모듈&lt;/code&gt;
 NoSQL을 포함해, DB를 관계형이 아니라 Redis, MongoDB 등으로 변경하더라도 동일한 메서드 시그니처를 사용 가능
 Repository라는 인터페이스를 제공&lt;/p&gt;
     &lt;ul&gt;
@@ -639,7 +773,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 &lt;br /&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2019/02/01/orm.html&quot;&gt;https://gmlwjd9405.github.io/2019/02/01/orm.html&lt;/a&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Tue, 07 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/about-JPA</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-JPA</guid>
         
@@ -653,14 +787,35 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         <description>&lt;h2 id=&quot;데이터베이스와-객체-매핑-방법&quot;&gt;데이터베이스와 객체 매핑 방법&lt;/h2&gt;
 
 &lt;h3 id=&quot;entity-클래스-설정&quot;&gt;Entity 클래스 설정&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Entity&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Entity&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Entity 클래스 : 데이터베이스 스키마의 내용을 자바 클래스로 표현할 수 있는 대상
     &lt;ul&gt;
       &lt;li&gt;
-        &lt;p&gt;해당 클래스에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Entity&lt;/code&gt; 어노테이션을 선언해 엔티티 매니저가 관리해야 할 대상임을 표시&lt;/p&gt;
+        &lt;p&gt;해당 클래스에 &lt;code class=&quot;highlighter-rouge&quot;&gt;@Entity&lt;/code&gt; 어노테이션을 선언해 엔티티 매니저가 관리해야 할 대상임을 표시&lt;/p&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
                     
       &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
@@ -681,7 +836,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
       &lt;span class=&quot;nd&quot;&gt;@OneToMany&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mappedBy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;project&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
       &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ProjectMember&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectMembers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
         &lt;p&gt;클래스 내부의 변수들은 각각 데이터베이스 테이블 내의 컬럼이 된다.&lt;/p&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -703,7 +858,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
     &lt;ul&gt;
       &lt;li&gt;name
         &lt;ul&gt;
-          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Entity(name = &quot;Project&quot;)&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Entity(name = &quot;Project&quot;)&lt;/code&gt;&lt;/li&gt;
           &lt;li&gt;JPA에서 사용할 엔티티 이름을 지정&lt;/li&gt;
           &lt;li&gt;기본값: 클래스 이름을 그대로 사용&lt;/li&gt;
           &lt;li&gt;패키지 간에 엔티티 이름이 겹치지 않도록 주의&lt;/li&gt;
@@ -713,14 +868,17 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Table&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@Table&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;@Entity 에노테이션을 사용할 때 실제 데이터베이스의 테이블명과 클래스명이 다른 경우에는 @Table 어노테이션을 추가해 매칠할 수 있다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
 &lt;span class=&quot;nd&quot;&gt;@Table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;tbl_proj&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nc&quot;&gt;Public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ProjectEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;필드와-컬럼-매핑&quot;&gt;필드와 컬럼 매핑&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;@Column&lt;/strong&gt;&lt;/p&gt;
@@ -733,9 +891,11 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         &lt;p&gt;name&lt;/p&gt;
 
         &lt;p&gt;데이터베이스 칼럼과 엔티티 내 변수를 각기 다른 이름으로 매핑할 때 사용&lt;/p&gt;
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;project_id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;project_id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;insertable&lt;/p&gt;
@@ -747,16 +907,18 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
         &lt;p&gt;컬럼 수정(update) 시 데이터베이스에 이를 반영할 것인지 여부를 결정한다.&lt;/p&gt;
 
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @Column(updatable = false)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  @Column(updatable = false)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
 
         &lt;p&gt;위와 같이 설정하면 컬럼을 수정해도 데이터베이스에 반영되지 않는다.&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;nullable&lt;/p&gt;
 
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @Column(nullable = false)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  @Column(nullable = false)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
 
         &lt;p&gt;위와 같은 설정은 데이터베이스에서의 NOT NULL과 같다.&lt;/p&gt;
       &lt;/li&gt;
@@ -765,8 +927,9 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
         &lt;p&gt;직접 컬럼 정보를 작성할 수 있다.&lt;/p&gt;
 
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @Column(columnDefinition = &quot;varchar(100) default 'EMPTY'&quot;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  @Column(columnDefinition = &quot;varchar(100) default 'EMPTY'&quot;)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;length&lt;/p&gt;
@@ -787,21 +950,31 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 &lt;p&gt;Enum 타입을 매핑할 때 사용한다.&lt;br /&gt;
 아래는 일반 사용자와 관리자 구분을 하는 UserRole enum에 대한 예제이다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cm&quot;&gt;/**
  * Created by yun_dev1 on 2016-12-26.
  */&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRole&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;no&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
     &lt;span class=&quot;no&quot;&gt;ADMIN&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//1&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;위 enum을 사용하는 entity에서의 선언은 다음과 같이 한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;role&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;role&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;nd&quot;&gt;@Enumerated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EnumType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ORDINAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserRole&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;@Temporal&lt;/strong&gt;&lt;/p&gt;
 
@@ -811,8 +984,9 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
     &lt;ul&gt;
       &lt;li&gt;DATE: 날짜, DB의 date 타입과 매핑
   ex) 2019-08-13
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  @Temporal(TemporalType.DATE)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  @Temporal(TemporalType.DATE)
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;TIME: 시간, DB의 time 타입과 매핑
   ex) 14:20:38&lt;/li&gt;
@@ -854,13 +1028,19 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
     &lt;p&gt;@PrePersist는 persist() 메서드를 호출해 entity를 영속성 컨텍스트에 관리하기 직전에 해당 메서드를 호출한다.
   날짜와 같이 매핑 시에 값 참조를 위해서 미리 인스턴스가 생성되어야 하는 필드에 사용한다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
   &lt;span class=&quot;nd&quot;&gt;@PrePersist&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;@PreUpdate&lt;/strong&gt;&lt;/p&gt;
@@ -900,39 +1080,47 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;이름 매핑 전략 변경하기&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;단어를 구분할 때 자바는 주로 카멜 표기법을 사용하고, 데이터베이스는 언더스코어(_)를 사용한다.&lt;br /&gt;데이터베이스 칼럼과 엔티티 내 변수를 각기 다른 이름으로 매핑하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Column.name&lt;/code&gt; 속성을 사용해야 한다.&lt;/p&gt;
+&lt;p&gt;단어를 구분할 때 자바는 주로 카멜 표기법을 사용하고, 데이터베이스는 언더스코어(_)를 사용한다.&lt;br /&gt;데이터베이스 칼럼과 엔티티 내 변수를 각기 다른 이름으로 매핑하려면 &lt;code class=&quot;highlighter-rouge&quot;&gt;@Column.name&lt;/code&gt; 속성을 사용해야 한다.&lt;/p&gt;
 
-&lt;p&gt;name 속성을 사용해 직접 매핑 전략을 구현해도 되지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hibernate.ejb.naming_strategy&lt;/code&gt; 속성을 사용하면 이름 매핑 전략을 변경할 수 있다.&lt;br /&gt;이 클래스는 테이블 명이나 컬럼 명이 생략되면 자바의 카멜 표기법을 테이블의 언더스코어 표기법으로 매핑한다.&lt;/p&gt;
+&lt;p&gt;name 속성을 사용해 직접 매핑 전략을 구현해도 되지만, &lt;code class=&quot;highlighter-rouge&quot;&gt;hibernate.ejb.naming_strategy&lt;/code&gt; 속성을 사용하면 이름 매핑 전략을 변경할 수 있다.&lt;br /&gt;이 클래스는 테이블 명이나 컬럼 명이 생략되면 자바의 카멜 표기법을 테이블의 언더스코어 표기법으로 매핑한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.ejb.naming_strategh&quot;&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.ejb.naming_strategh&quot;&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.hibernate.cfg.ImprovedNamingStrategh&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;데이터베이스와-키-매핑&quot;&gt;데이터베이스와 키 매핑&lt;/h3&gt;
 
-&lt;p&gt;데이터베이스의 기본키와 entity 간의 매핑을 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Id&lt;/code&gt; 어노테이션을 사용한다.&lt;/p&gt;
+&lt;p&gt;데이터베이스의 기본키와 entity 간의 매핑을 위해 &lt;code class=&quot;highlighter-rouge&quot;&gt;@Id&lt;/code&gt; 어노테이션을 사용한다.&lt;/p&gt;
 
 &lt;p&gt;기본키 할당 방식에는 두 가지가 있다&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;직접할당&lt;/strong&gt; : 기본키를 어플리케이션에서 직접 할당&lt;/p&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
   &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;//기본 키 직접 할당&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;자동생성&lt;/strong&gt; : 데이터베이스가 자동으로 할당&lt;/p&gt;
 
     &lt;p&gt;ex) 오라클 - sequence, MySQL - auto_increment
   데이터베이스 종류마다 sequence, auto_increment 등 기본키 자동생성을 지원하는 방법이 다르기 때문에, Spring Data JPA는 4가지 어노테이션을 지원한다.
-  &lt;br /&gt;@Id 어노테이션 밑에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@GeneratedValue(strategy = GenerationType.방식)&lt;/code&gt;을 선언해 사용한다.&lt;/p&gt;
+  &lt;br /&gt;@Id 어노테이션 밑에 &lt;code class=&quot;highlighter-rouge&quot;&gt;@GeneratedValue(strategy = GenerationType.방식)&lt;/code&gt;을 선언해 사용한다.&lt;/p&gt;
 
     &lt;ul&gt;
       &lt;li&gt;&lt;strong&gt;SEQUENCE&lt;/strong&gt; : 데이터베이스의 시퀀스 객체와 매핑
@@ -952,14 +1140,31 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
           &lt;li&gt;데이터베이스 종류와 상관없이 모든 데이터베이스에 적용 가능&lt;/li&gt;
         &lt;/ul&gt;
 
-        &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_SEQUENCES&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_SEQUENCES&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;sequence_name&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;next_val&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
       &lt;span class=&quot;k&quot;&gt;primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sequence_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
   &lt;span class=&quot;nd&quot;&gt;@TableGenerator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MY_SEQUENCES&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
@@ -971,16 +1176,23 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
                   &lt;span class=&quot;n&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
       &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;logic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EntityManger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;logic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EntityManger&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
       &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
       &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;board.id = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
   &lt;span class=&quot;c1&quot;&gt;// 출력 : board.id = 1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
 
         &lt;p&gt;MY_SEQUENCES 테이블에 값이 없으면 JPA가 값을 INSERT&lt;/p&gt;
       &lt;/li&gt;
@@ -991,7 +1203,16 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
           &lt;li&gt;ex) 오라클의 경우, SEQUENCE를 자동으로 선택해 사용&lt;/li&gt;
         &lt;/ul&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Project&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
       &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
@@ -1000,7 +1221,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
       &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
       &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;projectSummary&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
       &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -1015,7 +1236,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 &lt;a href=&quot;http://wonwoo.ml/index.php/post/995&quot;&gt;http://wonwoo.ml/index.php/post/995&lt;/a&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Tue, 07 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/JPA-entity-mapping</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-entity-mapping</guid>
         
@@ -1029,7 +1250,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         <description>&lt;h1 id=&quot;about-rest&quot;&gt;About REST&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;rest.png&quot; alt=&quot;REST&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;HTTP의 주요 저자 중 한 명인 로이 필딩이 웹 설계의 우수성에 비해 제대로 사용되어지지 못하는 모습에 안타까워하며&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;웹의 장점을 최대한 활용할 수 있는 아키텍쳐&lt;/code&gt;로써 발표함&lt;/p&gt;
+  &lt;p&gt;HTTP의 주요 저자 중 한 명인 로이 필딩이 웹 설계의 우수성에 비해 제대로 사용되어지지 못하는 모습에 안타까워하며&lt;br /&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;웹의 장점을 최대한 활용할 수 있는 아키텍쳐&lt;/code&gt;로써 발표함&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;정의&quot;&gt;정의&lt;/h2&gt;
@@ -1162,17 +1383,21 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
   &lt;li&gt;&lt;strong&gt;자원에 대한 행위는 HTTP Method를 사용해 표현&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;HTTP Method: GET / POST / PUT / DELETE등의 HTTP 프로토콜 사용 시의 호출 방식
-        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  GET /members/delete/1 (X)
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  GET /members/delete/1 (X)
   DELETE /members/1 (O)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
         &lt;h2 id=&quot;uri-설계-규칙&quot;&gt;URI 설계 규칙&lt;/h2&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;’/’(슬래시)는 계층 관계를 나타내는 데 사용
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  /리소스명/리소스 ID/관계가 있는 다른 리소스명
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  /리소스명/리소스 ID/관계가 있는 다른 리소스명
   ex) GET : /users/{userid}/devices 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;마지막 문자로 ‘/’를 포함하지 않음&lt;/p&gt;
@@ -1189,9 +1414,11 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
       &lt;li&gt;Accept header를 사용&lt;br /&gt;(컨텐츠 타입을 명시하는 Request type의 header)&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  http://restapi.example.com/members/soccer/345/photo.jpg (X)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  http://restapi.example.com/members/soccer/345/photo.jpg (X)
   GET / members/soccer/345/photo HTTP/1.1 Host: restapi.example.com Accept: image/jpg (O)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1204,7 +1431,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 &lt;br /&gt;REST API 설계 규칙: &lt;a href=&quot;https://meetup.toast.com/posts/92&quot;&gt;https://meetup.toast.com/posts/92&lt;/a&gt;
 &lt;br /&gt;RESTful API 설계 가이드 (예제 존재): &lt;a href=&quot;https://sanghaklee.tistory.com/57&quot;&gt;https://sanghaklee.tistory.com/57&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Mon, 06 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/about-REST</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-REST</guid>
         
@@ -1231,21 +1458,24 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
     &lt;p&gt;파일 다운이 완료되면, 다음과 같은 명령어를 통해 압축을 푼다. 예시에서는 elasticsearch 7.6.1 버전을 사용했다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  tar -xvf elasticsearch-7.6.1.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  tar -xvf elasticsearch-7.6.1.tar.gz
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;다음과 같이 bin 디렉토리로 이동한다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cd elasticsearch-7.6.1/bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  cd elasticsearch-7.6.1/bin
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;클러스터 시작을 위해, 다음과 같은 명령어를 입력한다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  ./elasticsearch
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  ./elasticsearch
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;정상적으로 설치가 완료되었다면 
-  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:9200&lt;/code&gt; 접속 시 아래와 같은 화면을 확인할 수 있다.&lt;/p&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:9200&lt;/code&gt; 접속 시 아래와 같은 화면을 확인할 수 있다.&lt;/p&gt;
 
     &lt;p&gt;&lt;img src=&quot;elasticsearch-install-result.png&quot; alt=&quot;elasticsearch install result&quot; /&gt;&lt;/p&gt;
 
@@ -1262,25 +1492,30 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
     &lt;p&gt;파일 다운로드: &lt;a href=&quot;https://www.elastic.co/kr/downloads/kibana&quot;&gt;https://www.elastic.co/kr/downloads/kibana&lt;/a&gt;
   혹은, 다음과 같은 명령어를 이용해 파일을 다운받는다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-linux-x86_64.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-linux-x86_64.tar.gz
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;예시에서는 Kibana 7.6.1 버전을 사용했다. &lt;br /&gt;(설치된 Elasticsearch와 같은 버전을 사용해야 한다)&lt;/p&gt;
 
-    &lt;p&gt;파일 다운이 완료되면, 아래 명령어를 이용해 sha1sum 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shasum&lt;/code&gt;으로 생성된 SHA를 published SHA와 비교하고, 압축을 푼다.&lt;/p&gt;
+    &lt;p&gt;파일 다운이 완료되면, 아래 명령어를 이용해 sha1sum 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;shasum&lt;/code&gt;으로 생성된 SHA를 published SHA와 비교하고, 압축을 푼다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sha1sum kibana-7.6.1-linux-x86_64.tar.gz 
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  sha1sum kibana-7.6.1-linux-x86_64.tar.gz 
   tar -xzf kibana-7.6.1-linux-x86_64.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;다음과 같은 명령어를 실행해 Kibana를 시작한다.&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  cd kibana-7.6.1-linux-x86_64
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  cd kibana-7.6.1-linux-x86_64
   ./bin/kibana
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;정상적으로 설치가 완료되었다면 
-  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:5601&lt;/code&gt; 접속 시 아래와 같이 Kibana 시작 화면을 확인할 수 있다.&lt;/p&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:5601&lt;/code&gt; 접속 시 아래와 같이 Kibana 시작 화면을 확인할 수 있다.&lt;/p&gt;
 
     &lt;p&gt;&lt;img src=&quot;kibana-install-result.png&quot; alt=&quot;kibana install result&quot; /&gt;&lt;/p&gt;
 
@@ -1293,7 +1528,7 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Mon, 16 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</guid>
         
@@ -1524,7 +1759,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 
 &lt;p&gt;&lt;strong&gt;7. 예시&lt;/strong&gt;&lt;a name=&quot;example&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Thu, 12 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-03/kibana</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/kibana</guid>
         
@@ -1537,7 +1772,18 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         <title>Spring Boot Servlet 등록하기</title>
         <description>&lt;p&gt;Spring boot에서는 서블릿을 사용하기 위해 설정을 등록해야 한다.&lt;/p&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServletRegistrationConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
     &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
@@ -1548,11 +1794,11 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;NewServlet에는 등록하려는 서블릿이 들어가고,&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;registrationBean.addUrlMappings(&quot;/new&quot;)&lt;/code&gt; 에는 서블릿의 urlPattern을 넣어주면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;registrationBean.addUrlMappings(&quot;/new&quot;)&lt;/code&gt; 에는 서블릿의 urlPattern을 넣어주면 된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -1566,7 +1812,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 &lt;p&gt;&lt;br /&gt;
 이걸 몰라서 처음에 뭘 잘못 설정했나 하고 프로젝트를 몇번이나 다시 만들었다.&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Wed, 04 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
         
@@ -1580,24 +1826,29 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         <description>&lt;p&gt;&lt;em&gt;jemoji 플러그인을 설치해 포스트에 귀여운 이모티콘을 넣어보자!!!!&lt;/em&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;설치-방법&quot;&gt;설치 방법&lt;/h1&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;에 아래 추가&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem 'jemoji'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;에 아래 추가&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gem 'jemoji'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;추가 후, 다음 명령을 실행한다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;bundle install
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;에 아래 추가&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plugins:
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;에 아래 추가&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;plugins:
   - jemoji
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;마찬가지로 다음 명령을 실행해 플러그인을 설치한다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jemoji
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gem install jemoji
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;사용&quot;&gt;사용&lt;/h1&gt;
 
-&lt;p&gt;포스트 내에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:heardpulse:&lt;/code&gt; 이런 식으로 사용할 수 있다.&lt;/p&gt;
+&lt;p&gt;포스트 내에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;:heardpulse:&lt;/code&gt; 이런 식으로 사용할 수 있다.&lt;/p&gt;
 
 &lt;p&gt;더 많은 이모티콘은 https://www.webfx.com/tools/emoji-cheat-sheet/ 여기서 찾을 수 있다.&lt;/p&gt;
 
@@ -1612,7 +1863,7 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
 &lt;h1 id=&quot;참조&quot;&gt;참조&lt;/h1&gt;
 &lt;p&gt;jemoji repo: &lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;https://github.com/jekyll/jemoji&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>2020-05-11</pubDate>
+        <pubDate>Mon, 02 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
         

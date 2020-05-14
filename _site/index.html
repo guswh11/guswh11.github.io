@@ -1,558 +1,756 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A simple and awesome blog theme powered by jekyll.">
-  <meta name="keywords" content="blog and jekyll">
-  <meta name="author" content="Leonids">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f5f5">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="자기소개 칸">
+    <meta name="keywords"  content="黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="黄玄的博客 | Hux Blog">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="我干了什么 究竟拿了时间换了什么">
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-round.png">
+    <meta property="og:url" content="http://localhost:4000/">
+    <meta property="og:site_name" content="黄玄的博客 | Hux Blog">
+    
+    <title>黄玄的博客 | Hux Blog</title>
 
-  <!-- Twitter Tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Leonids">
-  <meta name="twitter:description" content="A simple and awesome blog theme powered by jekyll.">
-  
-    <meta property="twitter:image" content="http://localhost:4000/img/leonids-logo.png">
-  
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
 
-  <!-- Open Graph Tags -->
-  <meta property="og:type" content="blog">
-  <meta property="og:url" content="http://localhost:4000/">
-  <meta property="og:title" content="Leonids">
-  <meta property="og:description" content="A simple and awesome blog theme powered by jekyll.">
-  
-    <meta property="og:image" content="http://localhost:4000/img/leonids-logo.png">
-  
-  <title>Leonids</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/">
 
-  <!-- CSS files -->
-  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
-  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <link rel="canonical" href="http://localhost:4000/">
-  <link rel="alternate" type="application/rss+xml" title="Leonids" href="http://localhost:4000/feed.xml" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
 
-  <!-- Icons -->
-  <!-- 16x16 -->
-  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
-  <!-- 32x32 -->
-  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
 
-<body>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-  <div class="sidebar-toggle-wrapper">
-    
+    <!-- Navigation -->
 
-    <button class="toggle navicon-button larr" type="button">
-      <span class="toggle-inner">
-        <span class="sidebar-toggle-label visually-hidden">Menu</span>
-        <span class="navicon"></span>
-      </span>
-    </button>
-  </div>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
 
-  <div id="sidebar" class="sidebar">
-    <div class="inner">
-      <nav id="primary-nav" class="site-nav" itemscope itemtype="http://schema.org/SiteNavigationElement" aria-label="Main navigation">
-  <ul id="menu-main-navigation" class="menu">
-    <!-- Home link -->
-    <li class="menu-item">
-      <a href="/" itemprop="url">
-        <span itemprop="name">Home</span>
-      </a>
-    </li>
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hux Blog</a>
+        </div>
 
-    <!-- site.pages links -->
-    
-    
-
-    
-      
-      
-    
-      
-      
-    
-  </ul>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/archive">Archive</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
 </nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-      <ul class="contact-list">
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Page Header -->
+
+
+
+
+
+
+
+<header class="intro-header" style="background-image: url('/img/bg-1.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <div class="site-heading">
+        
+          <h1>Hux Blog</h1>
+          <span class="subheading">我干了什么 究竟拿了时间换了什么</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/articles/2020-05/about-npm">
+        <h2 class="post-title">
+            npm에 대해
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                npm(Node Package Manager)이란
+개념
+node.js 패키지 관리자 
+-&gt; node.js에서 사용하는 모듈들을 패키지로 만들어 npm을 통해 관리, 배포
+(node.js 설치 시 자동으로 설치된다)
+
+  다른 언어에서 비슷한 개념
+python의 pip
+ruby의 Gem
+java의 jpm 등
+
+
+기능
+
+  node.js에서 사용할 ...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on May 8, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-05/SOP-CORS">
+        <h2 class="post-title">
+            SOP와 CORS
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                
+  No ‘Access-Control-Allow-Origin’ header is present on the requested resource.
+
+
+웹 개발시 자바스크립트로 외부 서버의 경로로 ajax 요청을 날리면 위와 같은 에러 메세지를 볼 수 있다. 이는 자바스크립트 엔진 표준 스펙에 same-origin policy(동일 출처 정책)라는 보안 ...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on May 8, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-04/JPA-repository">
+        <h2 class="post-title">
+            JPA - Repository에 대해
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                Repository
+Repository는 Entity 조작에 필요한 쿼리를 메서드화해서 사용할 수 있는 역할을 한다.
+
+
+
+Repository 인터페이스는 Spring Data JPA에서 제공하는 미리 만들어진 Repository 인터페이스들을 상속받는다.
+상속을 통해 다음과 같은 기능을 제공한다.
+
+
   
-
-  
-
-  
-
-  <li>
     
-  </li>
+      method
+      ...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on April 8, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-04/about-JPA">
+        <h2 class="post-title">
+            ORM 도구
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                ORM 도구의 활용
+자바에서는 데이터베이스 서버에 접속해서 쿼리를 수행하고, 그 결과를 프로그램 상에서 사용할 수 있도록 JDBC API를 제공한다.
+-&gt; JDBC : 자바로 데이터베이스 프로그래밍을 하기 위한 API, 기술 명세
+
+JDBC를 이용해 개발을 진행하면 로직 처리를 SQL로 하게 되고, 자바의 언어적인 기능을 사용하기보다는 쿼리와 결...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on April 7, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-04/JPA-entity-mapping">
+        <h2 class="post-title">
+            JPA - Entity에 대해
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                데이터베이스와 객체 매핑 방법
+
+Entity 클래스 설정
+@Entity
+
+  Entity 클래스 : 데이터베이스 스키마의 내용을 자바 클래스로 표현할 수 있는 대상
+    
+      
+        해당 클래스에 @Entity 어노테이션을 선언해 엔티티 매니저가 관리해야 할 대상임을 표시
+
+        1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+1...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on April 7, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-04/about-REST">
+        <h2 class="post-title">
+            REST에 대해
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                About REST
+
+
+  HTTP의 주요 저자 중 한 명인 로이 필딩이 웹 설계의 우수성에 비해 제대로 사용되어지지 못하는 모습에 안타까워하며웹의 장점을 최대한 활용할 수 있는 아키텍쳐로써 발표함
+
+
+정의
+
+  자원을 이름으로 구분하여 해당 자원의 상태(정보)를 주고 받는 모든 것
+    
+      자원이란, 소프트웨어가 관리하는 모든 것문서, 그...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on April 6, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-03/elasticsearch-kibana-install">
+        <h2 class="post-title">
+            Elasticsearch와 Kibana설치 방법
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                How to install elasticsearch and kibana
+
+
+  
+    Elasticsearch 설치
+
+    Kibana를 사용하기 위해서는 Elasticsearch가 필수이며, 같은 버전을 사용해야 한다.
+
+    Elasticsearch는 Java 8 이상이 필요하다. 
+
+    Java 설정이 확인되었다면, 아래 링크를 통해 e...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on March 16, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-03/kibana">
+        <h2 class="post-title">
+            Kibana에 대해
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                Kibana
+
+회사 일로 kibana에 대해 조사해봤다.
+내가 쓴거니까 올려도 될것같다!!
+
+아직 예제는 못돌려봤다….
+
+
+목차
+
+
+  개요
+  라이선스
+  데이터타입
+  기능
+  특징
+  레퍼런스 현황
+  예제
+
+
+
+
+1. 개요
+
+
+  Elasticsearch가 logstash를 통해 수집한 데이터를 시각화하는 역할을 함
+elasticsearch, ...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on March 12, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-03/spring-boot-registering-servlet">
+        <h2 class="post-title">
+            Spring Boot Servlet 등록하기
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                Spring boot에서는 서블릿을 사용하기 위해 설정을 등록해야 한다.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+@Configuration
+public class ServletRegistrationConfig {
+
+    @Bean
+    public ServletRegistrationBean&lt;NewServlet&gt; getServletR...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on March 4, 2020
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/articles/2020-03/jekyll-installing-jemoji">
+        <h2 class="post-title">
+            Jekyll에 emoji 추가하기
+        </h2>
+        
+        <div class="post-content-preview">
+            
+                jemoji 플러그인을 설치해 포스트에 귀여운 이모티콘을 넣어보자!!!!
+
+설치 방법
+Gemfile에 아래 추가
+1
+gem 'jemoji'
+
+추가 후, 다음 명령을 실행한다.
+1
+bundle install
+
+
+_config.yml에 아래 추가
+1
+2
+plugins:
+  - jemoji
+
+마찬가지로 다음 명령을 실행해 플러그인을 설치한다.
+1
+gem i...
+            
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Hux Blog on March 2, 2020
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/page2">Older Posts &rarr;</a>
+    </li>
+    
 </ul>
 
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col s12 m3">
-      <div class="table cover">
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
         
+        
+        
+        
+        
+    </div>
+</section>
 
-<div class="cover-card table-cell table-middle">
-  <a href="http://localhost:4000/">
-    <img src="http://localhost:4000/img/profile.png" alt="" class="avatar">
-  </a>
-  <a href="http://localhost:4000/" class="author_name">HYUNJIN</a>
-  <span class="author_job">KT corp. SW Developer</span>
-  <span class="author_bio mbm">적게 일하고 많이 벌자</span>
-  <nav class="nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-      </li>
-    </ul>
-  </nav>
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+  <hr>
+  <h5><a href="/about/">ABOUT ME</a></h5>
+  <div class="short-about">
+    
+    <img src="/img/avatar-round.png" />
+    
+    
+    <p>For the next quantum leap<br>离开世界之前，一切都是过程</p>
+    
+    <!-- SNS Link -->
+    
+
+
+<ul class="list-inline">
+
+
+  
+  
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/guswh11">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+  </div>
+</section>
+
+                <!-- Friends Blog -->
+                
+    		</div>
+        
+	</div>
 </div>
 
-      </div>
-    </div>
-    <div class="col s12 m9">
-      <div class="post-listing">
-        
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        8 MAY 2020
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/guswh11">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
       </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#javascript">javascript</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-05/about-npm" class="post-title" title="npm에 대해">npm에 대해</a>
-      
-    </h4>
+    </a>
+  </li>
+  
+  
+</ul>
 
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        npm, package.json, package-lock.json
-      </p>
+                <p class="copyright text-muted">
+                    Copyright &copy; Hux Blog 2020
+                    <br>
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
     </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        8 MAY 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#spring">spring</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-05/SOP-CORS" class="post-title" title="SOP와 CORS">SOP와 CORS</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        SOP의 정의와 CORS 에러 해결방법
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        8 APR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#spring">spring</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-04/JPA-repository" class="post-title" title="JPA - Repository에 대해">JPA - Repository에 대해</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        JPA의 Repository에 대해 알아보자
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        7 APR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#spring">spring</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-04/about-JPA" class="post-title" title="ORM 도구">ORM 도구</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        ORM 도구 - JPA, Hibernate, Spring Data JPA에 대해
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        7 APR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#spring">spring</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-04/JPA-entity-mapping" class="post-title" title="JPA - Entity에 대해">JPA - Entity에 대해</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        JPA의 데이터베이스-객체 매핑 방법인 Entity 클래스에 대해 알아보자
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        6 APR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#web">web</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-04/about-REST" class="post-title" title="REST에 대해">REST에 대해</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        REST, RESTful, REST API에 대해 알아보자
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        16 MAR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#etc">etc</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-03/elasticsearch-kibana-install" class="post-title" title="Elasticsearch와 Kibana설치 방법">Elasticsearch와 Kibana설치 방법</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        Elasticsearch랑 kibana를 설치해보자
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        12 MAR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#etc">etc</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-03/kibana" class="post-title" title="Kibana에 대해">Kibana에 대해</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        시각화 툴인 kibana에 대해 조사해보았다
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        4 MAR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#spring">spring</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-03/spring-boot-registering-servlet" class="post-title" title="Spring Boot Servlet 등록하기">Spring Boot Servlet 등록하기</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        Servlet 사용을 위한 설정 등록 방법
-      </p>
-    </div>
-    
-
-    
-    <div class="post-image-feature">
-      <img src=
-      
-      "http://localhost:4000/img//capture-registering-servlet.png"
-      
-      alt="Spring Boot Servlet 등록하기 feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        2 MAR 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#jekyll">jekyll</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-03/jekyll-installing-jemoji" class="post-title" title="Jekyll에 emoji 추가하기">Jekyll에 emoji 추가하기</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        emoji를 사용해 포스팅 하기
-      </p>
-    </div>
-    
-
-    
-
-</section>
-
-<section class="post">
-  <header class="post-header">
-    <p class="post-meta">
-      <span class="post-date">
-        28 FEB 2020
-      </span>
-      
-      •
-      
-        <a class="post-cat" href="http://localhost:4000/categories/#daily">daily</a>
-        
-      
-      
-    </p>
-    <h4>
-      <a href="http://localhost:4000/articles/2020-02/daily-post" class="post-title" title="오늘의 회사 생활">오늘의 회사 생활</a>
-      
-    </h4>
-
-    
-
-    </header>
-
-    
-    <div class="post-description">
-      <p>
-        오늘의 밥과 한 일에 대해
-      </p>
-    </div>
-    
-
-    
-    <div class="post-image-feature">
-      <img src=
-      
-      "http://localhost:4000/img//picture1.jpeg"
-      
-      alt="오늘의 회사 생활 feature image">
-
-      
-    </div><!-- /.image-wrap -->
-    
-
-</section>
-
-
-        <footer>
-  &copy; 2020 HYUNJIN. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
 </footer>
 
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript" src="http://localhost:4000/js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
 
 
-  <div class="inner">
-  
-</div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
 
-  
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
 
-<script async src="/assets/javascripts/main.js"></script>
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
 
 
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
-</html>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</html>
