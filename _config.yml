@@ -1,9 +1,9 @@
 # Site settings
-title: Hux Blog
-SEOTitle: 黄玄的博客 | Hux Blog
+title: 블로그 이름
+SEOTitle: 탭에 뜰 말 
 header-img: img/bg-1.png
 email: guswh11@naver.com
-description: "자기소개 칸"
+description: "설명"
 keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
 url:             # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -22,14 +22,12 @@ github_username: guswh11
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 highlighter: rouge
-permalink: 
+permalink: /articles/:year-:month/:title
 paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 timezone: Asia/Seoul
 excerpt_separator: <!--more-->
-
-
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
@@ -75,7 +73,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
+sidebar-about-description: "자기소개"
 sidebar-avatar: /img/avatar-round.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
