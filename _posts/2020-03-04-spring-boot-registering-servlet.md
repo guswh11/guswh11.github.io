@@ -4,8 +4,10 @@ title: "Spring Boot Servlet 등록하기"
 excerpt: "Servlet 사용을 위한 설정 등록 방법"
 categories: [spring]
 comments: true
-image:
-  feature: /capture-registering-servlet.png
+tags:
+  - Spring Boot
+  - Web
+  - Servlet
 ---
 
 Spring boot에서는 서블릿을 사용하기 위해 설정을 등록해야 한다. 

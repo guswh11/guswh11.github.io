@@ -4,6 +4,8 @@ title: "Jekyll에 emoji 추가하기"
 excerpt: "emoji를 사용해 포스팅 하기"
 categories: [jekyll]
 comments: true
+tags:
+  - Jekyll
 ---
 
 *jemoji 플러그인을 설치해 포스트에 귀여운 이모티콘을 넣어보자!!!!*

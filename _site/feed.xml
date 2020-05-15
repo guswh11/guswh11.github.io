@@ -5,8 +5,8 @@
     <description>설명</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 15 May 2020 15:41:36 +0900</pubDate>
-    <lastBuildDate>Fri, 15 May 2020 15:41:36 +0900</lastBuildDate>
+    <pubDate>Fri, 15 May 2020 16:02:00 +0900</pubDate>
+    <lastBuildDate>Fri, 15 May 2020 16:02:00 +0900</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -269,6 +269,12 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
         <link>http://localhost:4000/articles/2020-05/about-npm</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-npm</guid>
         
+        <category>Javascript</category>
+        
+        <category>Node.js</category>
+        
+        <category>npm</category>
+        
         
       </item>
     
@@ -400,6 +406,10 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
         <pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-05/SOP-CORS</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-05/SOP-CORS</guid>
+        
+        <category>Error</category>
+        
+        <category>Spring Boot</category>
         
         
         <category>spring</category>
@@ -693,6 +703,12 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
         <link>http://localhost:4000/articles/2020-04/JPA-repository</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-repository</guid>
         
+        <category>JPA</category>
+        
+        <category>Spring Boot</category>
+        
+        <category>Database</category>
+        
         
         <category>spring</category>
         
@@ -776,6 +792,12 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         <pubDate>Tue, 07 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/about-JPA</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-JPA</guid>
+        
+        <category>JPA</category>
+        
+        <category>Spring Boot</category>
+        
+        <category>Database</category>
         
         
         <category>spring</category>
@@ -1240,6 +1262,12 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         <link>http://localhost:4000/articles/2020-04/JPA-entity-mapping</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-entity-mapping</guid>
         
+        <category>JPA</category>
+        
+        <category>Spring Boot</category>
+        
+        <category>Database</category>
+        
         
         <category>spring</category>
         
@@ -1434,6 +1462,10 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         <pubDate>Mon, 06 Apr 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-04/about-REST</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-REST</guid>
+        
+        <category>REST</category>
+        
+        <category>Web</category>
         
         
         <category>web</category>
@@ -1816,6 +1848,12 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
         
+        <category>Spring Boot</category>
+        
+        <category>Web</category>
+        
+        <category>Servlet</category>
+        
         
         <category>spring</category>
         
@@ -1866,6 +1904,8 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         <pubDate>Mon, 02 Mar 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
+        
+        <category>Jekyll</category>
         
         
         <category>jekyll</category>
