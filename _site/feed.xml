@@ -5,9 +5,130 @@
     <description>설명</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 15 May 2020 16:02:00 +0900</pubDate>
-    <lastBuildDate>Fri, 15 May 2020 16:02:00 +0900</lastBuildDate>
+    <pubDate>Mon, 18 May 2020 21:19:40 +0900</pubDate>
+    <lastBuildDate>Mon, 18 May 2020 21:19:40 +0900</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
+    
+      <item>
+        <title>Spring security에 대해</title>
+        <description>&lt;h1 id=&quot;spring-security&quot;&gt;Spring security&lt;/h1&gt;
+&lt;h2 id=&quot;spring-security스프링-시큐리티란&quot;&gt;Spring security(스프링 시큐리티)란&lt;/h2&gt;
+&lt;p&gt;스프링 시큐리티는 스프링 기반의 어플리케이션의 보안(인증과 권한)을 담당하는 프레임워크로,
+보안과 관련해서 체계적으로 많은 옵션들을 지원한다. 
+만약 스프링 시큐리티를 사용하지 않는다면 개발자가 보안 관련 로직을 직접 작성해야 할 것이다.&lt;br /&gt;
+스프링 시큐리티는 필터(filter) 기반으로 동작하기 때문에 spring MVC와 분리되어 관리 및 동작한다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;filter란&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;보안-관련-용어&quot;&gt;보안 관련 용어&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;접근 주체(Principal)&lt;/strong&gt; : 보호된 대상에 접근하는 유저&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;인증(Authenticate)&lt;/strong&gt; : 현재 유저가 누구인지 확인(ex. 로그인)
+    &lt;ul&gt;
+      &lt;li&gt;애플리케이션의 작업을 수행할 수 있는 주체임을 증명&lt;/li&gt;
+      &lt;li&gt;코드에서의 Authentication: 인증 과정에서 사용되는 핵심 객체&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;인가(Authorize)&lt;/strong&gt; : 해당 리소스에 대해 접근 가능한 권한을 가지고 있는지 확인하는 과정(인증 이후)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;권한(Authorization)&lt;/strong&gt; : 인가 과정에서 해당 리소스에 대한 제한된 최소한의 권환을 가졌는지 확인
+    &lt;ul&gt;
+      &lt;li&gt;권한 승인이 필요한 부분으로 접근하려면 인증 과정을 통해 주체가 증명 되어야만 한다&lt;/li&gt;
+      &lt;li&gt;권한 부여에도 두가지 영역이 존재하는데 웹 요청 권한, 메소드 호출 및 도메인 인스턴스에 대한 접근 권한 부여&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;스프링-시큐리티의-구조&quot;&gt;스프링 시큐리티의 구조&lt;/h2&gt;
+&lt;h3 id=&quot;인증-관련-구조&quot;&gt;인증 관련 구조&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;spring-security-architecture.png&quot; alt=&quot;authentication-architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;spring security는 세션-쿠키방식으로 인증한다.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;유저가 로그인을 시도 (http request)&lt;/li&gt;
+  &lt;li&gt;AuthenticationFilter 에서부터 위와같이 user DB까지 타고 들어감&lt;/li&gt;
+  &lt;li&gt;DB에 있는 유저라면 UserDetails 로 꺼내서 유저의 session 생성&lt;/li&gt;
+  &lt;li&gt;spring security의 인메모리 세션저장소인 SecurityContextHolder 에 저장&lt;/li&gt;
+  &lt;li&gt;유저에게 session ID와 함께 응답을 내려줌&lt;/li&gt;
+  &lt;li&gt;이후 요청에서는 요청쿠키에서 JSESSIONID를 검증 후, 유효하면 Authentication를 쥐어준다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;스프링-시큐리티의-filter&quot;&gt;스프링 시큐리티의 filter&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;spring-security-filter.png&quot; alt=&quot;filter&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;SecurityContextPersistenceFilter&lt;/strong&gt; : SecurityContextRepository에서 SecurityContext를 가져오거나 저장하는 역할을 한다. (SecurityContext는 밑에)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;LogoutFilter&lt;/strong&gt; : 설정된 로그아웃 URL로 오는 요청을 감시하며, 해당 유저를 로그아웃 처리&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;(UsernamePassword)AuthenticationFilter&lt;/strong&gt; : (아이디와 비밀번호를 사용하는 form 기반 인증) 설정된 로그인 URL로 오는 요청을 감시하며, 유저 인증 처리
+    &lt;ul&gt;
+      &lt;li&gt;AuthenticationManager를 통한 인증 실행&lt;/li&gt;
+      &lt;li&gt;인증 성공 시, 얻은 Authentication 객체를 SecurityContext에 저장 후 AuthenticationSuccessHandler 실행&lt;/li&gt;
+      &lt;li&gt;인증 실패 시, AuthenticationFailureHandler 실행&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DefaultLoginPageGeneratingFilter&lt;/strong&gt; : 인증을 위한 로그인폼 URL을 감시한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;BasicAuthenticationFilter&lt;/strong&gt; : HTTP 기본 인증 헤더를 감시하여 처리한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;RequestCacheAwareFilter&lt;/strong&gt; : 로그인 성공 후, 원래 요청 정보를 재구성하기 위해 사용된다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SecurityContextHolderAwareRequestFilter&lt;/strong&gt; : HttpServletRequestWrapper를 상속한 SecurityContextHolderAwareRequestWapper 클래스로 HttpServletRequest 정보를 감싼다.
+    &lt;ul&gt;
+      &lt;li&gt;SecurityContextHolderAwareRequestWrapper 클래스는 필터 체인상의 다음 필터들에게 부가정보를 제공한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AnonymousAuthenticationFilter&lt;/strong&gt; : 이 필터가 호출되는 시점까지 사용자 정보가 인증되지 않았다면 인증토큰에 사용자가 익명 사용자로 나타난다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SessionManagementFilter&lt;/strong&gt; : 이 필터는 인증된 사용자와 관련된 모든 세션을 추적한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ExceptionTranslationFilter&lt;/strong&gt; : 이 필터는 보호된 요청을 처리하는 중에 발생할 수 있는 예외를 위임하거나 전달하는 역할을 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;FilterSecurityInterceptor&lt;/strong&gt; : 이 필터는 AccessDecisionManager 로 권한부여 처리를 위임함으로써 접근 제어 결정을 쉽게해준다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;authentication&quot;&gt;Authentication&lt;/h3&gt;
+&lt;p&gt;모든 접근 주체(유저)는 Authentication을 생성한다. 
+이것은 SecurityContext 에 보관되고 사용된다. 
+즉 security의 세션들은 내부 메모리(SecurityContextHolder)에 쌓고 꺼내쓰는 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Authentication&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Principal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Serializable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GrantedAuthority&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getAuthorities&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Authentication 저장소에 의해 인증된 사용자의 권한 목록&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getCredentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 주로 비밀번호&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDetails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 사용자 상세정보&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getPrincipal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 주로 ID&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isAuthenticated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//인증 여부&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAuthenticated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isAuthenticated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;authenticationmanager&quot;&gt;AuthenticationManager&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;authentication-manager.png&quot; alt=&quot;AuthenticationManager&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;유저의 요청 내에 담긴 Authentication를 AuthenticationManager 에 넘겨주고, AuthenticationManager 를 구현한 ProviderManager가 처리한다. 정확히는 ProviderManager 는 private &lt;code class=&quot;highlighter-rouge&quot;&gt;List&amp;lt;AuthenticationProvider&amp;gt; providers;&lt;/code&gt; 로 여러 AuthenticationProvider를 가질 수 있는데, 이 친구들이 처리를 해서 Authentication 를 반환해준다. (실패하면 예외던짐)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AuthenticationManager&lt;/strong&gt; : 인증요청을 받고 Authentication를 채운다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;AuthenticationProvider&lt;/strong&gt; : 실제 인증이 일어나며, 성공하면 Authentication.isAuthenticated = true 를 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#getting-started&quot;&gt;https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#getting-started&lt;/a&gt;
+&lt;a href=&quot;https://sjh836.tistory.com/165&quot;&gt;https://sjh836.tistory.com/165&lt;/a&gt;
+&lt;a href=&quot;https://coding-start.tistory.com/153&quot;&gt;https://coding-start.tistory.com/153&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/articles/2020-05/spring-security</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security</guid>
+        
+        <category>Spring</category>
+        
+        <category>Spring Security</category>
+        
+        
+        <category>spring</category>
+        
+      </item>
     
       <item>
         <title>npm에 대해</title>
@@ -1856,59 +1977,6 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         
         
         <category>spring</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll에 emoji 추가하기</title>
-        <description>&lt;p&gt;&lt;em&gt;jemoji 플러그인을 설치해 포스트에 귀여운 이모티콘을 넣어보자!!!!&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;설치-방법&quot;&gt;설치 방법&lt;/h1&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;에 아래 추가&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gem 'jemoji'
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;추가 후, 다음 명령을 실행한다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;bundle install
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;에 아래 추가&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;plugins:
-  - jemoji
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;마찬가지로 다음 명령을 실행해 플러그인을 설치한다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;gem install jemoji
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;사용&quot;&gt;사용&lt;/h1&gt;
-
-&lt;p&gt;포스트 내에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;:heardpulse:&lt;/code&gt; 이런 식으로 사용할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;더 많은 이모티콘은 https://www.webfx.com/tools/emoji-cheat-sheet/ 여기서 찾을 수 있다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;나는 설치 과정에서는 문제가 없었지만,
-알 수 없는 이유로 이모지 변환이 되지 않는다…ㅠㅠ&lt;/p&gt;
-
-&lt;p&gt;그래도 나중에 다시 보고 해보려고 글은 쓴다!!!!!!!
-나중에 깃허브 이슈에 올려봐야겠다.&lt;/p&gt;
-
-&lt;h1 id=&quot;참조&quot;&gt;참조&lt;/h1&gt;
-&lt;p&gt;jemoji repo: &lt;a href=&quot;https://github.com/jekyll/jemoji&quot;&gt;https://github.com/jekyll/jemoji&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 02 Mar 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/jekyll-installing-jemoji</guid>
-        
-        <category>Jekyll</category>
-        
-        
-        <category>jekyll</category>
         
       </item>
     
