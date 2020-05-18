@@ -5,9 +5,314 @@
     <description>설명</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 18 May 2020 21:19:40 +0900</pubDate>
-    <lastBuildDate>Mon, 18 May 2020 21:19:40 +0900</lastBuildDate>
+    <pubDate>Mon, 18 May 2020 21:26:50 +0900</pubDate>
+    <lastBuildDate>Mon, 18 May 2020 21:26:50 +0900</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
+    
+      <item>
+        <title>Spring security 설정 방법</title>
+        <description>&lt;h1 id=&quot;spring-security-시작하기&quot;&gt;Spring security 시작하기&lt;/h1&gt;
+&lt;h2 id=&quot;spring-security-설정-방법&quot;&gt;Spring security 설정 방법&lt;/h2&gt;
+&lt;h3 id=&quot;의존성-추가&quot;&gt;의존성 추가&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt;에 다음과 같이 추가&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Properties  --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;security.version&amp;gt;&lt;/span&gt;4.2.7.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/security.version&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Security --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-security-core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${security.version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-security-web&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${security.version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-security-config&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${security.version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-security-taglibs&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${security.version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-security-test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${security.version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;LDAP, OpenID등의 추가적인 기능을 사용한다면 다음 링크에서 찾아 알맞게 추가하면 된다. 
+&lt;a href=&quot;https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#modules&quot;&gt;Section 2.4.3, “Project Modules”&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;webxml-설정&quot;&gt;web.xml 설정&lt;/h3&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;context-param&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;contextConfigLocation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-value&amp;gt;&lt;/span&gt;
+        classpath:applicationContext.xml
+        classpath:applicationContext-security.xml
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-value&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/context-param&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Spring Security --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;listener&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;listener-class&amp;gt;&lt;/span&gt;org.springframework.security.web.session.HttpSessionEventPublisher&lt;span class=&quot;nt&quot;&gt;&amp;lt;/listener-class&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/listener&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;filter&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;springSecurityFilterChain&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-class&amp;gt;&lt;/span&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-class&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-mapping&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;springSecurityFilterChain&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-mapping&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;HttpSessionEventPublisher&lt;/strong&gt; : 한 유저가 다른 브라우저로 동시 로그인하는 것을 막음&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;DelegatingFilterProxy&lt;/strong&gt; : 모든 요청은 이 프록시필터를 거친다. 스프링시큐리티는 이를 통해 인증, 인가를 수행&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;security-설정&quot;&gt;security 설정&lt;/h3&gt;
+&lt;p&gt;설정을 보면 알겠지만, dispatcher-context 와는 별개의 설정(context)이다. 만약 dispatcher-context 에서 component-scan 을 하고있었다면, security의 bean들은 이들을 의존성주입받을 수 없다. (서비스 이하 컴포넌트들은 applicationContext 에서 component-scan 하는 걸 추천)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;applicationContext-security.xml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;security:http&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;auto-config=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;use-expressions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:csrf&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;disabled=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:intercept-url&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pattern=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/**&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;access=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;permitAll&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:form-login&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;login-page=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;authentication-success-handler-ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loginSuccessHandler&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;authentication-failure-handler-ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loginFailureHandler&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;login-processing-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/auth&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;username-parameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;password-parameter=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pw&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:logout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;logout-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/logout&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;invalidate-session=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;logout-success-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login?status=logout&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:session-management&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;invalid-session-url=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:concurrency-control&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;max-sessions=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;error-if-maximum-exceeded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/security:session-management&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/security:http&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- secured method --&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;security:global-method-security&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;secured-annotations=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;enabled&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- provider --&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:authentication-manager&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;security:authentication-provider&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;userAuthHelper&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/security:authentication-manager&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loginSuccessHandler&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.devljh.domain.user.helper.LoginSuccessHandler&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;defaultTargetUrl&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/main&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alwaysUseDefaultTargetUrl&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;loginFailureHandler&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.devljh.domain.user.helper.LoginFailureHandler&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;defaultFailureUrl&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login?status=fail&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;userAuthService&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.devljh.domain.user.UserAuthService&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;passwordEncoder&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;userAuthProvider&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;com.devljh.domain.user.helper.UserAuthProvider&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;userDetailsService&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;userAuthService&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;passwordEncoder&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;passwordEncoder&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;securityxml의-설정&quot;&gt;security.xml의 설정&lt;/h2&gt;
+&lt;h3 id=&quot;securityhttp-springsecurityfilterchain-설정&quot;&gt;security:http (springSecurityFilterChain 설정)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;auto-config&lt;/strong&gt; : true 로 할경우 filter는 dafault 값으로 동작한다. 
+false 면 anonymous, x509, http-basic, session-management, expression-handler, custom-filter, port-mappings, request-cache, remember-me 를 정의해줘야한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;use-expressions&lt;/strong&gt; : 스프링 표현식(spEL)의 사용여부다&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;csrf&lt;/strong&gt; : csrf 보안 설정여부&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;intercept-url&lt;/strong&gt; : pattern에 정의된 경로에 대해 access 권한을 지정 (Filter가 감시)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;form-login&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;login-page&lt;/strong&gt; : login form 페이지 URL&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;username-parameter&lt;/strong&gt; : form id의 name 속성값&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;password-parameter&lt;/strong&gt; : form pw의 name 속성값&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;login-processing-url&lt;/strong&gt; : form action 값 (security를 이용해 인증처리)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;default-target-url&lt;/strong&gt; : 로그인 성공 시 이동 URL&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;authentication-failure-url&lt;/strong&gt; : 로그인 실패 시 이동 URL&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;always-use-default-target&lt;/strong&gt; : true 로 하면 무조건 default-target-url 로 이동한다. 
+  false 로 하면 authentication-success-handler 대로 redirect 된다.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;authentication-success-handler-ref&lt;/strong&gt; : 로그인 성공 시 프로세스 정의, bean id 입력
+        &lt;ul&gt;
+          &lt;li&gt;만약 최종 로그인일시를 DB에 기록해야한다면 handler로 처리하는게 좋겠다.&lt;/li&gt;
+          &lt;li&gt;res.sendRedirect 등으로 처리&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;authentication-failure-handler-ref&lt;/strong&gt; : 로그인 실패 시 프로세스 정의, bean id 입력&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;logout&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;logout-url&lt;/strong&gt; : 로그아웃 처리할 URL 
+  (security가 알아서 만들기 때문에, 이 경로로 요청만 하면된다)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;logout-success-url&lt;/strong&gt; : 로그아웃 성공 시 이동 URL&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;success-handler-ref&lt;/strong&gt; : 로그아웃 성공 시 프로세스 정의, bean id 입력&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;invalidate-session&lt;/strong&gt; : 로그아웃 시 세션 삭제여부&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;session-management&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;invalid-session-url&lt;/strong&gt; : invalid session(세션 타임아웃 등) 일 때 이동 URL&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;max-sessions&lt;/strong&gt; : 최대 허용 가능한 세션 수&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;expired-url&lt;/strong&gt; : 중복 로그인 발생시 이동 URL (처음 접속한 세션이 invalidate가 되고 다음 요청시 invalid-session-url로 이동)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;error-if-maximum-exceeded&lt;/strong&gt; : max-sessions을 넘었을때 접속한 세션을 실패처리할지 여부 (expired-url와 얘중에 하나만 쓰면 될듯)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;authenticationsuccesshandler-authenticationfailurehandler-logoutsuccesshandler&quot;&gt;AuthenticationSuccessHandler, AuthenticationFailureHandler, LogoutSuccessHandler&lt;/h3&gt;
+&lt;p&gt;이들은 위 설정에서 보았듯이, 각각 로그인성공 시, 로그인실패 시, 로그아웃 성공 시 동작하게 할 수 있는 handler 이다. 이들은 인터페이스로 내부 코드들은 org.springframework.security.web.authentication 에 있다. 이걸 직접 구현해도 되지만, 이 패키지가보면 Simple* 이라는 아주좋은 샘플 구현체들이 이미 있다. 쌩으로 구현하는 것보단 당연히 상속받는 걸 추천한다. 이것들을 상속받으면 xml에서 설정자 주입으로 default-url 등을 설정 할 수 있다. (인터페이스를 구현했으면 직접 sendRedirect로 처리했어야함)&lt;/p&gt;
+
+&lt;h3 id=&quot;passwordencoder&quot;&gt;PasswordEncoder&lt;/h3&gt;
+&lt;p&gt;암호화 알고리즘을 골라서 bean을 만들 수 있다. 
+AuthenticationProvider의 구현체로 DaoAuthenticationProvider를 사용할 경우, 기본적으로 PlaintextPasswordEncoder(=NoOpPasswordEncoder)를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DaoAuthenticationProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setPasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;PasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PlaintextPasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;NoOpPasswordEncoder&lt;/strong&gt; : deprecate 되었다. 테스트할 때만 쓰자&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;BCryptPasswordEncoder&lt;/strong&gt; : bcrypt 해쉬 알고리즘을 이용 (추천)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;StandardPasswordEncoder&lt;/strong&gt; : sha 해쉬 알고리즘을 이용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;access&quot;&gt;access&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;hasRole(Role)&lt;/strong&gt; : 해당 Role 을 갖고있는 사용자 허용&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;hasAnyRole(Role1, Role2, …)&lt;/strong&gt; : 해당 Role 중에 1개이상 갖고있는 사용자 허용&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;anonymous&lt;/strong&gt; : 익명 사용자 허용&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;authenticated&lt;/strong&gt; : 인증된 사용자 허용&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;permitAll&lt;/strong&gt; : 모든 사용자 허용&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;denyAll&lt;/strong&gt; : 모든 사용자 허용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;유용한-annotation&quot;&gt;유용한 annotation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;@Secured&lt;/strong&gt; : 각 요청경로에 따른 권한 설정은 위의 xml에서도 할 수 있지만, 메소드레벨에서 @Secured 를 통해서도 할 수 있다. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;security:global-method-security secured-annotations=&quot;enabled&quot;/&amp;gt;&lt;/code&gt; 를 추가하면 된다.
+    &lt;ul&gt;
+      &lt;li&gt;@Secured(“ROLE_ADMIN”) , @Secured({“ROLE_ADMIN”,”ROLE_USER”})&lt;/li&gt;
+      &lt;li&gt;비인가자 접근 시 AccessDeniedException 던짐&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;@PreAuthorize&lt;/strong&gt; : 위와 비슷하지만 spEL 을 사용할 수 있다. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;security:global-method-security pre-post-annotations=&quot;enabled&quot; /&amp;gt;&lt;/code&gt; 를 설정한다.
+    &lt;ul&gt;
+      &lt;li&gt;@PreAuthorize(“hasRole(‘ADMIN’)”)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;@PostAuthorize&lt;/strong&gt; : 위와 동일&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;@AuthenticationPrincipal&lt;/strong&gt; : 컨트롤러단에서 세션의 정보들에 접근하고 싶을 때 파라미터에 선언해준다.
+    &lt;ul&gt;
+      &lt;li&gt;public ModelAndView userInfo(@AuthenticationPrincipal User user)&lt;/li&gt;
+      &lt;li&gt;이거 안쓰고 확인하려면 (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 이런식으로 써야한다.&lt;/li&gt;
+      &lt;li&gt;4.x 부터는 org.springframework.security.core.annotation.AuthenticationPrincipal 을 import 해야한다.&lt;/li&gt;
+      &lt;li&gt;mvc:annotation-driven.mvc:argument-resolvers 에 bean 으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver&lt;/code&gt;를 등록한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#getting-started&quot;&gt;https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#getting-started&lt;/a&gt;
+&lt;a href=&quot;https://sjh836.tistory.com/165&quot;&gt;https://sjh836.tistory.com/165&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/articles/2020-05/spring-security-01</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security-01</guid>
+        
+        <category>Spring</category>
+        
+        <category>Spring Security</category>
+        
+        
+        <category>spring</category>
+        
+      </item>
     
       <item>
         <title>Spring security에 대해</title>
@@ -117,7 +422,7 @@
 &lt;a href=&quot;https://sjh836.tistory.com/165&quot;&gt;https://sjh836.tistory.com/165&lt;/a&gt;
 &lt;a href=&quot;https://coding-start.tistory.com/153&quot;&gt;https://coding-start.tistory.com/153&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
+        <pubDate>Sun, 17 May 2020 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/articles/2020-05/spring-security</link>
         <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security</guid>
         
@@ -1918,65 +2223,6 @@ elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
         
         
         <category>etc</category>
-        
-      </item>
-    
-      <item>
-        <title>Spring Boot Servlet 등록하기</title>
-        <description>&lt;p&gt;Spring boot에서는 서블릿을 사용하기 위해 설정을 등록해야 한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServletRegistrationConfig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServletRegistrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;NewServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getServletRegistrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;ServletRegistrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;NewServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registrationBean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServletRegistrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NewServlet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;registrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addUrlMappings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/new&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;NewServlet에는 등록하려는 서블릿이 들어가고,&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;registrationBean.addUrlMappings(&quot;/new&quot;)&lt;/code&gt; 에는 서블릿의 urlPattern을 넣어주면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;결과 코드는 위에 캡쳐해뒀다 ! 
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;
-이걸 몰라서 처음에 뭘 잘못 설정했나 하고 프로젝트를 몇번이나 다시 만들었다.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 04 Mar 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/spring-boot-registering-servlet</guid>
-        
-        <category>Spring Boot</category>
-        
-        <category>Web</category>
-        
-        <category>Servlet</category>
-        
-        
-        <category>spring</category>
         
       </item>
     
