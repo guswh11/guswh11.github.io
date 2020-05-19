@@ -54,7 +54,8 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hyunjin
+disqus_username: disqus_eOROPgFy9M
+disqus_identifier: hyunjin.io
 
 # Netease settings
 netease_comment: false
