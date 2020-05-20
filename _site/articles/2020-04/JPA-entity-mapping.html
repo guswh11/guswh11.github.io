@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="설명">
+    <meta name="keywords"  content="黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="JPA - Entity에 대해 - 탭에 뜰 말">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="JPA의 데이터베이스-객체 매핑 방법인 Entity 클래스에 대해 알아보자">
+    
+    <meta property="article:published_time" content="2020-04-07T00:00:00Z">
+    
+    
+    
+    <meta property="article:tag" content="JPA">
+    
+    <meta property="article:tag" content="Spring Boot">
+    
+    <meta property="article:tag" content="Database">
+    
+    
+    <meta property="og:image" content="http://localhost:4000/img/avatar-round.png">
+    <meta property="og:url" content="http://localhost:4000/articles/2020-04/JPA-entity-mapping">
+    <meta property="og:site_name" content="탭에 뜰 말">
+    
+    <title>JPA - Entity에 대해 - 탭에 뜰 말</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/articles/2020-04/JPA-entity-mapping">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">블로그 이름</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    
+                    
+                    
+                    <li>
+                        <a href="/archive">Archive</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a href="/categories/">Categories</a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/bg-3.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+
+
+
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/bg-3.jpg');
+        background: ;
+    }
+
+    
+</style>
+
+<header class="intro-header" >
+
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=JPA" title="JPA">JPA</a>
+                        
+                        <a class="tag" href="/archive/?tag=Spring+Boot" title="Spring Boot">Spring Boot</a>
+                        
+                        <a class="tag" href="/archive/?tag=Database" title="Database">Database</a>
+                        
+                    </div>
+                    <h1>JPA - Entity에 대해</h1>
+                    
+                    <h2 class="subheading"></h2>
+                    <span class="meta">Posted by 블로그 이름 on April 7, 2020</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                
+
+				<h2 id="데이터베이스와-객체-매핑-방법">데이터베이스와 객체 매핑 방법</h2>
+
+<h3 id="entity-클래스-설정">Entity 클래스 설정</h3>
+<p><strong><code class="highlighter-rouge">@Entity</code></strong></p>
+<ul>
+  <li>Entity 클래스 : 데이터베이스 스키마의 내용을 자바 클래스로 표현할 수 있는 대상
+    <ul>
+      <li>
+        <p>해당 클래스에 <code class="highlighter-rouge">@Entity</code> 어노테이션을 선언해 엔티티 매니저가 관리해야 할 대상임을 표시</p>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>  <span class="nd">@Entity</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Project</span> <span class="o">{</span>
+                    
+      <span class="nd">@Id</span>
+      <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+      <span class="kd">private</span> <span class="nc">Long</span> <span class="n">projectId</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="nc">String</span> <span class="n">projectName</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="nc">String</span> <span class="n">projectSummary</span><span class="o">;</span>    
+
+      <span class="nd">@CreationTimestamp</span>
+      <span class="kd">private</span> <span class="nc">Timestamp</span> <span class="n">regDate</span><span class="o">;</span>
+
+      <span class="nd">@UpdateTimestamp</span>
+      <span class="kd">private</span> <span class="nc">Timestamp</span> <span class="n">updateDate</span><span class="o">;</span>
+
+      <span class="nd">@OneToOne</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"project"</span><span class="o">)</span>
+      <span class="kd">private</span> <span class="nc">ProjectInfo</span> <span class="n">projectInfo</span><span class="o">;</span>
+
+      <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"project"</span><span class="o">)</span>
+      <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">ProjectMember</span><span class="o">&gt;</span> <span class="n">projectMembers</span><span class="o">;</span>
+  <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+        <p>클래스 내부의 변수들은 각각 데이터베이스 테이블 내의 컬럼이 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>주의
+    <ul>
+      <li>기본 생성자 필수
+        <ul>
+          <li>파라미터가 없는 public 또는 protected 생성자가 필요하다.</li>
+          <li>JPA spec으로 규정되어 있다.
+  Why? JPA를 구현해서 쓰는 라이브러리들이 다양한 기술(Ex. Reflection)을 사용해서 객체를 프록싱할 때 필요하기 때문.</li>
+        </ul>
+      </li>
+      <li>final 클래스, enum, interface, inner 클래스에는 사용할 수 없다.</li>
+      <li>저장할 필드에 final을 사용하면 안 된다.</li>
+    </ul>
+  </li>
+  <li>속성
+    <ul>
+      <li>name
+        <ul>
+          <li><code class="highlighter-rouge">@Entity(name = "Project")</code></li>
+          <li>JPA에서 사용할 엔티티 이름을 지정</li>
+          <li>기본값: 클래스 이름을 그대로 사용</li>
+          <li>패키지 간에 엔티티 이름이 겹치지 않도록 주의</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong><code class="highlighter-rouge">@Table</code></strong></p>
+
+<p>@Entity 에노테이션을 사용할 때 실제 데이터베이스의 테이블명과 클래스명이 다른 경우에는 @Table 어노테이션을 추가해 매칠할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"tbl_proj"</span><span class="o">)</span>
+<span class="nc">Public</span> <span class="kd">class</span> <span class="nc">ProjectEntity</span><span class="o">{}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="필드와-컬럼-매핑">필드와 컬럼 매핑</h3>
+<p><strong>@Column</strong></p>
+
+<p>데이터베이스의 컬럼을 매핑하는 어노테이션</p>
+<ul>
+  <li>속성
+    <ul>
+      <li>
+        <p>name</p>
+
+        <p>데이터베이스 칼럼과 엔티티 내 변수를 각기 다른 이름으로 매핑할 때 사용</p>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>  <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"project_id"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">projectId</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>
+        <p>insertable</p>
+
+        <p>엔티티 저장 시 해당 필드를 저장할 것인지 결정한다.<br />false로 설정하면 데이터베이스에 컬럼으로 저장하지 않는다.</p>
+      </li>
+      <li>
+        <p>updatable</p>
+
+        <p>컬럼 수정(update) 시 데이터베이스에 이를 반영할 것인지 여부를 결정한다.</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  @Column(updatable = false)
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+        <p>위와 같이 설정하면 컬럼을 수정해도 데이터베이스에 반영되지 않는다.</p>
+      </li>
+      <li>
+        <p>nullable</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  @Column(nullable = false)
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+        <p>위와 같은 설정은 데이터베이스에서의 NOT NULL과 같다.</p>
+      </li>
+      <li>
+        <p>columnDefinition</p>
+
+        <p>직접 컬럼 정보를 작성할 수 있다.</p>
+
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  @Column(columnDefinition = "varchar(100) default 'EMPTY'")
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>
+        <p>length</p>
+
+        <p>문자 길이 제약 조건으로, String 타입에만 사용 가능하다.</p>
+      </li>
+      <li>
+        <p>precision, scale(DDL)</p>
+
+        <p>BigDecimal 타입에서 사용한다.(BigInteger 가능) precision은 소수점을 포함한 전체 자리수이고, scale은 소수점 자릿수이다.<br />double랑 float타입에는 적용 되지 않는다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>@Enumerated</strong></p>
+
+<p>Enum 타입을 매핑할 때 사용한다.<br />
+아래는 일반 사용자와 관리자 구분을 하는 UserRole enum에 대한 예제이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * Created by yun_dev1 on 2016-12-26.
+ */</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">UserRole</span> <span class="o">{</span>
+    <span class="no">USER</span><span class="o">,</span> <span class="c1">//0</span>
+    <span class="no">ADMIN</span> <span class="c1">//1</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>위 enum을 사용하는 entity에서의 선언은 다음과 같이 한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"role"</span><span class="o">)</span>
+<span class="nd">@Enumerated</span><span class="o">(</span><span class="nc">EnumType</span><span class="o">.</span><span class="na">ORDINAL</span><span class="o">)</span>
+<span class="kd">private</span> <span class="nc">UserRole</span> <span class="n">role</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>@Temporal</strong></p>
+
+<p>날짜 타입을 매핑할 때 사용한다.</p>
+<ul>
+  <li>타입
+    <ul>
+      <li>DATE: 날짜, DB의 date 타입과 매핑
+  ex) 2019-08-13
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  @Temporal(TemporalType.DATE)
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>TIME: 시간, DB의 time 타입과 매핑
+  ex) 14:20:38</li>
+      <li>TIMESTAMP: 날짜와 시간, DB의 timestamp 타입과 매핑
+  ex) 2019-08-13 14:20:38</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>java 8의 LocalDate(date), LocalDateTime(timestamp) 을 사용할 때는 생략 가능</p>
+</blockquote>
+
+<p><strong>@Lob</strong></p>
+
+<p>DB에서 varchar를 넘어서는 큰 내용을 넣고 싶은 경우에 사용</p>
+<ul>
+  <li>필드의 길이 제한이 없다.</li>
+  <li>@Lob에는 지정할 수 있는 속성이 없다.</li>
+  <li>매핑하는 필드의 타입에 따라 DB의 BLOB, CLOB과 매핑된다.</li>
+</ul>
+
+<p><strong>@Transient</strong></p>
+
+<p>특정 필드를 컬럼에 매핑하지 않음.</p>
+<ul>
+  <li>DB에 관계없이 메모리에서만 사용하고자 하는 객체에 해당 annotation을 사용</li>
+  <li>해당 annotation이 붙은 필드는 DB에 저장, 조회가 되지 않는다.</li>
+</ul>
+
+<h3 id="리스너">리스너</h3>
+
+<p>JPA의 리스너 기능은 entity의 생명주기에 따른 이벤트를 처리할 수 있도록 한다.<br />각 어노테이션은 다음과 같은 시점에 해당 메서드를 호출한다.</p>
+
+<ul>
+  <li>
+    <p><strong>@PrePersist</strong></p>
+
+    <p>@PrePersist는 persist() 메서드를 호출해 entity를 영속성 컨텍스트에 관리하기 직전에 해당 메서드를 호출한다.
+  날짜와 같이 매핑 시에 값 참조를 위해서 미리 인스턴스가 생성되어야 하는 필드에 사용한다.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>  <span class="kd">private</span> <span class="nc">Date</span> <span class="n">date</span><span class="o">;</span>
+
+  <span class="nd">@PrePersist</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDate</span><span class="o">(){</span>
+      <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
+  <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>@PreUpdate</strong></p>
+
+    <p>flush나 commit을 호출해서 엔티티를 데이터베이스에 수정하기 직전 호출 된다.</p>
+  </li>
+  <li>
+    <p><strong>@PostLoad</strong></p>
+
+    <p>entity가 영속성 컨텍스트에 조회된 직후 또는 refresh()를 호출한 후 호출 된다.</p>
+  </li>
+  <li>
+    <p><strong>@PreRemove</strong></p>
+
+    <p>remove() 메서드를 호출해서 엔티티를 영속성 컨텍스트에서 삭제하기 직전에 호출.<br />또한 삭제 명령어로 영속성 전이가 일어날 때도 메서드를 호출되게 한다.<br />orphanRemoval에 대해서는 flush나 commit시 호출 된다.</p>
+  </li>
+  <li>
+    <p><strong>@Postpersist</strong></p>
+
+    <p>flush나 commit을 호출해서 엔티티를 데이터베이스에 저장한 직후에 호출된다.<br />식별자가 항상 존재한다.<br />참고로 식별자 생성 전략이 IDENTITY면 식별자를 생성하기 위해 persist()를 호출한 직후에 바로 Postpersist가 호출 된다.</p>
+  </li>
+  <li>
+    <p><strong>@PostUpdate</strong></p>
+
+    <p>flush나 commit을 호출해서 엔티티를 데이터베이스에 수정한 직후에 호출 된다.</p>
+  </li>
+  <li>
+    <p><strong>@PostRemove</strong></p>
+
+    <p>flush나 commit을 호출해서 엔티티를 데이터베이스에 삭제한 직후에 호출된다.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Entity 클래스 내부에서 각 리스너 어노테이션은 여러 번 선언될 수 없다.</p>
+</blockquote>
+
+<p><strong>이름 매핑 전략 변경하기</strong></p>
+
+<p>단어를 구분할 때 자바는 주로 카멜 표기법을 사용하고, 데이터베이스는 언더스코어(_)를 사용한다.<br />데이터베이스 칼럼과 엔티티 내 변수를 각기 다른 이름으로 매핑하려면 <code class="highlighter-rouge">@Column.name</code> 속성을 사용해야 한다.</p>
+
+<p>name 속성을 사용해 직접 매핑 전략을 구현해도 되지만, <code class="highlighter-rouge">hibernate.ejb.naming_strategy</code> 속성을 사용하면 이름 매핑 전략을 변경할 수 있다.<br />이 클래스는 테이블 명이나 컬럼 명이 생략되면 자바의 카멜 표기법을 테이블의 언더스코어 표기법으로 매핑한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="o">&lt;</span><span class="n">property</span> <span class="n">name</span><span class="o">=</span><span class="s">"hibernate.ejb.naming_strategh"</span>
+    <span class="n">value</span><span class="o">=</span><span class="s">"org.hibernate.cfg.ImprovedNamingStrategh"</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="데이터베이스와-키-매핑">데이터베이스와 키 매핑</h3>
+
+<p>데이터베이스의 기본키와 entity 간의 매핑을 위해 <code class="highlighter-rouge">@Id</code> 어노테이션을 사용한다.</p>
+
+<p>기본키 할당 방식에는 두 가지가 있다</p>
+<ul>
+  <li>
+    <p><strong>직접할당</strong> : 기본키를 어플리케이션에서 직접 할당</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>  <span class="nd">@Id</span>
+  <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"id"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>  <span class="nc">Board</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+  <span class="n">board</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="s">"id1"</span><span class="o">);</span>         <span class="c1">//기본 키 직접 할당</span>
+  <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>자동생성</strong> : 데이터베이스가 자동으로 할당</p>
+
+    <p>ex) 오라클 - sequence, MySQL - auto_increment
+  데이터베이스 종류마다 sequence, auto_increment 등 기본키 자동생성을 지원하는 방법이 다르기 때문에, Spring Data JPA는 4가지 어노테이션을 지원한다.
+  <br />@Id 어노테이션 밑에 <code class="highlighter-rouge">@GeneratedValue(strategy = GenerationType.방식)</code>을 선언해 사용한다.</p>
+
+    <ul>
+      <li><strong>SEQUENCE</strong> : 데이터베이스의 시퀀스 객체와 매핑
+        <ul>
+          <li>주로 시퀀스를 지원하는 Oracle, PostgresSQL, DB2, H2에서 사용</li>
+          <li>@SequenceGenerator를 사용하여 시퀀스 생성기를 등록하고, 실제 데이터베이스의 생성될 시퀀스이름을 지정해줘야 함</li>
+        </ul>
+      </li>
+      <li><strong>IDENTITY</strong> : 기본 키 생성을 데이터베이스에 위임
+        <ul>
+          <li>주로 MySQL, PostgresSQL, SQL Server, DB2에서 사용</li>
+        </ul>
+      </li>
+      <li><strong>TABLE</strong> : 키 값을 데이터베이스 테이블로 표현
+        <ul>
+          <li>키 생성 전용 테이블을 하나 만들고 여기에 이름과 값으로 사용할 컬럼을 만드는 방법</li>
+          <li>데이터베이스 종류와 상관없이 모든 데이터베이스에 적용 가능</li>
+        </ul>
+
+        <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>  <span class="k">create</span> <span class="k">table</span> <span class="n">MY_SEQUENCES</span> <span class="p">(</span>
+      <span class="n">sequence_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+      <span class="n">next_val</span> <span class="nb">bigint</span><span class="p">,</span>
+      <span class="k">primary</span> <span class="k">key</span> <span class="p">(</span><span class="n">sequence_name</span><span class="p">)</span>
+  <span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>  <span class="nd">@Entity</span>
+  <span class="nd">@TableGenerator</span><span class="o">(</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">,</span>
+      <span class="n">table</span> <span class="o">=</span> <span class="s">"MY_SEQUENCES"</span><span class="o">,</span>
+      <span class="n">pkColumnValue</span> <span class="o">=</span> <span class="s">"BOARD_SEQ"</span><span class="o">,</span> <span class="n">allocationSize</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+
+      <span class="nd">@Id</span>
+      <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span>
+                  <span class="n">generator</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">)</span>
+      <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+  <span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">(</span><span class="nc">EntityManger</span> <span class="n">em</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Board</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+      <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"board.id = "</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 출력 : board.id = 1</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+
+        <p>MY_SEQUENCES 테이블에 값이 없으면 JPA가 값을 INSERT</p>
+      </li>
+      <li><strong>AUTO</strong> : 데이터베이스에 따라서 IDENTITY, SEQUENCE, TABLE 중 하나를 자동으로 선택
+        <ul>
+          <li>데이터베이스 종류에 의존적이지 않음</li>
+          <li>데이터베이스를 변경해도 코드를 수정할 필요 없음</li>
+          <li>ex) 오라클의 경우, SEQUENCE를 자동으로 선택해 사용</li>
+        </ul>
+
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre>  <span class="nd">@Entity</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Project</span> <span class="o">{</span>
+
+      <span class="nd">@Id</span>
+      <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
+      <span class="kd">private</span> <span class="nc">Long</span> <span class="n">projectId</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="nc">String</span> <span class="n">projectName</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="nc">String</span> <span class="n">projectSummary</span><span class="o">;</span>
+      <span class="o">...</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>Reference</strong>
+<a href="https://gmlwjd9405.github.io/2019/08/11/entity-mapping.html">https://gmlwjd9405.github.io/2019/08/11/entity-mapping.html</a><br />
+<a href="https://ithub.tistory.com/24">https://ithub.tistory.com/24</a><br />
+<a href="https://ultrakain.gitbooks.io/jpa/chapter4/chapter4.6.html">https://ultrakain.gitbooks.io/jpa/chapter4/chapter4.6.html</a><br />
+<a href="http://wonwoo.ml/index.php/post/995">http://wonwoo.ml/index.php/post/995</a></p>
+
+
+
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/articles/2020-04/about-REST" data-toggle="tooltip" data-placement="top" title="REST에 대해">
+                        Previous<br>
+                        <span>REST에 대해</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/articles/2020-04/about-JPA" data-toggle="tooltip" data-placement="top" title="ORM 도구">
+                        Next<br>
+                        <span>ORM 도구</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+
+<section>
+    
+        <hr class="hidden-sm hidden-xs">
+    
+    <h5><a href="/archive/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+        
+        
+        
+        
+        
+                <a data-sort="0008" 
+                    href="/archive/?tag=Spring+Boot"
+                    title="Spring Boot"
+                    rel="7">Spring Boot</a>
+        
+                <a data-sort="0011" 
+                    href="/archive/?tag=Database"
+                    title="Database"
+                    rel="4">Database</a>
+        
+                <a data-sort="0012" 
+                    href="/archive/?tag=JPA"
+                    title="JPA"
+                    rel="3">JPA</a>
+        
+                <a data-sort="0012" 
+                    href="/archive/?tag=Spring+Security"
+                    title="Spring Security"
+                    rel="3">Spring Security</a>
+        
+                <a data-sort="0013" 
+                    href="/archive/?tag=Spring"
+                    title="Spring"
+                    rel="2">Spring</a>
+        
+                <a data-sort="0013" 
+                    href="/archive/?tag=Web"
+                    title="Web"
+                    rel="2">Web</a>
+    </div>
+</section>
+
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hyunjin";
+    var disqus_identifier = "/articles/2020-04/JPA-entity-mapping";
+    var disqus_url = "http://localhost:4000/articles/2020-04/JPA-entity-mapping";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          // icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!-- SNS Link -->
+                
+
+
+<ul class="list-inline text-center">
+
+
+  
+  
+  
+  
+  
+  
+  <li>
+    <a target="_blank" href="https://github.com/guswh11">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+                <p class="copyright text-muted">
+                    Copyright &copy; 블로그 이름 2020
+                    <br>
+                    Powered by <a href="http://huangxuan.me">Hux Blog</a> |
+                    <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="100px"
+                        height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huxpro&repo=huxpro.github.io&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<!-- Currently, only navbar scroll-down effect at desktop still depends on this -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script src="/js/snackbar.js "></script>
+<script src="/js/sw-registration.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+        var d = document, t = 'script',
+            o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+        s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+
+
+
+
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+        var $nav = document.querySelector("nav");
+        if ($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+<!-- Side Catalog -->
+
+
+
+<!-- Multi-Lingual -->
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
