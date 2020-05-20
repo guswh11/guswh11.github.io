@@ -11,16 +11,34 @@
     <meta name="theme-color" content="#000000">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Tags - 탭에 뜰 말">
+    <meta property="og:title" content="Spring boot H2 데이터베이스 - 탭에 뜰 말">
     
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="설명">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="H2는 java 기반의 SQL 데이터베이스이다. 
+H2는 다음과 같은 특징을 지닌다.
+
+  오픈 소스 JDBC API
+  임베디드, 서버 모드(영구 데이터베이스) / 인메모리(In-memory) 데이터베이스 지원
+  브라우저 콘솔 지원
+  작은 크기의 jar 파일(2MB), 빠른 속도
+
+
+이러한 특징들 때문에 H2는 주로 테스트용 데이터베이스로 쓰인다...">
+    
+    <meta property="article:published_time" content="2020-05-20T00:00:00Z">
+    
+    
+    
+    <meta property="article:tag" content="Spring Boot">
+    
+    <meta property="article:tag" content="Database">
+    
     
     <meta property="og:image" content="http://localhost:4000/img/avatar-round.png">
-    <meta property="og:url" content="http://localhost:4000/tags/">
+    <meta property="og:url" content="http://localhost:4000/spring/2020/05/20/about-H2/">
     <meta property="og:site_name" content="탭에 뜰 말">
     
-    <title>Tags - 탭에 뜰 말</title>
+    <title>Spring boot H2 데이터베이스 - 탭에 뜰 말</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -29,7 +47,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/tags/">
+    <link rel="canonical" href="http://localhost:4000/spring/2020/05/20/about-H2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -177,335 +195,204 @@
 </script>
 
 
-    <!-- Page Header -->
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/bg-3.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
 
 
 
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/bg-3.jpg');
+        background: ;
+    }
 
+    
+</style>
 
+<header class="intro-header" >
 
-
-<header class="intro-header" style="background-image: url('/img/bg-3.jpg')">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="site-heading">
-        
-          <h1>Tags</h1>
-          <span class="subheading"></span>
+    <div class="header-mask"></div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/archive/?tag=Spring+Boot" title="Spring Boot">Spring Boot</a>
+                        
+                        <a class="tag" href="/archive/?tag=Database" title="Database">Database</a>
+                        
+                    </div>
+                    <h1>Spring boot H2 데이터베이스</h1>
+                    
+                    <h2 class="subheading"></h2>
+                    <span class="meta">Posted by 블로그 이름 on May 20, 2020</span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			<h5>Tag cloud <i class="fa fa-cloud info-text-color"></i></h5>
-<ul class="tag-cloud">
 
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#Jekyll">
-      Jekyll
-    </a>
-  </li>
 
-  <li style="font-size: 123%">
-    <a class="post-tag" href="#Spring Boot">
-      Spring Boot
-    </a>
-  </li>
 
-  <li style="font-size: 85%">
-    <a class="post-tag" href="#Web">
-      Web
-    </a>
-  </li>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#Servlet">
-      Servlet
-    </a>
-  </li>
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#REST">
-      REST
-    </a>
-  </li>
+                <!-- Multi-Lingual -->
+                
 
-  <li style="font-size: 93%">
-    <a class="post-tag" href="#JPA">
-      JPA
-    </a>
-  </li>
-
-  <li style="font-size: 100%">
-    <a class="post-tag" href="#Database">
-      Database
-    </a>
-  </li>
-
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#Error">
-      Error
-    </a>
-  </li>
-
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#Javascript">
-      Javascript
-    </a>
-  </li>
-
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#Node.js">
-      Node.js
-    </a>
-  </li>
-
-  <li style="font-size: 77%">
-    <a class="post-tag" href="#npm">
-      npm
-    </a>
-  </li>
-
-  <li style="font-size: 85%">
-    <a class="post-tag" href="#Spring">
-      Spring
-    </a>
-  </li>
-
-  <li style="font-size: 93%">
-    <a class="post-tag" href="#Spring Security">
-      Spring Security
-    </a>
-  </li>
-
+				<p>H2는 java 기반의 SQL 데이터베이스이다. 
+H2는 다음과 같은 특징을 지닌다.</p>
+<ul>
+  <li>오픈 소스 JDBC API</li>
+  <li>임베디드, 서버 모드(영구 데이터베이스) / 인메모리(In-memory) 데이터베이스 지원</li>
+  <li>브라우저 콘솔 지원</li>
+  <li>작은 크기의 jar 파일(2MB), 빠른 속도</li>
 </ul>
 
-<div class="tag-list">
+<p>이러한 특징들 때문에 H2는 주로 테스트용 데이터베이스로 쓰인다.</p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Jekyll">Jekyll</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/jekyll/2020/03/02/jekyll-installing-jemoji/">Jekyll에 emoji 추가하기</a>
-    </article>
-    
-  </div>
+<blockquote>
+  <p>인메모리 데이터베이스는 데이터 스토리지의 메인 메모리에 설치되어 운영되는 DBMS이다.<br />디스크에 최적화된 데이터베이스보다 빠르다는 장점이 있다. <br />휘발성 RAM의 특징으로 인해 프로그램을 닫으면 데이터가 손실된다.</p>
+</blockquote>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Spring Boot">Spring Boot</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/20/about-H2/">Spring boot H2 데이터베이스</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/18/spring-security-02/">Spring security를 이용한 회원가입/로그인 예제</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/08/SOP-CORS/">SOP와 CORS</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/08/JPA-repository/">JPA - Repository에 대해</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/about-JPA/">ORM 도구</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/JPA-entity-mapping/">JPA - Entity에 대해</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/03/04/spring-boot-registering-servlet/">Spring Boot Servlet 등록하기</a>
-    </article>
-    
-  </div>
+<h2 id="사용방법">사용방법</h2>
+<h3 id="의존성-추가">의존성 추가</h3>
+<p>build.gradle에 아래 코드를 추가한다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>runtimeOnly 'com.h2database:h2'
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Web">Web</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/web/2020/04/06/about-REST/">REST에 대해</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/03/04/spring-boot-registering-servlet/">Spring Boot Servlet 등록하기</a>
-    </article>
-    
-  </div>
+<h3 id="설정-파일-작성">설정 파일 작성</h3>
+<p><em>application.properties</em></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>spring.datasource.url=jdbc:h2:mem:testdb;CACHE_SIZE=10240;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=15000;MODE=MySQL;
+spring.datasource.platform=h2
+spring.datasource.separator=;
+spring.datasource.username=sa
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.sql-script-encoding=UTF-8
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Servlet">Servlet</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/03/04/spring-boot-registering-servlet/">Spring Boot Servlet 등록하기</a>
-    </article>
-    
-  </div>
+spring.jpa.database-platform=H2
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.data=classpath:sql/data-H2.sql
+spring.jpa.show-sql=true
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="REST">REST</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/web/2020/04/06/about-REST/">REST에 대해</a>
-    </article>
-    
-  </div>
+<p>datasource.url의 jdbc:h2:mem:testdb는 기본 JDBC URL로,<br />
+testdb 스키마에 mem 인 메모리 데이터베이스로 동작하라는 설정이다.<br />
+jpa를 사용한다면 jpa 설정에도 H2 사용을 명시해준다.</p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="JPA">JPA</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/08/JPA-repository/">JPA - Repository에 대해</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/about-JPA/">ORM 도구</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/JPA-entity-mapping/">JPA - Entity에 대해</a>
-    </article>
-    
-  </div>
+<p>H2 기본 설정은 아래와 같다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>spring.datasource.url=jdbc:h2:mem:testdb  
+spring.datasource.driverClassName=org.h2.Driver  
+spring.datasource.username=sa  
+spring.datasource.password=  
+spring.h2.console.enabled=false  
+</pre></td></tr></tbody></table></code></pre></div></div>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Database">Database</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/20/about-H2/">Spring boot H2 데이터베이스</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/08/JPA-repository/">JPA - Repository에 대해</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/about-JPA/">ORM 도구</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/04/07/JPA-entity-mapping/">JPA - Entity에 대해</a>
-    </article>
-    
-  </div>
+<h3 id="웹-콘솔-활성화">웹 콘솔 활성화</h3>
+<p>스프링부트에서는 다음의 2가지 방법으로 웹 콘솔을 활성화 할 수 있다.</p>
+<ul>
+  <li>spring-boot-devtools 적용</li>
+  <li>application.properties에 <code class="highlighter-rouge">spring.h2.console.enabled=true</code> 추가
+    <ul>
+      <li>위 설정은 나머지 설정들을 기본값으로 들어가게 한다.</li>
+    </ul>
+  </li>
+</ul>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Error">Error</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/08/SOP-CORS/">SOP와 CORS</a>
-    </article>
-    
-  </div>
+<h3 id="h2-콘솔-접속">H2 콘솔 접속</h3>
+<p>프로젝트 실행 후, 아래 링크를 통해 H2 웹 콘솔에 접속할 수 있다.
+<a href="http://localhost:8080/h2-console">http://localhost:8080/h2-console</a></p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Javascript">Javascript</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/2020/05/08/about-npm/">npm에 대해</a>
-    </article>
-    
-  </div>
+<p><img src="h2-web-console.png" alt="web console" /></p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Node.js">Node.js</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/2020/05/08/about-npm/">npm에 대해</a>
-    </article>
-    
-  </div>
+<p>설정 파일에 맞게 정보를 입력하고 Connect 버튼을 눌러 접속한다.<br /> 
+(기본 설정으로 실행했다면 추가적으로 입력할 것은 없다)</p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="npm">npm</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/2020/05/08/about-npm/">npm에 대해</a>
-    </article>
-    
-  </div>
+<p><img src="h2-web-console-connected.png" alt="web console connected" /></p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Spring">Spring</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/18/spring-security-01/">Spring security 설정 방법</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/17/spring-security/">Spring security에 대해</a>
-    </article>
-    
-  </div>
+<p>위 창에서 직접 테이블을 만들거나 지우고, CRUD가 가능하다. <br />
+빨간 칸 안에 쿼리를 작성하고 실행 버튼을 눌러 결과를 확인할 수 있다. <br />
+프로젝트를 종료하면 작업 내용은 모두 사라진다.</p>
 
-  <div class="tag-group">
-    
-    <h5 class="tag-group-title" id="Spring Security">Spring Security</h5>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/18/spring-security-02/">Spring security를 이용한 회원가입/로그인 예제</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/18/spring-security-01/">Spring security 설정 방법</a>
-    </article>
-    
-    <article class="tag-item">
-      <a class="tag-item-title" href="http://localhost:4000/spring/2020/05/17/spring-security/">Spring security에 대해</a>
-    </article>
-    
-  </div>
+<h3 id="reference">Reference</h3>
+<p><a href="https://www.h2database.com/html/main.htmlz">https://www.h2database.com/html/main.htmlz</a></p>
 
-</div>
 
-    		</div>
+                <hr style="visibility: hidden;">
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/spring/2020/05/18/spring-security-02/" data-toggle="tooltip" data-placement="top" title="Spring security를 이용한 회원가입/로그인 예제">
+                        Previous<br>
+                        <span>Spring security를 이용한 회원가입/로그인 예제</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <hr style="visibility: hidden;">
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+                
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
 
 
 <section>
+    
+        <hr class="hidden-sm hidden-xs">
     
     <h5><a href="/archive/">FEATURED TAGS</a></h5>
     <div class="tags">
@@ -548,50 +435,71 @@
 </section>
 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-  <hr>
-  <h5><a href="/about/">ABOUT ME</a></h5>
-  <div class="short-about">
-    
-    <img src="/img/avatar-round.png" />
-    
-    
-    <p>자기소개</p>
-    
-    <!-- SNS Link -->
-    
-
-
-<ul class="list-inline">
-
-
-  
-  
-  
-  
-  
-  
-  <li>
-    <a target="_blank" href="https://github.com/guswh11">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-  </li>
-  
-  
-</ul>
-  </div>
-</section>
-
                 <!-- Friends Blog -->
                 
-    		</div>
-        
-	</div>
-</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- add support for mathjax by voleking-->
+
+
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hyunjin";
+    var disqus_identifier = "/spring/2020/05/20/about-H2";
+    var disqus_url = "http://localhost:4000/spring/2020/05/20/about-H2/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'right',
+          // icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
 
