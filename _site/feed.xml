@@ -5,9 +5,436 @@
     <description>설명</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 18 May 2020 21:26:50 +0900</pubDate>
-    <lastBuildDate>Mon, 18 May 2020 21:26:50 +0900</lastBuildDate>
+    <pubDate>Wed, 20 May 2020 11:36:38 +0900</pubDate>
+    <lastBuildDate>Wed, 20 May 2020 11:36:38 +0900</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
+    
+      <item>
+        <title>Spring boot H2 데이터베이스</title>
+        <description>&lt;p&gt;H2는 java 기반의 SQL 데이터베이스이다. 
+H2는 다음과 같은 특징을 지닌다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;오픈 소스 JDBC API&lt;/li&gt;
+  &lt;li&gt;임베디드, 서버 모드(영구 데이터베이스) / 인메모리(In-memory) 데이터베이스 지원&lt;/li&gt;
+  &lt;li&gt;브라우저 콘솔 지원&lt;/li&gt;
+  &lt;li&gt;작은 크기의 jar 파일(2MB), 빠른 속도&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이러한 특징들 때문에 H2는 주로 테스트용 데이터베이스로 쓰인다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;인메모리 데이터베이스는 데이터 스토리지의 메인 메모리에 설치되어 운영되는 DBMS이다.
+디스크에 최적화된 데이터베이스보다 빠르다는 장점이 있다. &lt;br /&gt;휘발성 RAM의 특징으로 인해 프로그램을 닫으면 데이터가 손실된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;사용방법&quot;&gt;사용방법&lt;/h2&gt;
+&lt;h3 id=&quot;의존성-추가&quot;&gt;의존성 추가&lt;/h3&gt;
+&lt;p&gt;build.gradle에 아래 코드를 추가한다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;runtimeOnly 'com.h2database:h2'
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;설정-파일-작성&quot;&gt;설정 파일 작성&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;application.properties&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;spring.datasource.url=jdbc:h2:mem:testdb;CACHE_SIZE=10240;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=15000;MODE=MySQL;
+spring.datasource.platform=h2
+spring.datasource.separator=;
+spring.datasource.username=sa
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.sql-script-encoding=UTF-8
+
+spring.jpa.database-platform=H2
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.data=classpath:sql/data-H2.sql
+spring.jpa.show-sql=true
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;datasource.url의 jdbc:h2:mem:testdb는 기본 JDBC URL로,&lt;br /&gt;
+testdb 스키마에 mem 인 메모리 데이터베이스로 동작하라는 설정이다.&lt;br /&gt;
+jpa를 사용한다면 jpa 설정에도 H2 사용을 명시해준다.&lt;/p&gt;
+
+&lt;p&gt;H2 기본 설정은 아래와 같다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;spring.datasource.url=jdbc:h2:mem:testdb  
+spring.datasource.driverClassName=org.h2.Driver  
+spring.datasource.username=sa  
+spring.datasource.password=  
+spring.h2.console.enabled=false  
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;웹-콘솔-활성화&quot;&gt;웹 콘솔 활성화&lt;/h3&gt;
+&lt;p&gt;스프링부트에서는 다음의 2가지 방법으로 웹 콘솔을 활성화 할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;spring-boot-devtools 적용&lt;/li&gt;
+  &lt;li&gt;application.properties에 &lt;code class=&quot;highlighter-rouge&quot;&gt;spring.h2.console.enabled=true&lt;/code&gt; 추가
+    &lt;ul&gt;
+      &lt;li&gt;위 설정은 나머지 설정들을 기본값으로 들어가게 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;h2-콘솔-접속&quot;&gt;H2 콘솔 접속&lt;/h3&gt;
+&lt;p&gt;프로젝트 실행 후, 아래 링크를 통해 H2 웹 콘솔에 접속할 수 있다.
+&lt;a href=&quot;http://localhost:8080/h2-console&quot;&gt;http://localhost:8080/h2-console&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;h2-web-console.png&quot; alt=&quot;web console&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;설정 파일에 맞게 정보를 입력하고 Connect 버튼을 눌러 접속한다.&lt;br /&gt; 
+(기본 설정으로 실행했다면 추가적으로 입력할 것은 없다)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;h2-web-console-connected.png&quot; alt=&quot;web console connected&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 창에서 직접 테이블을 만들거나 지우고, CRUD가 가능하다. &lt;br /&gt;
+빨간 칸 안에 쿼리를 작성하고 실행 버튼을 눌러 결과를 확인할 수 있다. &lt;br /&gt;
+프로젝트를 종료하면 작업 내용은 모두 사라진다.&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.h2database.com/html/main.htmlz&quot;&gt;https://www.h2database.com/html/main.htmlz&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 May 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/articles/2020-05/about-H2</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-H2</guid>
+        
+        <category>Spring Boot</category>
+        
+        <category>Database</category>
+        
+        
+        <category>spring</category>
+        
+      </item>
+    
+      <item>
+        <title>Spring security를 이용한 회원가입/로그인 예제</title>
+        <description>&lt;h1 id=&quot;spring-boot에서-spring-security-사용하기&quot;&gt;Spring boot에서 Spring security 사용하기&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;스프링 부트로 배우는 자바 웹 개발&lt;/em&gt; 책을 참고했다. 
+&lt;a href=&quot;https://github.com/thecodinglive/JPub-JavaWebService/archive/master.zip&quot;&gt;zip파일로 소스코드 전체 다운로드&lt;/a&gt;
+(전체 파일 중 memberApp 부분에 해당한다.)&lt;/p&gt;
+
+&lt;h2 id=&quot;spring-security-설정&quot;&gt;Spring security 설정&lt;/h2&gt;
+&lt;p&gt;스프링부트에서 스프링 시큐리티 설정은 &lt;code class=&quot;highlighter-rouge&quot;&gt;WebSecurityConfigurerAdapter&lt;/code&gt;라는 클래스를 상속받은 클래스에서 메서드를 오버라이딩 해 조정할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;SecurityConfig.java&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@EnableWebSecurity&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@EnableGlobalMethodSecurity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prePostEnabled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SecurityConfig&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WebSecurityConfigurerAdapter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpSecurity&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;authorizeRequests&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//접근 허용&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;antMatchers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/css/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/js/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/images/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/resources/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/h2-console/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/webjars/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/signup&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/home&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;permitAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;anyRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;authenticated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//iframe 허용&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;frameOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;disable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//DB 어드민 접속 허용&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;csrf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ignoringAntMatchers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/h2-console/**&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//로그인&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;formLogin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;loginPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;loginProcessingUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/sign-in&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defaultSuccessUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/welcome&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;failureUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login?error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;usernameParameter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;passwordParameter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;passwd&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;permitAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//예외처리 &lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exceptionHandling&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;accessDeniedHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;MemberAccessDeniedHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rememberMe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jpub&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rememberMeParameter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;remember-me&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rememberMeCookieName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jpubcookie&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tokenValiditySeconds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;86400&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//1day&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tokenRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rememberMeTokenService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userDetailsService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myUserService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//로그아웃&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;logout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invalidateHttpSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clearAuthentication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;logoutRequestMatcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AntPathRequestMatcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/logout&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;logoutSuccessUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/login?logout&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;permitAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+	&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;AuthenticationManagerBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;userDetailsService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myUserService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;passwordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bCryptPasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FilterRegistrationBean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSpringSecurityFilterChainBindedToError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+			&lt;span class=&quot;nd&quot;&gt;@Qualifier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;springSecurityFilterChain&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Filter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;springSecurityFilterChain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+		&lt;span class=&quot;nc&quot;&gt;FilterRegistrationBean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registration&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FilterRegistrationBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFilter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;springSecurityFilterChain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setDispatcherTypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EnumSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;allOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DispatcherType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BCryptPasswordEncoder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bCryptPasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BCryptPasswordEncoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyUserService&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;myUserService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MyUserService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RememberMeTokenService&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rememberMeTokenService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RememberMeTokenService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MemberAccessDeniedHandler&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MemberAccessDeniedHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MemberAccessDeniedHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;@EnableWebSecurity&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;@Configuration 클래스에 @EnableWebSecurity 어노테이션을 추가하여 Spring Security 설정할 클래스라고 정의한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;WebSecurityConfigurerAdapter 클래스&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;WebSecurityConfigurer 인스턴스를 편리하게 생성하기 위한 클래스&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;BCryptPasswordEncoder&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;BCryptPasswordEncoder는 Spring Security에서 제공하는 비밀번호 암호화 객체이다.
+        &lt;blockquote&gt;
+          &lt;p&gt;BCryptPasswordEncoder는 BCrypt 해시 함수를 이용하여 비밀번호를 저장하는 방법을 사용&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Service에서 비밀번호를 암호화할 수 있도록 Bean으로 등록&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;security 설정은 &lt;code class=&quot;highlighter-rouge&quot;&gt;configure()&lt;/code&gt; 메서드를 오버라이딩해 추가할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;validation-설정&quot;&gt;Validation 설정&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MemberValidator&lt;/code&gt;에서 회원가입 입력값을 검증한다. 
+form으로 회원가입 정보를 제출하면 controller에서 다음과 같이 압력값 검증을 요청한다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;memberValidator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;userForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bindingResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bindingResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasErrors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;valid error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;signup&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;아래는 MemberValidator의 validate 메서드이다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Errors&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nc&quot;&gt;ValidationUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectIfEmptyOrWhitespace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;NotEmpty&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Size.userForm.username&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memberService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findByUserName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Duplicate.userForm.username&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memberService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findByUserEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Duplicate.userForm.email&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nc&quot;&gt;ValidationUtils&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectIfEmptyOrWhitespace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;NotEmpty&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Size.userForm.password&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPasswordConfirm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rejectValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;passwordConfirm&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Diff.userForm.passwordConfirm&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;오류 발생 시 rejectValue에서 두번째 파라미터 값의 내용을 출력한다. 
+이는 validation.properties 파일에 정의되어 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;NotEmpty=필수값입니다.
+Size.userForm.username=이름은 3글자 이상 32자 미만으로 입력하세요
+Duplicate.userForm.username=중복된 이름입니다
+Size.userForm.password=패스워드는 7글자 이상 32자 미만으로 입력하세요
+Diff.userForm.passwordConfirm=패스워드가 확인용 패스워드와 서로 맞지 않습니다
+Duplicate.userForm.email=이미 사용 중인 이메일입니다
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;validation-error.png&quot; alt=&quot;validation error&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://victorydntmd.tistory.com/328&quot;&gt;https://victorydntmd.tistory.com/328&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/articles/2020-05/spring-security-02</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security-02</guid>
+        
+        <category>Spring Boot</category>
+        
+        <category>Spring Security</category>
+        
+        
+        <category>spring</category>
+        
+      </item>
     
       <item>
         <title>Spring security 설정 방법</title>
@@ -319,27 +746,26 @@ AuthenticationProvider의 구현체로 DaoAuthenticationProvider를 사용할 �
         <description>&lt;h1 id=&quot;spring-security&quot;&gt;Spring security&lt;/h1&gt;
 &lt;h2 id=&quot;spring-security스프링-시큐리티란&quot;&gt;Spring security(스프링 시큐리티)란&lt;/h2&gt;
 &lt;p&gt;스프링 시큐리티는 스프링 기반의 어플리케이션의 보안(인증과 권한)을 담당하는 프레임워크로,
-보안과 관련해서 체계적으로 많은 옵션들을 지원한다. 
-만약 스프링 시큐리티를 사용하지 않는다면 개발자가 보안 관련 로직을 직접 작성해야 할 것이다.&lt;br /&gt;
-스프링 시큐리티는 필터(filter) 기반으로 동작하기 때문에 spring MVC와 분리되어 관리 및 동작한다.&lt;/p&gt;
+인증과 권한 제어에 필요한 필터의 모음이다.
+필터를 기반으로 권한에 따른 접근 제어 기능, 패스워드 암호화 등의 기능을 지원한다. 
+만약 스프링 시큐리티를 사용하지 않는다면 개발자가 보안 관련 로직을 직접 작성해야 할 것이다.&lt;/p&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;filter란&lt;/p&gt;
+  &lt;p&gt;웹 클라이언트의 요청에 대해서 필요한 사전 작업이 있을 경우에 필터를 사용&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;보안-관련-용어&quot;&gt;보안 관련 용어&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;접근 주체(Principal)&lt;/strong&gt; : 보호된 대상에 접근하는 유저&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;인증(Authenticate)&lt;/strong&gt; : 현재 유저가 누구인지 확인(ex. 로그인)
+  &lt;li&gt;&lt;strong&gt;인증(Authenticate)&lt;/strong&gt; : 입력받은 정보와 사용자 정보를 비교해서 신원을 확인하는 것(ex. 로그인)
     &lt;ul&gt;
       &lt;li&gt;애플리케이션의 작업을 수행할 수 있는 주체임을 증명&lt;/li&gt;
       &lt;li&gt;코드에서의 Authentication: 인증 과정에서 사용되는 핵심 객체&lt;/li&gt;
+      &lt;li&gt;스프링 시큐리티는 기본적으로 HTTP 기본 인증 방식으로 동작&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;인가(Authorize)&lt;/strong&gt; : 해당 리소스에 대해 접근 가능한 권한을 가지고 있는지 확인하는 과정(인증 이후)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;권한(Authorization)&lt;/strong&gt; : 인가 과정에서 해당 리소스에 대한 제한된 최소한의 권환을 가졌는지 확인
+  &lt;li&gt;&lt;strong&gt;인가(Authorization)&lt;/strong&gt; : 인증 과정을 통해 사용자를 식별한 후 사용자가 가진 권한을 확인하여 권한에 맞게 접근을 허용하는 것
     &lt;ul&gt;
-      &lt;li&gt;권한 승인이 필요한 부분으로 접근하려면 인증 과정을 통해 주체가 증명 되어야만 한다&lt;/li&gt;
-      &lt;li&gt;권한 부여에도 두가지 영역이 존재하는데 웹 요청 권한, 메소드 호출 및 도메인 인스턴스에 대한 접근 권한 부여&lt;/li&gt;
+      &lt;li&gt;스프링 시큐리티에서는 권한 관리가 Role(접속한 사용자가 사이트에서 수행하는 역할) 기반으로 이루어진다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -1895,334 +2321,6 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
         
         
         <category>web</category>
-        
-      </item>
-    
-      <item>
-        <title>Elasticsearch와 Kibana설치 방법</title>
-        <description>&lt;h1 id=&quot;how-to-install-elasticsearch-and-kibana&quot;&gt;How to install elasticsearch and kibana&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Elasticsearch 설치&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-    &lt;p&gt;Kibana를 사용하기 위해서는 Elasticsearch가 필수이며, 같은 버전을 사용해야 한다.&lt;/p&gt;
-
-    &lt;p&gt;Elasticsearch는 Java 8 이상이 필요하다. &lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-    &lt;p&gt;Java 설정이 확인되었다면, 아래 링크를 통해 elasticsearch 압축 파일을 다운받을 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;파일 다운로드: &lt;a href=&quot;https://www.elastic.co/kr/downloads/elasticsearch&quot;&gt;https://www.elastic.co/kr/downloads/elasticsearch&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;파일 다운이 완료되면, 다음과 같은 명령어를 통해 압축을 푼다. 예시에서는 elasticsearch 7.6.1 버전을 사용했다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  tar -xvf elasticsearch-7.6.1.tar.gz
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;다음과 같이 bin 디렉토리로 이동한다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  cd elasticsearch-7.6.1/bin
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;클러스터 시작을 위해, 다음과 같은 명령어를 입력한다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  ./elasticsearch
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;정상적으로 설치가 완료되었다면 
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:9200&lt;/code&gt; 접속 시 아래와 같은 화면을 확인할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;elasticsearch-install-result.png&quot; alt=&quot;elasticsearch install result&quot; /&gt;&lt;/p&gt;
-
-    &lt;hr /&gt;
-    &lt;p&gt;Elasticsearch 설치 방법: &lt;a href=&quot;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&quot;&gt;https://www.elastic.co/guide/kr/elasticsearch/reference/current/gs-installation.html&lt;/a&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Kibana 설치&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
-
-    &lt;p&gt;아래 링크에서 Kibana 압축 파일을 다운받을 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;파일 다운로드: &lt;a href=&quot;https://www.elastic.co/kr/downloads/kibana&quot;&gt;https://www.elastic.co/kr/downloads/kibana&lt;/a&gt;
-  혹은, 다음과 같은 명령어를 이용해 파일을 다운받는다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-linux-x86_64.tar.gz
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;예시에서는 Kibana 7.6.1 버전을 사용했다. &lt;br /&gt;(설치된 Elasticsearch와 같은 버전을 사용해야 한다)&lt;/p&gt;
-
-    &lt;p&gt;파일 다운이 완료되면, 아래 명령어를 이용해 sha1sum 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;shasum&lt;/code&gt;으로 생성된 SHA를 published SHA와 비교하고, 압축을 푼다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  sha1sum kibana-7.6.1-linux-x86_64.tar.gz 
-  tar -xzf kibana-7.6.1-linux-x86_64.tar.gz
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;다음과 같은 명령어를 실행해 Kibana를 시작한다.&lt;/p&gt;
-
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  cd kibana-7.6.1-linux-x86_64
-  ./bin/kibana
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;정상적으로 설치가 완료되었다면 
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:5601&lt;/code&gt; 접속 시 아래와 같이 Kibana 시작 화면을 확인할 수 있다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;kibana-install-result.png&quot; alt=&quot;kibana install result&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;아래와 같은 화면이 뜰 경우, elasticsearch와의 버전이 맞지 않거나 elasticsearch가 설치되지 않은 것이다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;kibana-install-wrong-result.png&quot; alt=&quot;kibana install wrong result&quot; /&gt;&lt;/p&gt;
-
-    &lt;hr /&gt;
-    &lt;p&gt;Kibana 설치 방법: &lt;a href=&quot;https://www.elastic.co/guide/kr/kibana/current/targz.html&quot;&gt;https://www.elastic.co/guide/kr/kibana/current/targz.html&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 16 Mar 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/elasticsearch-kibana-install</guid>
-        
-        
-        <category>etc</category>
-        
-      </item>
-    
-      <item>
-        <title>Kibana에 대해</title>
-        <description>&lt;h1 id=&quot;kibana&quot;&gt;Kibana&lt;/h1&gt;
-
-&lt;p&gt;&lt;em&gt;회사 일로 kibana에 대해 조사해봤다.&lt;/em&gt;
-&lt;em&gt;내가 쓴거니까 올려도 될것같다!!&lt;/em&gt;
-&lt;br /&gt;
-&lt;em&gt;아직 예제는 못돌려봤다….&lt;/em&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;목차&quot;&gt;목차&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;개요&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#license&quot;&gt;라이선스&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#datatype&quot;&gt;데이터타입&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#function&quot;&gt;기능&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#feature&quot;&gt;특징&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#reference&quot;&gt;레퍼런스 현황&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#example&quot;&gt;예제&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. 개요&lt;/strong&gt;&lt;a name=&quot;introduction&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Elasticsearch가 logstash를 통해 수집한 데이터를 시각화하는 역할을 함
-elasticsearch, logstash와 함께 동작 (ELK)&lt;/li&gt;
-  &lt;li&gt;다음과 같은 주요 기능을 지님
-    &lt;ul&gt;
-      &lt;li&gt;&lt;u&gt;Discover&lt;/u&gt;: 데이터를 한 눈에 확인&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Visualize&lt;/u&gt;: 수집된 결과를 시각화&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Dashboard&lt;/u&gt;: 시각화한 개체 모아보기&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Setting&lt;/u&gt;: index 등록 및 환경설정&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;hr /&gt;
-
-    &lt;p&gt;공식 소개: &lt;a href=&quot;https://www.elastic.co/kr/kibana&quot;&gt;https://www.elastic.co/kr/kibana&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;Github repo: &lt;a href=&quot;https://github.com/elastic/kibana&quot;&gt;https://github.com/elastic/kibana&lt;/a&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;2. 라이선스&lt;/strong&gt;&lt;a name=&quot;license&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;오픈소스, 무료로 제공&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;제약 존재&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;You agree not to:&lt;br /&gt;
-  (iv) use Elastic Software
-  Object Code for providing time-sharing services, any software-as-a-service,
-  service bureau services or as part of an application services provider or
-  other service offering (collectively, “SaaS Offering”) where obtaining access
-  to the Elastic Software or the features and functions of the Elastic Software
-  is a primary reason or substantial motivation for users of the SaaS Offering
-  to access and/or use the SaaS Offering (“Prohibited SaaS Offering”)
-  &lt;br /&gt;…&lt;br /&gt;
-  (vi)
-  alter or remove any Marks and Notices in the Elastic Software.&lt;/p&gt;
-    &lt;/blockquote&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;saas 금지&lt;/li&gt;
-      &lt;li&gt;marks, notices 못 없앰&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;hr /&gt;
-
-    &lt;p&gt;Elastic-license 문서: &lt;a href=&quot;https://github.com/elastic/kibana/blob/7.6/licenses/ELASTIC-LICENSE.txt&quot;&gt;https://github.com/elastic/kibana/blob/7.6/licenses/ELASTIC-LICENSE.txt&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3. 데이터타입&lt;/strong&gt;&lt;a name=&quot;datatype&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Json&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;4. 기능&lt;/strong&gt;&lt;a name=&quot;function&quot;&gt;&lt;/a&gt;
-&lt;br /&gt;Kibana의 시각화 관련 기능들이다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;차트&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;메트릭&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;데이터 표&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Vega(사용자 정의)&lt;/strong&gt;
-&lt;br /&gt;사용자 정의 시각화를 가능케 한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;vega-example.jpg&quot; alt=&quot;vega example&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Time Series Visual Builder(TSVB)&lt;/strong&gt;
-&lt;br /&gt;데이터 집계와 파이프라인 집계를 결합해 복잡한 데이터를 표시하는 시계열 데이터 시각화 도구이다.
-&lt;br /&gt;TSVB는 다음과 같은 종류의 시각화를 제공한다.
-    &lt;ul&gt;
-      &lt;li&gt;&lt;u&gt;Time Series&lt;/u&gt;
-  &lt;img src=&quot;tsvb-timeseries.png&quot; alt=&quot;TSVB-Time Series&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Metric&lt;/u&gt;
-  &lt;img src=&quot;tsvb-metric.png&quot; alt=&quot;TSVB-Metric&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Top N&lt;/u&gt;
-  &lt;img src=&quot;tsvb-top-n.png&quot; alt=&quot;TSVB-Top N&quot; /&gt;&lt;/li&gt;
-      &lt;li&gt;Gauge&lt;/li&gt;
-      &lt;li&gt;Markdown&lt;/li&gt;
-      &lt;li&gt;Table&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Canvas&lt;/strong&gt;
-&lt;br /&gt;CSS요소 추가, 디자인 요소 활용 등을 통해 시각화 결과를 커스터마이징 가능케 한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;canvas-log-analysis.png&quot; alt=&quot;canvas example-log analysis&quot; /&gt;&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;canvas-infrastructure.png&quot; alt=&quot;canvas example-infrastructure&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Dashboard&lt;/strong&gt;
-&lt;br /&gt;Kibana에서 생성한 시각화와 검색 결과를 모아볼 수 있으며, 저장/공유 기능을 제공한다.&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;dashboard_example.png&quot; alt=&quot;dashboard example&quot; /&gt;&lt;/p&gt;
-
-    &lt;hr /&gt;
-
-    &lt;p&gt;전체 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/kibana/features&quot;&gt;https://www.elastic.co/kr/kibana/features&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;구독 형태에 따른 제공 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/subscriptions&quot;&gt;https://www.elastic.co/kr/subscriptions&lt;/a&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;5. 특징&lt;/strong&gt;&lt;a name=&quot;feature&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;REST API 제공&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Kiabana spaces APIs&lt;/li&gt;
-      &lt;li&gt;Kibana role management APIs&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Saved objects APIs&lt;/u&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;Import and export dashboard APIs&lt;/u&gt;&lt;/li&gt;
-      &lt;li&gt;Logstash configuration management APIs&lt;/li&gt;
-      &lt;li&gt;Upgrade assistant APIs&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;Kibana의 일부 기능들은 REST API를 통해 제공되며, 이를 통해 생성된 object(대시보드, 시각화 결과, 인덱스 패턴 등)를 다루는 것이 가능하다.&lt;/p&gt;
-
-    &lt;p&gt;API 사용 가이드: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/api.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/api.html&lt;/a&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;다양한 Plugin 제공&lt;/strong&gt;&lt;/p&gt;
-
-    &lt;p&gt;plugins 목록: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/known-plugins.html&quot;&gt;https://www.elastic.co/guide/en/kibana/current/known-plugins.html&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;데이터 소스&lt;/strong&gt;
-&lt;br /&gt;Kibana는 다음과 같은 데이터 소스를 가진다
-    &lt;ul&gt;
-      &lt;li&gt;운영체제&lt;/li&gt;
-      &lt;li&gt;웹 서버 및 프록시&lt;/li&gt;
-      &lt;li&gt;데이터스토어 및 큐&lt;/li&gt;
-      &lt;li&gt;클라우드 서비스&lt;/li&gt;
-      &lt;li&gt;컨테이너 및 오케스트레이션&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;수집 제품 및 기능&lt;/strong&gt;
-&lt;br /&gt;Kibana는 다음과 같은 데이터 수집 툴들과 연동 가능하다.
-    &lt;ul&gt;
-      &lt;li&gt;Filebeat, Metricbeat, Winlogbeat, Packetbeat, Heartbeat, Auditbeat&lt;/li&gt;
-      &lt;li&gt;Functionbeat&lt;/li&gt;
-      &lt;li&gt;Logstash&lt;/li&gt;
-      &lt;li&gt;ES-Hadoop&lt;/li&gt;
-      &lt;li&gt;파일 가져오기 마법사&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;공유 및 협업&lt;/strong&gt;
-&lt;br /&gt;Kibana에서 생성한 객체 또는 대시보드는 다음과 같은 방법으로 공유 가능하다.
-    &lt;ul&gt;
-      &lt;li&gt;&lt;u&gt;임베디드 대시보드&lt;/u&gt;
-  &lt;br /&gt;Kibana 대시보드로의 링크를 공유하거나, 웹 페이지에서 iframe으로 대시보드를 포함시킬 수 있다. 라이브/정적 대시보드 모두 가능하다.&lt;/li&gt;
-      &lt;li&gt;&lt;u&gt;객체 내보내기 UI 및 API&lt;/u&gt;&lt;/li&gt;
-      &lt;li&gt;저장된 쿼리&lt;/li&gt;
-      &lt;li&gt;CSV 파일 내보내기&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;hr /&gt;
-
-    &lt;p&gt;전체 기능 목록: &lt;a href=&quot;https://www.elastic.co/kr/kibana/features&quot;&gt;https://www.elastic.co/kr/kibana/features&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;6. 호환 프레임워크&lt;/strong&gt;&lt;a name=&quot;framework&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;7. 레퍼런스 현황&lt;/strong&gt;&lt;a name=&quot;reference&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;정돈되고 자세한 가이드 존재&lt;/p&gt;
-
-    &lt;p&gt;공식 가이드: &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/7.6/index.html&quot;&gt;https://www.elastic.co/guide/en/kibana/7.6/index.html&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;구글 ‘kibana’ 검색 결과 &lt;u&gt;약 2,360,000개&lt;/u&gt;, ‘kibana example’ 검색 결과 &lt;u&gt;약 576,000개&lt;/u&gt;, ‘kibana 예제’ 검색 결과 &lt;u&gt;약 6,900개&lt;/u&gt;로 많은 수의 예제와 관련 글이 존재
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;7. 예시&lt;/strong&gt;&lt;a name=&quot;example&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 12 Mar 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/articles/2020-03/kibana</link>
-        <guid isPermaLink="true">http://localhost:4000/articles/2020-03/kibana</guid>
-        
-        
-        <category>etc</category>
         
       </item>
     
