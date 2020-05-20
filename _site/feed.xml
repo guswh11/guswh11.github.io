@@ -5,8 +5,8 @@
     <description>설명</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 20 May 2020 14:37:56 +0900</pubDate>
-    <lastBuildDate>Wed, 20 May 2020 14:37:56 +0900</lastBuildDate>
+    <pubDate>Wed, 20 May 2020 14:55:35 +0900</pubDate>
+    <lastBuildDate>Wed, 20 May 2020 14:55:35 +0900</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -106,8 +106,8 @@ spring.h2.console.enabled=false
 &lt;p&gt;&lt;a href=&quot;https://www.h2database.com/html/main.htmlz&quot;&gt;https://www.h2database.com/html/main.htmlz&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/05/20/about-H2/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/05/20/about-H2/</guid>
+        <link>http://localhost:4000/articles/2020-05/about-H2</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-H2</guid>
         
         <category>Spring Boot</category>
         
@@ -423,8 +423,8 @@ Duplicate.userForm.email=이미 사용 중인 이메일입니다
 &lt;p&gt;&lt;a href=&quot;https://victorydntmd.tistory.com/328&quot;&gt;https://victorydntmd.tistory.com/328&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/05/18/spring-security-02/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/05/18/spring-security-02/</guid>
+        <link>http://localhost:4000/articles/2020-05/spring-security-02</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security-02</guid>
         
         <category>Spring Boot</category>
         
@@ -728,8 +728,8 @@ AuthenticationProvider의 구현체로 DaoAuthenticationProvider를 사용할 �
 &lt;a href=&quot;https://sjh836.tistory.com/165&quot;&gt;https://sjh836.tistory.com/165&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/05/18/spring-security-01/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/05/18/spring-security-01/</guid>
+        <link>http://localhost:4000/articles/2020-05/spring-security-01</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security-01</guid>
         
         <category>Spring</category>
         
@@ -848,8 +848,8 @@ AuthenticationProvider의 구현체로 DaoAuthenticationProvider를 사용할 �
 &lt;a href=&quot;https://coding-start.tistory.com/153&quot;&gt;https://coding-start.tistory.com/153&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 17 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/05/17/spring-security/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/05/17/spring-security/</guid>
+        <link>http://localhost:4000/articles/2020-05/spring-security</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/spring-security</guid>
         
         <category>Spring</category>
         
@@ -1117,8 +1117,8 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 &lt;p&gt;&lt;a href=&quot;https://blog.outsider.ne.kr/665&quot;&gt;https://blog.outsider.ne.kr/665&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2020/05/08/about-npm/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/05/08/about-npm/</guid>
+        <link>http://localhost:4000/articles/2020-05/about-npm</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/about-npm</guid>
         
         <category>Javascript</category>
         
@@ -1255,8 +1255,8 @@ node.js 프로젝트 진행 시, 프로젝트 소스가 모듈에 의존하고 �
 &lt;p&gt;&lt;a href=&quot;https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/&quot;&gt;https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 May 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/05/08/SOP-CORS/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/05/08/SOP-CORS/</guid>
+        <link>http://localhost:4000/articles/2020-05/SOP-CORS</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-05/SOP-CORS</guid>
         
         <category>Error</category>
         
@@ -1551,8 +1551,8 @@ Repository에서 @Query를 선언해 직접 sql을 입력할 수도 있다.
 
 </description>
         <pubDate>Wed, 08 Apr 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/04/08/JPA-repository/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/04/08/JPA-repository/</guid>
+        <link>http://localhost:4000/articles/2020-04/JPA-repository</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-repository</guid>
         
         <category>JPA</category>
         
@@ -1641,8 +1641,8 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 07 Apr 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/04/07/about-JPA/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/04/07/about-JPA/</guid>
+        <link>http://localhost:4000/articles/2020-04/about-JPA</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-JPA</guid>
         
         <category>JPA</category>
         
@@ -2110,8 +2110,8 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 07 Apr 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/spring/2020/04/07/JPA-entity-mapping/</link>
-        <guid isPermaLink="true">http://localhost:4000/spring/2020/04/07/JPA-entity-mapping/</guid>
+        <link>http://localhost:4000/articles/2020-04/JPA-entity-mapping</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-04/JPA-entity-mapping</guid>
         
         <category>JPA</category>
         
@@ -2311,8 +2311,8 @@ Repository라는 인터페이스를 제공&lt;/p&gt;
 &lt;br /&gt;RESTful API 설계 가이드 (예제 존재): &lt;a href=&quot;https://sanghaklee.tistory.com/57&quot;&gt;https://sanghaklee.tistory.com/57&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 06 Apr 2020 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/web/2020/04/06/about-REST/</link>
-        <guid isPermaLink="true">http://localhost:4000/web/2020/04/06/about-REST/</guid>
+        <link>http://localhost:4000/articles/2020-04/about-REST</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/2020-04/about-REST</guid>
         
         <category>REST</category>
         
