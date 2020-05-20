@@ -14,7 +14,8 @@ tags:
 (전체 파일 중 memberApp 부분에 해당한다.)
 
 ## Spring security 설정 
-스프링부트에서 스프링 시큐리티 설정은 `WebSecurityConfigurerAdapter`라는 클래스를 상속받은 클래스에서 메서드를 오버라이딩 해 조정할 수 있다. 
+스프링부트에서 스프링 시큐리티 설정은 `WebSecurityConfigurerAdapter`라는 클래스를 상속받은 클래스에서 configure 메서드를 오버라이딩 해 조정할 수 있다. 
+configure 메서드의 파라미터로는 조정하고자 하는 보안 객체가 들어간다. 
 
 *SecurityConfig.java*
 ```java
@@ -117,7 +118,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   - Service에서 비밀번호를 암호화할 수 있도록 Bean으로 등록
 
 security 설정은 `configure()` 메서드를 오버라이딩해 추가할 수 있다.
+각 설정은 and로 연결한다. 
+- **configure(HttpSecurity http)**
+	- HttpSecurity를 통해 http 요청에 대한 웹 기반 보안 수준을 구성할 수 있다. 
+	- **authorizeRequests()**
+		- HttpServletRequest에 따라 접근(access)을 제한
+		- antMatchers() 메서드로 특정 경로를 지정하며, permitAll(), hasRole() 메서드로 역할(Role)에 따른 접근 설정을 정의
+		- antMathers는 접근 제어를 하지 않을 경로들을 지정
+			- .antMatchers("/admin/**").hasRole("ADMIN")
+			/admin 으로 시작하는 경로는 ADMIN 롤을 가진 사용자만 접근 가능
+			- .antMatchers("/user/myinfo").hasRole("MEMBER")
+			/user/myinfo 경로는 MEMBER 롤을 가진 사용자만 접근 가능
+			- .antMatchers("/**").permitAll()
+			모든 경로에 대해서는 권한없이 접근 가능
+			- .anyRequest().authenticated()
+			모든 요청에 대해, 인증된 사용자만 접근하도록 설정
+	- **csrf()**
+		- ignoringAntMatchers() 메서드로 CSRF 보안을 특정 경로에 대해 비활성화
+			- 예제에서는 h2-console을 사용할 수 있도록 보안 해제 
+	- **formLogin()**
+		- 로그인 설정
+		- loginPage: 아이디, 패스워드 정보를 입력하는 화면 경로
+			- authorizeRequest 메서드에서 인가되지 않은 url로 이동할 경우 입력한 로그인 페이지로 리다이렉트됨
+		- loginProcessingUrl: 입력한 로그인 정보에 대해 POST 방식으로 인증을 요청하는 경로
+		- usernameParameter / passwordParameter: 기본 username, password 필드 대신 다른 필드로 인증
+			- html의 태그 name에 다른 속성을 정의해 사용  
+	- **exceptionHandling()**
+		- 인가되지 않은 사용자가 페이지에 접근할 경우 발생하는 AccessDeniedException을 403에러 페이지 대신 다른 방법으로 처리
+		- accessDeniedHandler를 구현
 
+
+	다음은 가장 기본적인 형태의 HttpSecurity 설정이다.
+	```java
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+			http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
+	}
+	```
+
+>authenticationManager의 구현체는 ProviderManager이다. 인증구현은 AuthentiicationProvider가 맡는다. 
 ## Validation 설정 
 `MemberValidator`에서 회원가입 입력값을 검증한다. 
 form으로 회원가입 정보를 제출하면 controller에서 다음과 같이 압력값 검증을 요청한다. 
