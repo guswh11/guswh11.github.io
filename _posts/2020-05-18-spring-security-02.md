@@ -115,6 +115,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 - **BCryptPasswordEncoder**
   - BCryptPasswordEncoder는 Spring Security에서 제공하는 비밀번호 암호화 객체이다.
     > BCryptPasswordEncoder는 BCrypt 해시 함수를 이용하여 비밀번호를 저장하는 방법을 사용
+	
   - Service에서 비밀번호를 암호화할 수 있도록 Bean으로 등록
 
 security 설정은 `configure()` 메서드를 오버라이딩해 추가할 수 있다.
@@ -307,6 +308,29 @@ public class MemberServiceImpl implements MemberService{
 		- 데이터베이스에 저장하기 직전에 암호화를 진행한다. 
 		- BCryptPasswordEncoder는 스프링 시큐리티에서 제공하는 단방향 암호화 클래스이다. 
 
+*MemberAccessDeniedHandler.java*
+
+```java
+@Slf4j
+@Component
+public class MemberAccessDeniedHandler implements AccessDeniedHandler {
+    @Override
+    public void handle(HttpServletRequest req, HttpServletResponse res, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        Authentication auth
+                = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth != null) {
+            log.info("User '" + auth.getName()
+                    + "' attempted to access the protected URL: "
+                    + req.getRequestURI());
+        }
+
+        res.sendRedirect(req.getContextPath() + "/403");
+    }
+}
+```
+
+유저가 인가되지 않은 페이지에 접근 시도 시, 403 페이지로 redirect 한다. 
 
 ## Validation 설정 
 `MemberValidator`에서 회원가입 입력값을 검증한다. 
@@ -500,6 +524,10 @@ home 페이지의 header 부분 코드의 일부이다.<br>
 토큰 값이 없는 상태에서 form 전송을 할 경우, 컨트롤러에 다음과 같이 POST 메서드를 매핑할 수 없다는 에러가 발생한다.<br>
 `error : HttpRequestMethodNotSupportedException: Request method 'POST'`
 
+회원가입 후 데이터베이스에 role이 'USER'인 유저 정보가 새로 등록된 것을 확인할 수 있다. 
+
+![database-member table](database-member-table.png)
+
 *login.html*
 
 ```html
@@ -559,9 +587,9 @@ home 페이지의 header 부분 코드의 일부이다.<br>
 </body>
 ```
 
-회원가입 페이지와 마찬가지로, 로그인 정보 제출 시 csrf 토큰 값을 넘기는 작업을 진행한다.
+회원가입 페이지와 마찬가지로, 로그인 정보 제출 시 csrf 토큰 값을 넘기는 작업을 진행한다.<br>(사실 `th:action`을 사용하면 Thymeleaf가 csrf 토큰 값을 자동으로 추가해준다)
 
-`welcome.html`
+*welcome.html*
 
 ```html
 <div layout:fragment="content">
