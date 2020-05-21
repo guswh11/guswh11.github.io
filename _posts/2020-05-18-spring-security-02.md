@@ -14,7 +14,7 @@ tags:
 (전체 파일 중 memberApp 부분에 해당한다.)
 
 ## Spring security 설정 
-스프링부트에서 스프링 시큐리티 설정은 `WebSecurityConfigurerAdapter`라는 클래스를 상속받은 클래스에서 configure 메서드를 오버라이딩 해 조정할 수 있다. 
+스프링부트에서 스프링 시큐리티 설정은 `WebSecurityConfigurerAdapter`라는 클래스를 상속받은 클래스에서 configure 메서드를 오버라이딩 해 조정할 수 있다.<br>
 configure 메서드의 파라미터로는 조정하고자 하는 보안 객체가 들어간다. 
 
 *SecurityConfig.java*
@@ -146,7 +146,14 @@ security 설정은 `configure()` 메서드를 오버라이딩해 추가할 수 �
 	- **exceptionHandling()**
 		- 인가되지 않은 사용자가 페이지에 접근할 경우 발생하는 AccessDeniedException을 403에러 페이지 대신 다른 방법으로 처리
 		- accessDeniedHandler를 구현
-
+	- **rememberMe()**
+		- 로그인 유지를 원할 때 사용
+		*([Remember-Me 문서]<>를 참조)*
+	- **logout()**
+		- 로그아웃을 지원하는 메서드
+		- invalidateHttpSession: HTTP 세션을 초기화
+		- logoutRequestMatcher: 기본 로그아웃 url(/logout)이 아닌 다른 url로 재정의
+		- deleteCookies("KEY명"): 로그아웃 시, 특정 쿠기를 제거하고 싶을 때 사용하는 메서드
 
 	다음은 가장 기본적인 형태의 HttpSecurity 설정이다.
 	```java
