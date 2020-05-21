@@ -385,6 +385,10 @@ Duplicate.userForm.email=이미 사용 중인 이메일입니다
 home 페이지의 header 부분 코드의 일부이다.<br>
 `sec:authorize="isAnonymous()"`을 통해 미인증 유저에게는 로그인과 회원가입 메뉴를 보여주고,<br>`sec:authorize="isAuthenticated()"`을 통해 인증된 유저에게만 로그아웃 메뉴를 보여준다. 
 
+|![home-authenticated](home-authenticated.png)|![home-not-authenticated](home-not-authenticated.png)|
+|:--:|:--:|
+| *authenticated* | *not authenticated* |
+
 *signup.html*
 
 ```html
@@ -582,14 +586,10 @@ home 페이지의 header 부분 코드의 일부이다.<br>
 ```
 
 회원가입과 로그인 성공 후 보이는 welcome 페이지다.<br>
-
-```html
-<span sec:authentication="name">userName</span>
-role:<span sec:authentication="principal.authorities"></span>
-```
-
 `sec:authentication="name"`을 통해 username 값을,<br>
 `sec:authentication="principal.authorities"`을 통해 유저의 role 값을 가져온다. 
+
+![welcome](welcome.png)
 
 `sec:authentication`과 `sec:authorize`의 사용법은 아래 링크에서 확인할 수 있다.<br>
 <https://www.thymeleaf.org/doc/articles/springsecurity.html>
