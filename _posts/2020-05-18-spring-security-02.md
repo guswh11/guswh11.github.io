@@ -9,13 +9,15 @@ tags:
 ---
 
 # Spring boot에서 Spring security 사용하기
-*스프링 부트로 배우는 자바 웹 개발* 책을 참고했다. 
-[zip파일로 소스코드 전체 다운로드](https://github.com/thecodinglive/JPub-JavaWebService/archive/master.zip)
+*스프링 부트로 배우는 자바 웹 개발* 책을 참고했다.<br>
+[zip파일로 소스코드 전체 다운로드](https://github.com/thecodinglive/JPub-JavaWebService/archive/master.zip)<br>
 (전체 파일 중 memberApp 부분에 해당한다.)
 
 ## Spring security 설정 
 스프링부트에서 스프링 시큐리티 설정은 `WebSecurityConfigurerAdapter`라는 클래스를 상속받은 클래스에서 configure 메서드를 오버라이딩 해 조정할 수 있다.<br>
-configure 메서드의 파라미터로는 조정하고자 하는 보안 객체가 들어간다. 
+configure 메서드의 파라미터로는 조정하고자 하는 보안 객체가 들어간다.<br>
+전체 설정 옵션은 다음 링크에서 확인할 수 있다.<br>
+<https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/#jc>
 
 *SecurityConfig.java*
 ```java
@@ -269,7 +271,51 @@ public class MemberController {
 }
 ```
 
-## 서비스 구현 
+## 서비스 구현
+*MyUserService.java*
+
+```java
+@Slf4j
+@Service
+public class MyUserService implements UserDetailsService{
+	@Autowired
+    MemberRepository memberRepository;
+
+	private static final String ROLE_PREFIX = "ROLE_";
+
+	@PostConstruct
+	private void created(){
+		log.debug("체크 로그인");
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		log.info("loadUserByUsername user id {} ", email);
+
+		Member member = memberRepository.findByEmail(email);
+		log.debug("member", member.toString());
+		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+
+			grantedAuthorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + member.getRole().name()));
+		log.debug("권한체크:", grantedAuthorities.toString());
+		return new User(member.getUsername(), member.getPassword(), grantedAuthorities);
+	}
+}
+```
+
+UserDetailsService는 데이터베이스에서 유저 정보를 가져오는 역할을 한다. 
+
+loadUserByUsername() 메서드는 데이터베이스에서 계정 정보를 조회하는 역할을 한다.
+ 반환형인 UserDetails 인터페이스는 사용자의 정보를 담는 인터페이스로, 유저 정보를 가져와 담는 VO로 사용된다.
+
+UserDetails 인터페이스가 정의한 함수들은 아이디, 비밀번호, 계정 만료 여뷰, 계정 잠김 여부, 계정 패스워드 만료 여부, 계정 사용 가능 여부, 계정이 갖는 권한 목록 등을 반환한다. 
+UserDetails가 비밀번호를 리턴하기 때문에 로그인 시 입력된 비밀번호가 맞는지 확인하는 작업은 데이터베이스 레벨이 아니라, 자바 코드 레벨에서 이루어진다. 
+
+loadUserByUsername() 메서드는 UserDetailsService 인터페이스에 정의되었기 때문에 스프링 시큐리티가 UserDetailsService 인터페이스에 의존해서 실행하게 된다. 
+
+GrantedAuthority는 사용자가 가지는 권한을 문자열로 나타낸 것이다. 스프링 시큐리티에서는 권한 조회 시에 'Role'을 prefix로 사용하므로 SimpleGrantedAuthority에 저장 시 prefix를 붙여 준다. 
+
 *MemberServiceImpl.java*
 
 ```java
@@ -624,3 +670,5 @@ home 페이지의 header 부분 코드의 일부이다.<br>
 
 ### Reference 
 <https://victorydntmd.tistory.com/328>
+
+[Spring Security Reference](https://docs.spring.io/spring-security/site/docs/4.2.7.RELEASE/reference/htmlsingle/)
