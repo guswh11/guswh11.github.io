@@ -9,7 +9,7 @@ tags:
 ---
 
 ## Remember-Me
-Remember-me는 인증 정보를 쿠키 형태로 보관해서 만료 기간 전까지 저장된 쿠키 정보로 인증을 대신 처리해 주는 기능이다.
+Remember-me는 인증 정보를 쿠키 형태로 보관해서 만료 기간 전까지 저장된 쿠키 정보로 인증을 대신 처리해 주는 기능이다. 세션이 만료되고 웹 브라우저가 종료된 후에도, Remember-me 쿠키가 만료되지 않았다면 사용자를 기억한다. 
 
 이를 위해 Remember-me는 쿠키를 하나 더 사용해, 인증 시 쿠키에 암호화한 인증정보를 담아서 넣어놓는다. 이 값은 세션이 만료되었거나, 세션이 없을 때 사용한다. 즉, 해당 요청에 해당하는 세션을 찾지 못할 때, 같이 보내온 Remember-me 쿠키가 있으면 그 쿠키에 들어있는 인증정보로 인증을 시도한다. 인증이 성공하면 새로운 세션 id와 쿠키가 발급된다. 
 
@@ -19,6 +19,24 @@ Remember-me는 인증 정보를 쿠키 형태로 보관해서 만료 기간 전�
 
 이 경우 해커가 쿠키를 탈취하면, 사용자가 인증하려고 할 때, 유효하지 않은 토큰과 유효한 시리즈의 username으로 접속한다. 이 경우 토큰이 유효하지 않기 때문에 모든 토큰을 삭제하여 해커가 더 이상 탈취한 쿠키를 사용하지 못하도록 방지해준다. 그 후, form 기반으로 다시 로그인한다.
 
+### Token 기반 Remember-me
+
+![Token based remember-me](token-based-architecture.png)
+
+### Persistent 기반 Remember-me
+
+![Persistent based remember-me](persistent-based-architecture.png)
+
+### Remember-me와 User 생명주기
+Remember-me 쿠키와 유저의 생명주기는 서로 연관된다.
+
+|사용자의 액션|Remember-me 쿠키|
+|:--:|:--:|
+|로그인 성공|Remember-me 쿠키 설정|
+|로그인 실패|쿠키가 존재하면 쿠키 무효화|
+|로그아웃|쿠키가 존재하면 쿠키 무효화|
+
+## 사용방법
 ### RememberMe 토큰
 쿠키가 생성되고 데이터베이스에도 저장될 수 있도록 entity를 생성해준다. 
 
@@ -103,7 +121,7 @@ public class RememberMeTokenService implements PersistentTokenRepository {
 ```
 
 ### Spring Security 설정
-*SecurityCongih.java*
+*SecurityConfig.java*
 RememberMeTokenService를 스프링 시큐리티와 연결하기 위한 설정이다. 
 
 ```java
@@ -141,4 +159,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   ```
 
 ### Reference
-<https://velog.io/@max9106/Spring-Security-RememberMe%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0>
+<https://velog.io/@max9106/Spring-Security-RememberMe%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0><br>
+<https://happyer16.tistory.com/entry/Spring-Security-remember-me%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80%ED%95%98%EA%B8%B0>
