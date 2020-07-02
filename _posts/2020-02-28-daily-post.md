@@ -4,6 +4,7 @@ title: "오늘의 회사 생활"
 excerpt: "오늘의 밥과 한 일에 대해"
 categories: [daily]
 comments: true
+permalink: /articles/:year-:month/:title
 image:
   feature: /picture1.jpeg
 ---

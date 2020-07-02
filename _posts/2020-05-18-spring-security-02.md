@@ -3,6 +3,7 @@ layout: post
 title: "Spring security를 이용한 회원가입/로그인 예제"
 categories: [spring]
 comments: true
+permalink: /articles/:year-:month/:title
 tags:
   - Spring Boot
   - Spring Security
