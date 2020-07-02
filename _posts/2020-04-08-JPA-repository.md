@@ -4,7 +4,6 @@ title: "JPA - Repository에 대해"
 excerpt: "JPA의 Repository에 대해 알아보자"
 categories: [spring]
 comments: true
-permalink: /articles/:year-:month/:title
 tags:
   - JPA
   - Spring Boot

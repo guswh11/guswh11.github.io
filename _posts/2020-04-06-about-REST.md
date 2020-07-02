@@ -4,7 +4,6 @@ title: "REST에 대해"
 excerpt: "REST, RESTful, REST API에 대해 알아보자"
 categories: [web]
 comments: true
-permalink: /articles/:year-:month/:title
 tags:
   - REST
   - Web
