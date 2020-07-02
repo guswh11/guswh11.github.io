@@ -2,6 +2,7 @@
 layout: post
 title: "REST에 대해"
 excerpt: "REST, RESTful, REST API에 대해 알아보자"
+header-img: img/post-bg/web.jpg
 categories: [web]
 comments: true
 tags:
