@@ -2,6 +2,7 @@
 layout: post
 title: "Elasticsearch와 Kibana설치 방법"
 excerpt: "Elasticsearch랑 kibana를 설치해보자"
+header-img: img/post-bg/miui-ux.jpg
 categories: [etc]
 comments: true
 ---
