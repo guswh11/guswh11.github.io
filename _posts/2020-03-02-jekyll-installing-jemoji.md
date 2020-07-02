@@ -4,6 +4,7 @@ title: "Jekyll에 emoji 추가하기"
 excerpt: "emoji를 사용해 포스팅 하기"
 categories: [jekyll]
 comments: true
+permalink: /articles/:year-:month/:title
 tags:
   - Jekyll
 ---
