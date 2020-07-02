@@ -3,7 +3,6 @@ layout: post
 title: "Spring security 설정 방법"
 categories: [spring]
 comments: true
-permalink: /articles/:year-:month/:title
 tags:
   - Spring
   - Spring Security
