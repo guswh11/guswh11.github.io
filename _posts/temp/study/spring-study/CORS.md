@@ -1,0 +1,92 @@
+>No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+웹 개발시 자바스크립트로 외부 서버의 경로로 ajax 요청을 날리면 위와 같은 에러 메세지를 볼 수 있다. 이는 자바스크립트 엔진 표준 스펙에 `same-origin policy(동일 출처 정책)`라는 보안 규칙이 있기 때문이다. 
+
+## SOP (Same-Origin Policy)
+protocol, port, domain이 같다면 두 페이지는 같은 `origin`을 가진다. 
+(보통 URL을 통해 페이지의 origin을 확인할 수 있다)
+
+각 origin의 리소스(cookies, DOM, script 등)는 같은 origin을 가지는 페이지에서만 읽기/쓰기가 가능하다. 
+
+이를 보완하기 위해 서버측에서 CORS를 이용할 수 있다. 
+![sop, cors](sop.png)
+
+## CORS (Cross-Origin Resource Sharing)
+CORS(Cross-Origin Resource Sharing) 란, 웹 서버 도메인간 액세스 제어 기능을 제공하여 보안 도메인간 데이터 전송을 가능하게 해준다.
+서버에서 외부 요청을 허용할 경우 ajax요청이 가능해지는 방식이다. 
+
+### 동작방식
+브라우저는 다른 도메인으로 요청을 보내기 전에 다음과 같은 순서로 동작한다.
+
+1. "preflight" 확인 요청을 OPTIONS method로 전송
+요청 시 Http Header의 속성으로 "Origin"에 자신의 도메인을 전송
+2. 이 요청을 받은 서버는 정상적인 요청인지 확인하여, 정상적인 요청이면 Response에 허용 가능한 도메인(Access-Control-Allow-Origin), Method(Access-Control-Allow-Methods), Header 속성(Access-Control-Allow-Headers)  등을 설정하여 응답
+3. OPTIONS 요청에 대해 수신을 받은 브라우저는 Header의 "Access-Control-Allow-*" 정보를 이용하여 요청을 보낼 수 있는지 판단하여 권한이 없는 경우 위와 같은 에러 처리를 하고 요청을 보낼 수 있으면 요청 전송
+
+![cors flow](cors_flow.png)
+
+위와 같은 흐름에서 브라우저가 1, 3번은 처리를 자동으로 하기 때문에 개발자나 시스템 운영자는 2번에 대한 설정을 해야만 한다. 
+2번을 해결하기 위해서는 서버측에서는 다음 두가지 설정이 필요하다. 
+
+- API로 공개되는 모든 URL에 대해 OPTIONS Routes 설정 및 Http Response 설정
+- API URL에 대한 Http Response 설정
+
+### 활용방법 
+서버에서는 브라우저에 다음과 같은 키를 header에 보내줘야 한다.
+
+- **Access-Control-Allow-Orgin** : 요청을 보내는 페이지의 출처 (*, 도메인)
+- **Access-Control-Allow-Methods** : 요청을 허용하는 메소드 (Default : GET, POST, HEAD)
+- **Access-Control-Max-Age** : 클라이언트에서 pre-flight의 요청 결과를 저장할 시간 지정. 해당 시간 동안은 pre-flight를 다시 요청하지 않는다.
+- **Access-Control-Allow-Headers** : 요청을 허용하는 헤더
+
+아래 방법은 Spring boot로 개발 시 서버 측에서 CORS 요청을 핸들링하는 방법이다. 
+
+#### Controller 지정 
+API에  `@CrossOrigin`을 사용해 개별적으로 허용해준다. 
+
+```java
+@CrossOrigin("*")
+@GetMapping("{value}")
+public String get(@PathVariable String value) {
+    return value;
+}
+```
+
+#### Global하게 지정
+`WebMvcConfigurer`를 구현하거나 `@Bean`으로 등록해준다. 
+WebConfig.java
+
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+                .allowedOrigins("*");
+    }
+}
+```
+```java
+@Bean
+public WebMvcConfigurer webMvcConfigurer() {
+    return new WebMvcConfigurer() {
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**")
+                    .allowedOrigins("*")
+                    .allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+        }
+    };
+}
+```
+
+#### Reference
+
+해결 방법 - No 'Access-Control-Allow-Origin' header is present on the requested resource.
+https://kimyhcj.tistory.com/263
+
+javascript ajax 크로스도메인 요청-CORS 
+https://brunch.co.kr/@adrenalinee31/1
+
+https://www.popit.kr/corss-domain-api-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1/
