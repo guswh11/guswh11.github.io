@@ -4,6 +4,7 @@
 
 **경쟁 조건(Race Condition)**
 - 여러 프로세스가 공유 데이터를 동시에 조작할 때, 실행의 특정 순서에 따라 결과가 달라지는 상황
+    - 연산의 결과를 신뢰할 수 없게 만든다. 
 - 공유 데이터 조작을 원자적 연산으로 처리하면 경쟁 조건은 발생하지 않는다.
 
 > 원자적(atomic): 수행 도중 중단될 수 없는 동작 단위
@@ -16,19 +17,20 @@
 임계 영역이란 각 프로세스에서 공유 데이터에 접근하는 프로그램 코드 부분을 의미한다.<br>
 임계 영역은 다른 프로세스와 공유하는 변수를 변경하거나, 테이블을 갱신하거나 파일을 쓰는 등의 작업을 실행한다.<br>
 
-공유 자원의 독점을 보장하기 위해, 다음 세 가지 요구조건을 충족해야 한다. //말이 애매함 
+경쟁 조건 상황을 방지하기 위해, 다음 세 가지 요구조건을 충족해야 한다. 
 - **상호 배제(Mutual exclusion)**: 한 프로세스가 자신의 임계 영역에서 실행할 동안, 다른 프로세스는 자신의 임계 영역에서 실행될 수 없다. 
 - **진행(Progress)**: 어떤 프로세스도 임계 영역에서 실행되고 있지 않다면, 임계 영역으로 진입하려는 프로세스들 중 하나는 유한한 시간 내에 진입할 수 있어야 한다. 
 - **유한 대기(Bounded waiting)**: 한 프로세스가 임계 영역에 대한 진입을 요청하면, 다른 프로세스의 임계 영역 진입은 유한한 횟수로 제한되어야 한다. 
 - 임계 영역에 대한 진입 요청 후 무한히 기다리지 않음
- // read만 하는 경우?
 
-## 해결 방법 
-### 동기화 하드웨어(Synchronization Hardware)
+
+// 선점형, 비선점형 커널 
+
+## 동기화 방법
+### Lock 사용
 임계 영역 문제에 대한 가장 기본적인 해결 방법은 락(lock)을 사용하는 것이다.  
 - 프로세스는 임계 영역에 진입하기 전에 반드시 락을 획득해야 한다. 
 - 임계 영역을 나올 때는 락을 방출한다. 
-- CPU, 하드웨어 수준에서 Lock을 건다.
 
 ```c++
 do {
@@ -42,15 +44,53 @@ do {
 } while(true)
 ```
 
-비선점형 커널 
-- 단일처리기 환경에서는 공유 변수가 변경되는 동안은 인터럽트를 허용하지 않음으로써 해결 가능
-    - 선점되지 않음 //?
-- 다중처리기(멀티프로세서) 환경에서는 적용할 수 없다. 
-    - 인터럽트 불능화에 대한 메시지가 모든 프로세서에게 전달되는 과정이 매 임계 영역에 진입하는 것을 지연시킴  
+락 획득 도중 인터럽트가 걸리는 문제 상황이 발생할 수 있다. 
+
+### 해결 방법 
+**HW solution**
+더 이상 쪼개지지 않는 원자적 하드웨어 명령어를 이용하는 방법이다.
+- TestAndSet (TAS) instruction
+
+**OS supported SW solution**
+- Spinlock
+- Semaphore
+- Eventcount/sequencer
+
+**Language-Level solution**
+- Monitor
+
+### TestAndSet(TAS) instruction
 - 락을 원자적으로 처리하는 하드웨어 명령어
     - 중간에 인터럽트 되지 않는 명령어(non-preemptive)
     - TestAndSet() : 한 워드의 내용을 확인하고 수정하는 연산을 원자적으로 처리
+
+        ```c++ 
+        Boolean TestAndSet(boolean *target) {
+            boolean rv = *target; 
+            *target = true; 
+            return rv;
+        }
+        ```
+
+        ```c++
+        do {
+            while (TestAndSet(&lock))
+            ; // do nothing
+
+            // critical section
+
+            lock = FALSE; 
+
+            //remainder section
+
+        } while (TRUE);
+        ```
+
     - Swap() : 두 워드에 내용을 서로 교환하는 연산을 원자적으로 처리
+
+testAndSet 이랑 swap 둘다 제한된 대기를 만족하지 못함 (무한정 기다릴 수 있음)
+bounded-waiting mutual exclusion with test and set이 있지만 
+이렇게 복잡한 하드웨어 구현은 일반적으로 지원되지 않음 
 
 ### 세마포어(Semaphore)
 세마포어 S는 정수 변수로, 초기화를 제외하고는 원자적 계산 wait(), signal()로만 접근이 가능하다.
@@ -100,13 +140,13 @@ do {
 
 #### 구현
 위와 같은 세마포어의 구현은  **바쁜 대기**(busy waiting)를 요구한다.<br>
-바쁜 대기(spinlock): 한 프로세스가 자신의 임계 영역에 있으면 다른 프로세스들은 진입 코드를 계속 반복 실행해야 함
+**스핀락(spinlock)**: 한 프로세스가 자신의 임계 영역에 있으면 다른 프로세스들은 진입 코드를 계속 반복 실행해야 함
 
 **장점**
 - 락이 짧은 시간 동안만 소유될 경우 유용함 
-- 문맥 교환 비용을 절약
 - 멀티프로세서/멀티코어 시스템에서 채택됨
     - 동시에 프로세스/스레드가 실행 가능해야 busy waiting 도중 락이 풀리는 경우를 기대 가능 
+    - 문맥 교환 비용을 절약
 
 **단점**
 - CPU 시간을 낭비하게 됨 
@@ -147,21 +187,11 @@ void signal(semaphore *S) {
 }
 ```
 
-// wakeup 하면 다시 준비완료 큐에 가는건지 바로 실행인지 
-
-// 임계 구역이 길 경우 spinlock은 다른 프로세스들이 너무 오래 대기 -> 계속 cpu를 낭비 
-queue에 넣으면 기다리는동안 다른 문맥교환은 안일어나니까 길 때는 큐 사용하는게 유리할 수 있음 
-
-// block, wakeup cost 높음 
-
 이 정의에서 `S->value`의 값은 음수일 수 있다. 음수일 때, 그 절댓값은 대기하고 있는 프로세스들의 수이다. 
 
 #### 교착상태와 기아(Deadlock and Starvation)
 
 ![deadlock](deadlock.gif)
-
-데드락과 관련된 다른 문제는 무기한 봉쇄(undefinite blocking)또는 기아(starvation)로, 프로세스들이 세마포어에서 무기한 대기하는 것이다.<br>
--> 프로세스들이 대기 큐에서 LIFO 순서로 제거될 경우 발생할 수 있다. 
 
 #### 우선순위 역전(Priority Inversion)
 우선순위 역전: 높은 우선순위의 프로세스가 낮은 우선순위의 프로세스로 인해 수행이 block된 상태
@@ -401,4 +431,7 @@ undo와 redo 연산은 반드시 idempotent 해야(연산을 여러 번 실행�
 #### 타임스탬프 기반 프로토콜(Timestamp-Based Protocols)
 
 #### Reference
-유한 버퍼 문제 - <https://simsimjae.tistory.com/70>, <https://velog.io/@zehye/%EC%A0%84%ED%86%B5%EC%A0%81-%EB%8F%99%EA%B8%B0%ED%99%94-%EC%98%88%EC%A0%9C%EC%83%9D%EC%82%B0%EC%9E%90-%EC%86%8C%EB%B9%84%EC%9E%90%EB%AC%B8%EC%A0%9C-RW%EB%AC%B8%EC%A0%9C-%EC%8B%9D%EC%82%AC%ED%95%98%EB%8A%94-%EC%B2%A0%ED%95%99%EC%9E%90-%EB%AC%B8%EC%A0%9C>
+유한 버퍼 문제 - <https://simsimjae.tistory.com/70>, <https://velog.io/@zehye/%EC%A0%84%ED%86%B5%EC%A0%81-%EB%8F%99%EA%B8%B0%ED%99%94-%EC%98%88%EC%A0%9C%EC%83%9D%EC%82%B0%EC%9E%90-%EC%86%8C%EB%B9%84%EC%9E%90%EB%AC%B8%EC%A0%9C-RW%EB%AC%B8%EC%A0%9C-%EC%8B%9D%EC%82%AC%ED%95%98%EB%8A%94-%EC%B2%A0%ED%95%99%EC%9E%90-%EB%AC%B8%EC%A0%9C><br>
+동기화 방법 - 
+<https://jhnyang.tistory.com/36?category=815411><br>
+<https://m.blog.naver.com/PostView.nhn?blogId=three_letter&logNo=220379691616&proxyReferer=https:%2F%2Fwww.google.com%2F>
