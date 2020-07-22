@@ -88,10 +88,10 @@ do {
 
     - Swap() : 두 워드에 내용을 서로 교환하는 연산을 원자적으로 처리
 
-testAndSet 이랑 swap 둘다 제한된 대기를 만족하지 못함 (무한정 기다릴 수 있음)
-bounded-waiting mutual exclusion with test and set이 있지만 
-이렇게 복잡한 하드웨어 구현은 일반적으로 지원되지 않음 
-
+- busy waiting 존재 
+- 두 명령어 모두 제한된 대기를 만족시키지 않음 
+    - 제한된 대기를 보장하는 TestAndSet 알고리즘이 존재하지만, 구현이 복잡해 지원되지 않음
+    
 ### 세마포어(Semaphore)
 세마포어 S는 정수 변수로, 초기화를 제외하고는 원자적 계산 wait(), signal()로만 접근이 가능하다.
 
