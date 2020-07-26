@@ -1,4 +1,15 @@
-## TCP 넌블로킹 채널과 셀렉터(Selector)
+---
+layout: post
+title: "Java-TCP 넌블로킹 채널과 셀렉터(Selector)"
+categories: [java]
+comments: true
+tags:
+  - Java
+  - Selector
+  - TCP
+  - Non-blocking
+---
+
 ### 넌블로킹 방식
 블로킹 방식
 - accept(), read()에서 블로킹됨 

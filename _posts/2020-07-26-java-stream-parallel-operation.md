@@ -1,3 +1,14 @@
+---
+layout: post
+title: "Java-스트림 병렬 처리"
+categories: [java]
+comments: true
+tags:
+  - Java
+  - Parallel
+  - Stream
+---
+
 ## 스트림 병렬 처리
 병렬 처리(Parallel Operation): 멀티 코어 CPU 환경에서 하나의 작업을 분할해 각각의 코어가 병렬적으로 처리하는 것<br>
 병렬 처리의 목적은 작업 처리 시간을 줄이기 위한 것이다. 

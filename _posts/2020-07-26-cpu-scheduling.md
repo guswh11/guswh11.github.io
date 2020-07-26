@@ -1,3 +1,14 @@
+---
+layout: post
+title: "CPU 스케줄링의 개념과 스케줄링 알고리즘"
+categories: [OS]
+comments: true
+tags:
+  - OS
+  - Process
+  - Scheduling
+---
+
 # CPU 스케줄링 
 ## 기본 개념
 다중 프로그래밍(Multi-programming)의 목적: CPU 이용률을 최대화하기 위해 항상 실행 중인 프로세스를 가지는 것<br>
@@ -161,18 +172,6 @@ CPU 버스트가 가장 작은 프로세스부터 자원을 할당해, 평균 �
     - 더 짧은 프로세스가 먼저 실행되므로 총처리 시간의 평균을 줄일 수 있음
 - 기아 상태를 예방
     - 일종의 aging(오래 대기하는 프로세스의 우선순위를 높임)
-
-## 스레드 스케줄링(Thread Scheduling)
-### 경쟁 범위 
-
-### Pthread 스케줄링
-
-## 다중처리기 스케줄링(Multiple-Processor Scheduling)
-### 처리기 친화성(Processor Affinity)
-### 부하 균등화(Load Balancing)
-### 다중코어 프로세서(Multicore Processor)
-### 가상화와 스케줄링(Virtualization and Scheduling)
-
 
 #### Reference
 다단계 피드백 큐 스케줄링 - <https://jhnyang.tistory.com/156><br>

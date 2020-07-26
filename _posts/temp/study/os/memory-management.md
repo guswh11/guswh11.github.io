@@ -139,7 +139,7 @@ ex) 문맥 교환을 위해 메모리 관리자가 프로세스를 보조 메모
     - 용량이 커 모든 사용자 이미지를 저장하기에 충분하고 어느 이미지도 곧장 꺼내올 수 있기 때문
     - 
 - 문맥 교환 시간이 매우 오래 걸림 (대부분은 디스크 전송 시간)
-    - 전송 시간은 스왑 될 메모리의 크기와 비례 //
+    - 전송 시간은 스왑 될 메모리의 크기와 비례 
 - 스왑될 프로세스가 완전히 유휴 상태에 있음을 확인해야 함
 
 --- 
@@ -189,7 +189,7 @@ Hole: 할당된 메모리 공간 사이에 있는 할당되지 않은 빈 공간
 
 단점 
 - 세그멘테이션보다 메모리 탐색 시간이 긺
-    - remedy with TLB memory caches
+    - TLB 메모리 캐시 사용을 통해 속도 향상시킴 
 
 **Paging Address Translation**
 
@@ -214,15 +214,35 @@ Hole: 할당된 메모리 공간 사이에 있는 할당되지 않은 빈 공간
 - Uses legacy technology in x86-64 servers.
 - Linux only supports segmentation in 80x86 microprocessors: states that paging simplifies memory management by using the same set of linear addresses.
 - Porting Linux to different architectures is problematic because of limited segmentation support.
-- Requires programmer intervention.
-- Subject to serious external fragmentation.
+- 외부 단편화를 유발함 
 
 ### 페이징과 세그멘테이션의 차이
 **Size**
+페이징 
+- 페이지, 프레임 사이즈 고정
+    - 크기는 하드웨어가 결정
+
+세그멘테이션
+- 세그멘트의 사이즈가 다양
+    - 유저가 지정 
 
 **단편화**
+페이징
+- 예전 하드웨어 시스템의 경우, 내부 단편화 발생
+    - 메모리와 페이지의 크기가 완벽히 일치하지 않음
+
+세그멘테이션
+- 외부 단편화 발생
 
 **테이블**
+페이징
+- Page tables direct the MMU to page location and status
+    - 세그멘테이션 테이블을 사용하는 것보다 속도 느림
+    - TLB 메모리 캐시로 인해 속도 향상
+
+세그멘테이션
+- 세그멘테이션 테이블은 세그멘트ID와 정보를 포함
+- 페이징 테이블보다 속도 빠름
 
 #### Reference
 <https://www.enterprisestorageforum.com/storage-hardware/paging-and-segmentation.html><br>

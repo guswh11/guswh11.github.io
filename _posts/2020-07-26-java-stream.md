@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Java-스트림(Stream)"
+categories: [java]
+comments: true
+tags:
+  - Java
+  - Stream
+---
+
 ## 스트림(Stream)
 스트림은 컬렌션의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자이다. 
 
