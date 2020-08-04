@@ -167,7 +167,8 @@ limit register(상한 레지스터)보다 가상 주소 값이 크면 memory pro
     - 여러 프로그램이 같은 DLL을 사용하는 경우에는 모든 프로그램에 업데이트나 수정 내용이 적용됨
 - 개발 시 분담 작업이 쉽고 재사용성이 뛰어남 
 
-<https://goddaehee.tistory.com/185>
+#### Reference
+<https://goddaehee.tistory.com/185><br>
 <https://jhnyang.tistory.com/42>
 
 --- 
