@@ -1,9 +1,9 @@
 # Site settings
-title: 블로그 이름
-SEOTitle: 탭에 뜰 말 
-header-img: img/bg-14.png
-email: guswh11@naver.com
-description: "설명"
+title: Dev Blog
+SEOTitle: Dev Blog
+header-img: img/bg-6.jpeg
+email: guswh219@gmail.com
+description: "개발 학습 & 진행상항 기록"
 keyword: "黄玄, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
 url:             # your host, for absolute URL
 
@@ -23,7 +23,7 @@ github_username: guswh11
 highlighter: rouge
 paginate: 10
 permalink: /articles/:year-:month/:title/
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 timezone: Asia/Seoul
 excerpt_separator: <!--more-->
